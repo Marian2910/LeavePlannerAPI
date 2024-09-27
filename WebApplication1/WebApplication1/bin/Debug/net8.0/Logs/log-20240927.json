@@ -1,0 +1,737 @@
+[09:42:24 INF] 1 Now listening on: http://localhost:5077
+[09:42:24 INF] 1 Application started. Press Ctrl+C to shut down.
+[09:42:24 INF] 1 Hosting environment: Development
+[09:42:24 INF] 1 Content root path: /Users/mariancatalin/RedToBlue-app/BE/HRManagementAPI-1/WebApplication1/WebApplication1
+[09:42:25 INF] 18 Request starting HTTP/1.1 GET http://localhost:5077/swagger/index.html - null null
+[09:42:26 INF] 4 GetAllEmployeesAsync was called from EmployeeService.
+[09:42:26 INF] 4 GetAllEmployeeAsync was called from EmployeeRepository
+[09:42:26 INF] 18 Request finished HTTP/1.1 GET http://localhost:5077/swagger/index.html - 200 null text/html;charset=utf-8 301.809ms
+[09:42:26 INF] 17 Request starting HTTP/1.1 GET http://localhost:5077/swagger/v1/swagger.json - null null
+[09:42:27 INF] 17 Request finished HTTP/1.1 GET http://localhost:5077/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 385.7303ms
+[09:42:28 INF] 18 Request starting HTTP/1.1 GET http://localhost:5077/api/event - null null
+[09:42:29 WRN] 18 Failed to determine the https port for redirect.
+[09:42:29 INF] 18 Executing endpoint 'ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend)'
+[09:42:29 INF] 18 Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Common.DTOs.EventDto]]] GetAllEvents() on controller ProjectBackend.Controllers.EventController (ProjectBackend).
+[09:42:29 INF] 18 Executing action method ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend) - Validation state: "Valid"
+[09:42:29 INF] 18 GetAllEvents was called from EventController
+[09:42:29 INF] 18 GetAllEventsAsync was called from EventService
+[09:42:29 INF] 18 GetAllAsync was called from EventRepository
+[09:42:31 INF] 4 Executed DbCommand (207ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[AnnualLeaveDays], [e].[Birthdate], [e].[DepartmentId], [e].[Email], [e].[EmploymentDate], [e].[FirstName], [e].[JobId], [e].[LastName], [e].[Password], [e].[RemainingLeaveDays], [j].[Id], [j].[Role], [j].[Title], [d].[Id], [d].[Name]
+FROM [Employees] AS [e]
+INNER JOIN [Jobs] AS [j] ON [e].[JobId] = [j].[Id]
+INNER JOIN [Departments] AS [d] ON [e].[DepartmentId] = [d].[Id]
+[09:42:31 INF] 19 Executed DbCommand (147ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[Description], [e].[Discriminator], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title], [e].[EmployeeId]
+FROM [Events] AS [e]
+WHERE [e].[Discriminator] = N'Event'
+[09:42:31 INF] 4 UpdateLeaveDaysForEmployeeAsync was called from EmployeeService.
+[09:42:31 INF] 4 GetByIdAsync was called from EmployeeRepository
+[09:42:31 INF] 19 Executed action method ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2226.7893ms.
+[09:42:31 INF] 19 Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Common.DTOs.EventDto, Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[09:42:32 INF] 18 Executed DbCommand (343ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AnnualLeaveDays], [e].[Birthdate], [e].[DepartmentId], [e].[Email], [e].[EmploymentDate], [e].[FirstName], [e].[JobId], [e].[LastName], [e].[Password], [e].[RemainingLeaveDays], [j].[Id], [j].[Role], [j].[Title], [d].[Id], [d].[Name]
+FROM [Employees] AS [e]
+INNER JOIN [Jobs] AS [j] ON [e].[JobId] = [j].[Id]
+INNER JOIN [Departments] AS [d] ON [e].[DepartmentId] = [d].[Id]
+WHERE [e].[Id] = @__id_0
+[09:42:32 INF] 19 Executed action ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend) in 2782.8517ms
+[09:42:32 INF] 19 Executed endpoint 'ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend)'
+[09:42:32 INF] 19 Request finished HTTP/1.1 GET http://localhost:5077/api/event - 200 null application/json; charset=utf-8 3530.368ms
+[09:42:33 INF] 19 Executed DbCommand (108ms) [Parameters=[@p10='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = Int32), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Employees] SET [AnnualLeaveDays] = @p0, [Birthdate] = @p1, [DepartmentId] = @p2, [Email] = @p3, [EmploymentDate] = @p4, [FirstName] = @p5, [JobId] = @p6, [LastName] = @p7, [Password] = @p8, [RemainingLeaveDays] = @p9
+OUTPUT 1
+WHERE [Id] = @p10;
+[09:42:33 INF] 19 UpdateLeaveDaysForEmployeeAsync was called from EmployeeService.
+[09:42:33 INF] 19 GetByIdAsync was called from EmployeeRepository
+[09:42:33 INF] 19 Executed DbCommand (7ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AnnualLeaveDays], [e].[Birthdate], [e].[DepartmentId], [e].[Email], [e].[EmploymentDate], [e].[FirstName], [e].[JobId], [e].[LastName], [e].[Password], [e].[RemainingLeaveDays], [j].[Id], [j].[Role], [j].[Title], [d].[Id], [d].[Name]
+FROM [Employees] AS [e]
+INNER JOIN [Jobs] AS [j] ON [e].[JobId] = [j].[Id]
+INNER JOIN [Departments] AS [d] ON [e].[DepartmentId] = [d].[Id]
+WHERE [e].[Id] = @__id_0
+[09:42:33 INF] 19 Executed DbCommand (14ms) [Parameters=[@p10='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = Int32), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Employees] SET [AnnualLeaveDays] = @p0, [Birthdate] = @p1, [DepartmentId] = @p2, [Email] = @p3, [EmploymentDate] = @p4, [FirstName] = @p5, [JobId] = @p6, [LastName] = @p7, [Password] = @p8, [RemainingLeaveDays] = @p9
+OUTPUT 1
+WHERE [Id] = @p10;
+[09:42:33 INF] 19 UpdateLeaveDaysForEmployeeAsync was called from EmployeeService.
+[09:42:33 INF] 19 GetByIdAsync was called from EmployeeRepository
+[09:42:33 INF] 20 Executed DbCommand (5ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AnnualLeaveDays], [e].[Birthdate], [e].[DepartmentId], [e].[Email], [e].[EmploymentDate], [e].[FirstName], [e].[JobId], [e].[LastName], [e].[Password], [e].[RemainingLeaveDays], [j].[Id], [j].[Role], [j].[Title], [d].[Id], [d].[Name]
+FROM [Employees] AS [e]
+INNER JOIN [Jobs] AS [j] ON [e].[JobId] = [j].[Id]
+INNER JOIN [Departments] AS [d] ON [e].[DepartmentId] = [d].[Id]
+WHERE [e].[Id] = @__id_0
+[09:42:33 INF] 20 Executed DbCommand (10ms) [Parameters=[@p10='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = Int32), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Employees] SET [AnnualLeaveDays] = @p0, [Birthdate] = @p1, [DepartmentId] = @p2, [Email] = @p3, [EmploymentDate] = @p4, [FirstName] = @p5, [JobId] = @p6, [LastName] = @p7, [Password] = @p8, [RemainingLeaveDays] = @p9
+OUTPUT 1
+WHERE [Id] = @p10;
+[09:42:33 INF] 20 UpdateLeaveDaysForEmployeeAsync was called from EmployeeService.
+[09:42:33 INF] 20 GetByIdAsync was called from EmployeeRepository
+[09:42:33 INF] 19 Executed DbCommand (13ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AnnualLeaveDays], [e].[Birthdate], [e].[DepartmentId], [e].[Email], [e].[EmploymentDate], [e].[FirstName], [e].[JobId], [e].[LastName], [e].[Password], [e].[RemainingLeaveDays], [j].[Id], [j].[Role], [j].[Title], [d].[Id], [d].[Name]
+FROM [Employees] AS [e]
+INNER JOIN [Jobs] AS [j] ON [e].[JobId] = [j].[Id]
+INNER JOIN [Departments] AS [d] ON [e].[DepartmentId] = [d].[Id]
+WHERE [e].[Id] = @__id_0
+[09:42:33 INF] 20 Executed DbCommand (9ms) [Parameters=[@p10='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = Int32), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Employees] SET [AnnualLeaveDays] = @p0, [Birthdate] = @p1, [DepartmentId] = @p2, [Email] = @p3, [EmploymentDate] = @p4, [FirstName] = @p5, [JobId] = @p6, [LastName] = @p7, [Password] = @p8, [RemainingLeaveDays] = @p9
+OUTPUT 1
+WHERE [Id] = @p10;
+[09:42:33 INF] 20 Request starting HTTP/1.1 GET http://localhost:5077/api/Employee - null null
+[09:42:33 INF] 20 CORS policy execution successful.
+[09:42:33 INF] 20 Executing endpoint 'ProjectBackend.Controllers.EmployeeController.GetAllEmployees (ProjectBackend)'
+[09:42:33 INF] 18 Request starting HTTP/1.1 GET http://localhost:5077/api/PersonalEvent/getByEmployee/1 - null null
+[09:42:33 INF] 19 Request starting HTTP/1.1 GET http://localhost:5077/api/Employee/1 - null null
+[09:42:33 INF] 18 CORS policy execution successful.
+[09:42:33 INF] 18 Executing endpoint 'ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend)'
+[09:42:33 INF] 19 CORS policy execution successful.
+[09:42:33 INF] 4 Request starting HTTP/1.1 GET http://localhost:5077/api/event - null null
+[09:42:33 INF] 4 CORS policy execution successful.
+[09:42:33 INF] 19 Executing endpoint 'ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend)'
+[09:42:33 INF] 4 Executing endpoint 'ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend)'
+[09:42:33 INF] 4 Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Common.DTOs.EventDto]]] GetAllEvents() on controller ProjectBackend.Controllers.EventController (ProjectBackend).
+[09:42:33 INF] 4 Executing action method ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend) - Validation state: "Valid"
+[09:42:33 INF] 4 GetAllEvents was called from EventController
+[09:42:33 INF] 4 GetAllEventsAsync was called from EventService
+[09:42:33 INF] 4 GetAllAsync was called from EventRepository
+[09:42:33 INF] 20 Route matched with {action = "GetAllEmployees", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Common.DTOs.PagedResultDto`1[Domain.Models.Employee]]] GetAllEmployees() on controller ProjectBackend.Controllers.EmployeeController (ProjectBackend).
+[09:42:34 INF] 20 Executing action method ProjectBackend.Controllers.EmployeeController.GetAllEmployees (ProjectBackend) - Validation state: "Valid"
+[09:42:34 INF] 20 GetAllEmployees was called from EmployeeController
+[09:42:34 INF] 20 GetAllEmployeesAsync was called from EmployeeService.
+[09:42:34 INF] 20 GetAllEmployeeAsync was called from EmployeeRepository
+[09:42:34 INF] 19 Route matched with {action = "GetEmployeeById", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Domain.Models.Employee]] GetEmployeeById(Int32) on controller ProjectBackend.Controllers.EmployeeController (ProjectBackend).
+[09:42:34 INF] 18 Route matched with {action = "GetPersonalEventsByEmployeeId", controller = "PersonalEvent"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Common.DTOs.PersonalEventDto]]] GetPersonalEventsByEmployeeId(Int32) on controller ProjectBackend.Controllers.PersonalEventController (ProjectBackend).
+[09:42:34 INF] 18 Executing action method ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend) - Validation state: "Valid"
+[09:42:34 INF] 19 Executing action method ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend) - Validation state: "Valid"
+[09:42:34 INF] 18 GetPersonalEventsByEmployeeId was called from PersonalEventController
+[09:42:34 INF] 18 GetPersonalEventsByEmployeeId was called from PersonalEventService
+[09:42:34 INF] 19 GetEmployeeById was called from EmployeeController
+[09:42:34 INF] 18 GetPersonalEventsByEmployeeIdAsync was called from PersonalEventRepository
+[09:42:34 INF] 19 GetEmployeeByIdAsync was called from EmployeeService.
+[09:42:34 INF] 19 GetByIdAsync was called from EmployeeRepository
+[09:42:34 INF] 17 Executed DbCommand (69ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[Description], [e].[Discriminator], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title], [e].[EmployeeId]
+FROM [Events] AS [e]
+WHERE [e].[Discriminator] = N'Event'
+[09:42:34 INF] 4 Executed DbCommand (68ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[AnnualLeaveDays], [e].[Birthdate], [e].[DepartmentId], [e].[Email], [e].[EmploymentDate], [e].[FirstName], [e].[JobId], [e].[LastName], [e].[Password], [e].[RemainingLeaveDays], [j].[Id], [j].[Role], [j].[Title], [d].[Id], [d].[Name]
+FROM [Employees] AS [e]
+INNER JOIN [Jobs] AS [j] ON [e].[JobId] = [j].[Id]
+INNER JOIN [Departments] AS [d] ON [e].[DepartmentId] = [d].[Id]
+[09:42:34 INF] 17 Executed action method ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 718.3806ms.
+[09:42:34 INF] 4 Executed action method ProjectBackend.Controllers.EmployeeController.GetAllEmployees (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 651.6832ms.
+[09:42:34 INF] 17 Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Common.DTOs.EventDto, Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[09:42:34 INF] 4 Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Domain.Models.Employee, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[09:42:34 INF] 17 Executed action ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend) in 864.9673ms
+[09:42:34 INF] 17 Executed endpoint 'ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend)'
+[09:42:34 INF] 17 Request finished HTTP/1.1 GET http://localhost:5077/api/event - 200 null application/json; charset=utf-8 903.7442ms
+[09:42:34 INF] 17 Request starting HTTP/1.1 GET http://localhost:5077/api/event - null null
+[09:42:34 INF] 17 CORS policy execution successful.
+[09:42:34 INF] 17 Executing endpoint 'ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend)'
+[09:42:34 INF] 17 Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Common.DTOs.EventDto]]] GetAllEvents() on controller ProjectBackend.Controllers.EventController (ProjectBackend).
+[09:42:34 INF] 17 Executing action method ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend) - Validation state: "Valid"
+[09:42:34 INF] 17 GetAllEvents was called from EventController
+[09:42:34 INF] 17 GetAllEventsAsync was called from EventService
+[09:42:34 INF] 17 GetAllAsync was called from EventRepository
+[09:42:34 INF] 7 Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[Description], [e].[Discriminator], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title], [e].[EmployeeId]
+FROM [Events] AS [e]
+WHERE [e].[Discriminator] = N'Event'
+[09:42:34 INF] 7 Executed action method ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 29.408ms.
+[09:42:34 INF] 7 Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Common.DTOs.EventDto, Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[09:42:34 INF] 7 Executed action ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend) in 47.901ms
+[09:42:34 INF] 7 Executed endpoint 'ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend)'
+[09:42:34 INF] 7 Request finished HTTP/1.1 GET http://localhost:5077/api/event - 200 null application/json; charset=utf-8 68.0727ms
+[09:42:34 INF] 4 Executed action ProjectBackend.Controllers.EmployeeController.GetAllEmployees (ProjectBackend) in 792.0884ms
+[09:42:34 INF] 4 Executed endpoint 'ProjectBackend.Controllers.EmployeeController.GetAllEmployees (ProjectBackend)'
+[09:42:34 INF] 4 Request finished HTTP/1.1 GET http://localhost:5077/api/Employee - 200 null application/json; charset=utf-8 1060.0914ms
+[09:42:34 INF] 18 Request starting HTTP/1.1 GET http://localhost:5077/api/Employee/1 - null null
+[09:42:34 INF] 18 CORS policy execution successful.
+[09:42:34 INF] 18 Executing endpoint 'ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend)'
+[09:42:34 INF] 18 Route matched with {action = "GetEmployeeById", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Domain.Models.Employee]] GetEmployeeById(Int32) on controller ProjectBackend.Controllers.EmployeeController (ProjectBackend).
+[09:42:34 INF] 18 Executing action method ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend) - Validation state: "Valid"
+[09:42:34 INF] 18 GetEmployeeById was called from EmployeeController
+[09:42:34 INF] 18 GetEmployeeByIdAsync was called from EmployeeService.
+[09:42:34 INF] 18 GetByIdAsync was called from EmployeeRepository
+[09:42:34 INF] 7 Executed DbCommand (13ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AnnualLeaveDays], [e].[Birthdate], [e].[DepartmentId], [e].[Email], [e].[EmploymentDate], [e].[FirstName], [e].[JobId], [e].[LastName], [e].[Password], [e].[RemainingLeaveDays], [j].[Id], [j].[Role], [j].[Title], [d].[Id], [d].[Name]
+FROM [Employees] AS [e]
+INNER JOIN [Jobs] AS [j] ON [e].[JobId] = [j].[Id]
+INNER JOIN [Departments] AS [d] ON [e].[DepartmentId] = [d].[Id]
+WHERE [e].[Id] = @__id_0
+[09:42:34 INF] 20 Executed DbCommand (73ms) [Parameters=[@__employeeId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[Description], [e].[Discriminator], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title], [e].[EmployeeId], [e0].[Id], [e0].[AnnualLeaveDays], [e0].[Birthdate], [e0].[DepartmentId], [e0].[Email], [e0].[EmploymentDate], [e0].[FirstName], [e0].[JobId], [e0].[LastName], [e0].[Password], [e0].[RemainingLeaveDays]
+FROM [Events] AS [e]
+INNER JOIN [Employees] AS [e0] ON [e].[EmployeeId] = [e0].[Id]
+WHERE [e].[Discriminator] = N'PersonalEvent' AND [e0].[Id] = @__employeeId_0
+[09:42:34 INF] 7 Executed action method ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 45.1835ms.
+[09:42:34 INF] 7 Executing OkObjectResult, writing value of type 'Domain.Models.Employee'.
+[09:42:34 INF] 7 Executed action ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend) in 61.9287ms
+[09:42:34 INF] 7 Executed endpoint 'ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend)'
+[09:42:34 INF] 7 Request finished HTTP/1.1 GET http://localhost:5077/api/Employee/1 - 200 null application/json; charset=utf-8 69.2554ms
+[09:42:34 INF] 19 Executed DbCommand (8ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AnnualLeaveDays], [e].[Birthdate], [e].[DepartmentId], [e].[Email], [e].[EmploymentDate], [e].[FirstName], [e].[JobId], [e].[LastName], [e].[Password], [e].[RemainingLeaveDays], [j].[Id], [j].[Role], [j].[Title], [d].[Id], [d].[Name]
+FROM [Employees] AS [e]
+INNER JOIN [Jobs] AS [j] ON [e].[JobId] = [j].[Id]
+INNER JOIN [Departments] AS [d] ON [e].[DepartmentId] = [d].[Id]
+WHERE [e].[Id] = @__id_0
+[09:42:34 INF] 19 Executed action method ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 498.5127ms.
+[09:42:34 INF] 19 Executing OkObjectResult, writing value of type 'Domain.Models.Employee'.
+[09:42:34 INF] 19 Executed action ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend) in 910.934ms
+[09:42:34 INF] 19 Executed endpoint 'ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend)'
+[09:42:34 INF] 19 Request finished HTTP/1.1 GET http://localhost:5077/api/Employee/1 - 499 null application/json; charset=utf-8 1151.2072ms
+[09:42:34 INF] 20 Executed action method ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 551.7468ms.
+[09:42:34 INF] 20 Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Common.DTOs.PersonalEventDto, Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[09:42:34 INF] 20 Executed action ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend) in 947.7359ms
+[09:42:34 INF] 20 Executed endpoint 'ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend)'
+[09:42:34 INF] 20 Request finished HTTP/1.1 GET http://localhost:5077/api/PersonalEvent/getByEmployee/1 - 200 null application/json; charset=utf-8 1199.3603ms
+[09:42:34 INF] 24 Request starting HTTP/1.1 GET http://localhost:5077/api/PersonalEvent/getByEmployee/1 - null null
+[09:42:34 INF] 24 CORS policy execution successful.
+[09:42:34 INF] 24 Executing endpoint 'ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend)'
+[09:42:34 INF] 24 Route matched with {action = "GetPersonalEventsByEmployeeId", controller = "PersonalEvent"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Common.DTOs.PersonalEventDto]]] GetPersonalEventsByEmployeeId(Int32) on controller ProjectBackend.Controllers.PersonalEventController (ProjectBackend).
+[09:42:34 INF] 24 Executing action method ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend) - Validation state: "Valid"
+[09:42:34 INF] 24 GetPersonalEventsByEmployeeId was called from PersonalEventController
+[09:42:34 INF] 24 GetPersonalEventsByEmployeeId was called from PersonalEventService
+[09:42:34 INF] 24 GetPersonalEventsByEmployeeIdAsync was called from PersonalEventRepository
+[09:42:35 INF] 7 Executed DbCommand (8ms) [Parameters=[@__employeeId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[Description], [e].[Discriminator], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title], [e].[EmployeeId], [e0].[Id], [e0].[AnnualLeaveDays], [e0].[Birthdate], [e0].[DepartmentId], [e0].[Email], [e0].[EmploymentDate], [e0].[FirstName], [e0].[JobId], [e0].[LastName], [e0].[Password], [e0].[RemainingLeaveDays]
+FROM [Events] AS [e]
+INNER JOIN [Employees] AS [e0] ON [e].[EmployeeId] = [e0].[Id]
+WHERE [e].[Discriminator] = N'PersonalEvent' AND [e0].[Id] = @__employeeId_0
+[09:42:35 INF] 7 Executed action method ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 17.2992ms.
+[09:42:35 INF] 7 Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Common.DTOs.PersonalEventDto, Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[09:42:35 INF] 7 Executed action ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend) in 21.0347ms
+[09:42:35 INF] 7 Executed endpoint 'ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend)'
+[09:42:35 INF] 7 Request finished HTTP/1.1 GET http://localhost:5077/api/PersonalEvent/getByEmployee/1 - 200 null application/json; charset=utf-8 27.9425ms
+[09:43:55 INF] 3 Request starting HTTP/1.1 POST http://localhost:5077/api/PersonalEvent - multipart/form-data; boundary=----WebKitFormBoundaryHWKyDp7Wwyq1fQ09 560
+[09:43:55 INF] 3 CORS policy execution successful.
+[09:43:55 INF] 3 Executing endpoint 'ProjectBackend.Controllers.PersonalEventController.AddEvent (ProjectBackend)'
+[09:43:55 INF] 3 Route matched with {action = "AddEvent", controller = "PersonalEvent"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddEvent(Common.DTOs.PersonalEventDto) on controller ProjectBackend.Controllers.PersonalEventController (ProjectBackend).
+[09:43:55 INF] 3 Executing action method ProjectBackend.Controllers.PersonalEventController.AddEvent (ProjectBackend) - Validation state: "Valid"
+[09:43:55 INF] 3 AddEvent was called from PersonalEventController
+[09:43:55 INF] 3 AddEventAsync was called from PersonalEventService
+[09:43:55 INF] 3 GetByIdAsync was called from EmployeeRepository
+[09:43:55 INF] 3 Executed DbCommand (28ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AnnualLeaveDays], [e].[Birthdate], [e].[DepartmentId], [e].[Email], [e].[EmploymentDate], [e].[FirstName], [e].[JobId], [e].[LastName], [e].[Password], [e].[RemainingLeaveDays], [j].[Id], [j].[Role], [j].[Title], [d].[Id], [d].[Name]
+FROM [Employees] AS [e]
+INNER JOIN [Jobs] AS [j] ON [e].[JobId] = [j].[Id]
+INNER JOIN [Departments] AS [d] ON [e].[DepartmentId] = [d].[Id]
+WHERE [e].[Id] = @__id_0
+[09:43:58 INF] 3 Executed DbCommand (22ms) [Parameters=[@p10='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = Int32), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Employees] SET [AnnualLeaveDays] = @p0, [Birthdate] = @p1, [DepartmentId] = @p2, [Email] = @p3, [EmploymentDate] = @p4, [FirstName] = @p5, [JobId] = @p6, [LastName] = @p7, [Password] = @p8, [RemainingLeaveDays] = @p9
+OUTPUT 1
+WHERE [Id] = @p10;
+[09:43:58 INF] 3 AddPersonalEventAsync was called from PersonalEventRepository
+[09:43:58 INF] 33 Executed DbCommand (36ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 13), @p2='?' (DbType = Int32), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Events] ([Description], [Discriminator], [EmployeeId], [EndDate], [Location], [StartDate], [Title])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+[09:43:58 INF] 33 Executed action method ProjectBackend.Controllers.PersonalEventController.AddEvent (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3207.478ms.
+[09:43:58 INF] 33 Executing OkObjectResult, writing value of type 'System.String'.
+[09:43:58 INF] 33 Executed action ProjectBackend.Controllers.PersonalEventController.AddEvent (ProjectBackend) in 3262.2697ms
+[09:43:58 INF] 33 Executed endpoint 'ProjectBackend.Controllers.PersonalEventController.AddEvent (ProjectBackend)'
+[09:43:58 INF] 33 Request finished HTTP/1.1 POST http://localhost:5077/api/PersonalEvent - 200 null text/plain; charset=utf-8 3336.3559ms
+[09:44:08 INF] 3 Request starting HTTP/1.1 GET http://localhost:5077/api/Employee - null null
+[09:44:08 INF] 3 CORS policy execution successful.
+[09:44:08 INF] 31 Request starting HTTP/1.1 GET http://localhost:5077/api/PersonalEvent/getByEmployee/1 - null null
+[09:44:08 INF] 3 Executing endpoint 'ProjectBackend.Controllers.EmployeeController.GetAllEmployees (ProjectBackend)'
+[09:44:08 INF] 33 Request starting HTTP/1.1 GET http://localhost:5077/api/event - null null
+[09:44:09 INF] 33 CORS policy execution successful.
+[09:44:09 INF] 31 CORS policy execution successful.
+[09:44:08 INF] 35 Request starting HTTP/1.1 GET http://localhost:5077/api/Employee/1 - null null
+[09:44:09 INF] 33 Executing endpoint 'ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend)'
+[09:44:09 INF] 31 Executing endpoint 'ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend)'
+[09:44:09 INF] 3 Route matched with {action = "GetAllEmployees", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Common.DTOs.PagedResultDto`1[Domain.Models.Employee]]] GetAllEmployees() on controller ProjectBackend.Controllers.EmployeeController (ProjectBackend).
+[09:44:09 INF] 35 CORS policy execution successful.
+[09:44:09 INF] 35 Executing endpoint 'ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend)'
+[09:44:09 INF] 33 Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Common.DTOs.EventDto]]] GetAllEvents() on controller ProjectBackend.Controllers.EventController (ProjectBackend).
+[09:44:09 INF] 3 Executing action method ProjectBackend.Controllers.EmployeeController.GetAllEmployees (ProjectBackend) - Validation state: "Valid"
+[09:44:09 INF] 35 Route matched with {action = "GetEmployeeById", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Domain.Models.Employee]] GetEmployeeById(Int32) on controller ProjectBackend.Controllers.EmployeeController (ProjectBackend).
+[09:44:09 INF] 31 Route matched with {action = "GetPersonalEventsByEmployeeId", controller = "PersonalEvent"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Common.DTOs.PersonalEventDto]]] GetPersonalEventsByEmployeeId(Int32) on controller ProjectBackend.Controllers.PersonalEventController (ProjectBackend).
+[09:44:09 INF] 3 GetAllEmployees was called from EmployeeController
+[09:44:09 INF] 3 GetAllEmployeesAsync was called from EmployeeService.
+[09:44:09 INF] 33 Executing action method ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend) - Validation state: "Valid"
+[09:44:09 INF] 35 Executing action method ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend) - Validation state: "Valid"
+[09:44:09 INF] 3 GetAllEmployeeAsync was called from EmployeeRepository
+[09:44:09 INF] 31 Executing action method ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend) - Validation state: "Valid"
+[09:44:09 INF] 33 GetAllEvents was called from EventController
+[09:44:09 INF] 35 GetEmployeeById was called from EmployeeController
+[09:44:09 INF] 3 Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[AnnualLeaveDays], [e].[Birthdate], [e].[DepartmentId], [e].[Email], [e].[EmploymentDate], [e].[FirstName], [e].[JobId], [e].[LastName], [e].[Password], [e].[RemainingLeaveDays], [j].[Id], [j].[Role], [j].[Title], [d].[Id], [d].[Name]
+FROM [Employees] AS [e]
+INNER JOIN [Jobs] AS [j] ON [e].[JobId] = [j].[Id]
+INNER JOIN [Departments] AS [d] ON [e].[DepartmentId] = [d].[Id]
+[09:44:12 INF] 35 GetEmployeeByIdAsync was called from EmployeeService.
+[09:44:12 INF] 33 GetAllEventsAsync was called from EventService
+[09:44:12 INF] 35 GetByIdAsync was called from EmployeeRepository
+[09:44:12 INF] 33 GetAllAsync was called from EventRepository
+[09:44:12 INF] 31 GetPersonalEventsByEmployeeId was called from PersonalEventController
+[09:44:12 INF] 3 Executed action method ProjectBackend.Controllers.EmployeeController.GetAllEmployees (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3508.2117ms.
+[09:44:12 INF] 31 GetPersonalEventsByEmployeeId was called from PersonalEventService
+[09:44:12 INF] 3 Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Domain.Models.Employee, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[09:44:12 INF] 31 GetPersonalEventsByEmployeeIdAsync was called from PersonalEventRepository
+[09:44:12 INF] 3 Executed action ProjectBackend.Controllers.EmployeeController.GetAllEmployees (ProjectBackend) in 3527.9471ms
+[09:44:12 INF] 3 Executed endpoint 'ProjectBackend.Controllers.EmployeeController.GetAllEmployees (ProjectBackend)'
+[09:44:12 INF] 3 Request finished HTTP/1.1 GET http://localhost:5077/api/Employee - 200 null application/json; charset=utf-8 4002.5619ms
+[09:44:12 INF] 35 Executed DbCommand (13ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AnnualLeaveDays], [e].[Birthdate], [e].[DepartmentId], [e].[Email], [e].[EmploymentDate], [e].[FirstName], [e].[JobId], [e].[LastName], [e].[Password], [e].[RemainingLeaveDays], [j].[Id], [j].[Role], [j].[Title], [d].[Id], [d].[Name]
+FROM [Employees] AS [e]
+INNER JOIN [Jobs] AS [j] ON [e].[JobId] = [j].[Id]
+INNER JOIN [Departments] AS [d] ON [e].[DepartmentId] = [d].[Id]
+WHERE [e].[Id] = @__id_0
+[09:44:12 INF] 31 Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[Description], [e].[Discriminator], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title], [e].[EmployeeId]
+FROM [Events] AS [e]
+WHERE [e].[Discriminator] = N'Event'
+[09:44:12 INF] 33 Executed DbCommand (10ms) [Parameters=[@__employeeId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[Description], [e].[Discriminator], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title], [e].[EmployeeId], [e0].[Id], [e0].[AnnualLeaveDays], [e0].[Birthdate], [e0].[DepartmentId], [e0].[Email], [e0].[EmploymentDate], [e0].[FirstName], [e0].[JobId], [e0].[LastName], [e0].[Password], [e0].[RemainingLeaveDays]
+FROM [Events] AS [e]
+INNER JOIN [Employees] AS [e0] ON [e].[EmployeeId] = [e0].[Id]
+WHERE [e].[Discriminator] = N'PersonalEvent' AND [e0].[Id] = @__employeeId_0
+[09:44:16 INF] 3 Request starting HTTP/1.1 GET http://localhost:5077/api/Employee/1 - null null
+[09:44:17 INF] 35 Executed action method ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 7761.0759ms.
+[09:44:17 INF] 31 Executed action method ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 7761.6635ms.
+[09:44:19 INF] 35 Executing OkObjectResult, writing value of type 'Domain.Models.Employee'.
+[09:44:19 INF] 3 CORS policy execution successful.
+[09:44:19 INF] 31 Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Common.DTOs.EventDto, Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[09:44:19 INF] 33 Executed action method ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 7007.481ms.
+[09:44:19 INF] 3 Executing endpoint 'ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend)'
+[09:44:19 INF] 31 Executed action ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend) in 10512.2397ms
+[09:44:19 INF] 31 Executed endpoint 'ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend)'
+[09:44:19 INF] 33 Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Common.DTOs.PersonalEventDto, Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[09:44:19 INF] 3 Route matched with {action = "GetEmployeeById", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Domain.Models.Employee]] GetEmployeeById(Int32) on controller ProjectBackend.Controllers.EmployeeController (ProjectBackend).
+[09:44:19 INF] 31 Request finished HTTP/1.1 GET http://localhost:5077/api/event - 200 null application/json; charset=utf-8 10956.0342ms
+[09:44:19 INF] 33 Executed action ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend) in 10513.3377ms
+[09:44:19 INF] 33 Executed endpoint 'ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend)'
+[09:44:19 INF] 30 Request starting HTTP/1.1 GET http://localhost:5077/api/event - null null
+[09:44:19 INF] 33 Request finished HTTP/1.1 GET http://localhost:5077/api/PersonalEvent/getByEmployee/1 - 200 null application/json; charset=utf-8 11080.1046ms
+[09:44:19 INF] 31 Request starting HTTP/1.1 GET http://localhost:5077/api/PersonalEvent/getByEmployee/1 - null null
+[09:44:19 INF] 35 Executed action ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend) in 10514.2529ms
+[09:44:19 INF] 31 CORS policy execution successful.
+[09:44:19 INF] 3 Executing action method ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend) - Validation state: "Valid"
+[09:44:19 INF] 30 CORS policy execution successful.
+[09:44:19 INF] 30 Executing endpoint 'ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend)'
+[09:44:19 INF] 3 GetEmployeeById was called from EmployeeController
+[09:44:19 INF] 35 Executed endpoint 'ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend)'
+[09:44:19 INF] 3 GetEmployeeByIdAsync was called from EmployeeService.
+[09:44:19 INF] 30 Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Common.DTOs.EventDto]]] GetAllEvents() on controller ProjectBackend.Controllers.EventController (ProjectBackend).
+[09:44:19 INF] 31 Executing endpoint 'ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend)'
+[09:44:19 INF] 35 Request finished HTTP/1.1 GET http://localhost:5077/api/Employee/1 - 499 null application/json; charset=utf-8 11060.9476ms
+[09:44:19 INF] 31 Route matched with {action = "GetPersonalEventsByEmployeeId", controller = "PersonalEvent"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Common.DTOs.PersonalEventDto]]] GetPersonalEventsByEmployeeId(Int32) on controller ProjectBackend.Controllers.PersonalEventController (ProjectBackend).
+[09:44:19 INF] 30 Executing action method ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend) - Validation state: "Valid"
+[09:44:19 INF] 3 GetByIdAsync was called from EmployeeRepository
+[09:44:19 INF] 30 GetAllEvents was called from EventController
+[09:44:19 INF] 30 GetAllEventsAsync was called from EventService
+[09:44:19 INF] 30 GetAllAsync was called from EventRepository
+[09:44:19 INF] 31 Executing action method ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend) - Validation state: "Valid"
+[09:44:19 INF] 31 GetPersonalEventsByEmployeeId was called from PersonalEventController
+[09:44:19 INF] 31 GetPersonalEventsByEmployeeId was called from PersonalEventService
+[09:44:19 INF] 31 GetPersonalEventsByEmployeeIdAsync was called from PersonalEventRepository
+[09:44:19 INF] 30 Executed DbCommand (17ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AnnualLeaveDays], [e].[Birthdate], [e].[DepartmentId], [e].[Email], [e].[EmploymentDate], [e].[FirstName], [e].[JobId], [e].[LastName], [e].[Password], [e].[RemainingLeaveDays], [j].[Id], [j].[Role], [j].[Title], [d].[Id], [d].[Name]
+FROM [Employees] AS [e]
+INNER JOIN [Jobs] AS [j] ON [e].[JobId] = [j].[Id]
+INNER JOIN [Departments] AS [d] ON [e].[DepartmentId] = [d].[Id]
+WHERE [e].[Id] = @__id_0
+[09:44:19 INF] 31 Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[Description], [e].[Discriminator], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title], [e].[EmployeeId]
+FROM [Events] AS [e]
+WHERE [e].[Discriminator] = N'Event'
+[09:44:19 INF] 34 Executed DbCommand (18ms) [Parameters=[@__employeeId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[Description], [e].[Discriminator], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title], [e].[EmployeeId], [e0].[Id], [e0].[AnnualLeaveDays], [e0].[Birthdate], [e0].[DepartmentId], [e0].[Email], [e0].[EmploymentDate], [e0].[FirstName], [e0].[JobId], [e0].[LastName], [e0].[Password], [e0].[RemainingLeaveDays]
+FROM [Events] AS [e]
+INNER JOIN [Employees] AS [e0] ON [e].[EmployeeId] = [e0].[Id]
+WHERE [e].[Discriminator] = N'PersonalEvent' AND [e0].[Id] = @__employeeId_0
+[09:44:19 INF] 30 Executed action method ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 22.1916ms.
+[09:44:19 INF] 30 Executing OkObjectResult, writing value of type 'Domain.Models.Employee'.
+[09:44:19 INF] 31 Executed action method ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 21.3963ms.
+[09:44:19 INF] 34 Executed action method ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 20.6803ms.
+[09:44:19 INF] 30 Executed action ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend) in 25.1222ms
+[09:44:19 INF] 31 Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Common.DTOs.EventDto, Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[09:44:19 INF] 30 Executed endpoint 'ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend)'
+[09:44:19 INF] 34 Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Common.DTOs.PersonalEventDto, Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[09:44:19 INF] 31 Executed action ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend) in 23.6877ms
+[09:44:19 INF] 30 Request finished HTTP/1.1 GET http://localhost:5077/api/Employee/1 - 200 null application/json; charset=utf-8 3011.6971ms
+[09:44:19 INF] 31 Executed endpoint 'ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend)'
+[09:44:19 INF] 34 Executed action ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend) in 23.4148ms
+[09:44:19 INF] 34 Executed endpoint 'ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend)'
+[09:44:19 INF] 31 Request finished HTTP/1.1 GET http://localhost:5077/api/event - 200 null application/json; charset=utf-8 126.3622ms
+[09:44:19 INF] 34 Request finished HTTP/1.1 GET http://localhost:5077/api/PersonalEvent/getByEmployee/1 - 200 null application/json; charset=utf-8 26.6278ms
+[09:44:23 INF] 30 Request starting HTTP/1.1 GET http://localhost:5077/api/PersonalEvent/getByEmployee/1 - null null
+[09:44:23 INF] 31 Request starting HTTP/1.1 GET http://localhost:5077/api/Employee/1 - null null
+[09:44:23 INF] 30 CORS policy execution successful.
+[09:44:26 INF] 31 CORS policy execution successful.
+[09:44:26 INF] 30 Executing endpoint 'ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend)'
+[09:44:26 INF] 31 Executing endpoint 'ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend)'
+[09:44:26 INF] 30 Route matched with {action = "GetPersonalEventsByEmployeeId", controller = "PersonalEvent"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Common.DTOs.PersonalEventDto]]] GetPersonalEventsByEmployeeId(Int32) on controller ProjectBackend.Controllers.PersonalEventController (ProjectBackend).
+[09:44:26 INF] 31 Route matched with {action = "GetEmployeeById", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Domain.Models.Employee]] GetEmployeeById(Int32) on controller ProjectBackend.Controllers.EmployeeController (ProjectBackend).
+[09:44:26 INF] 30 Executing action method ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend) - Validation state: "Valid"
+[09:44:26 INF] 31 Executing action method ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend) - Validation state: "Valid"
+[09:44:26 INF] 30 GetPersonalEventsByEmployeeId was called from PersonalEventController
+[09:44:26 INF] 30 GetPersonalEventsByEmployeeId was called from PersonalEventService
+[09:44:26 INF] 31 GetEmployeeById was called from EmployeeController
+[09:44:28 INF] 30 GetPersonalEventsByEmployeeIdAsync was called from PersonalEventRepository
+[09:44:28 INF] 31 GetEmployeeByIdAsync was called from EmployeeService.
+[09:44:28 INF] 31 GetByIdAsync was called from EmployeeRepository
+[09:44:28 INF] 3 Executed DbCommand (32ms) [Parameters=[@__employeeId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[Description], [e].[Discriminator], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title], [e].[EmployeeId], [e0].[Id], [e0].[AnnualLeaveDays], [e0].[Birthdate], [e0].[DepartmentId], [e0].[Email], [e0].[EmploymentDate], [e0].[FirstName], [e0].[JobId], [e0].[LastName], [e0].[Password], [e0].[RemainingLeaveDays]
+FROM [Events] AS [e]
+INNER JOIN [Employees] AS [e0] ON [e].[EmployeeId] = [e0].[Id]
+WHERE [e].[Discriminator] = N'PersonalEvent' AND [e0].[Id] = @__employeeId_0
+[09:44:28 INF] 30 Executed DbCommand (32ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AnnualLeaveDays], [e].[Birthdate], [e].[DepartmentId], [e].[Email], [e].[EmploymentDate], [e].[FirstName], [e].[JobId], [e].[LastName], [e].[Password], [e].[RemainingLeaveDays], [j].[Id], [j].[Role], [j].[Title], [d].[Id], [d].[Name]
+FROM [Employees] AS [e]
+INNER JOIN [Jobs] AS [j] ON [e].[JobId] = [j].[Id]
+INNER JOIN [Departments] AS [d] ON [e].[DepartmentId] = [d].[Id]
+WHERE [e].[Id] = @__id_0
+[09:44:28 INF] 3 Executed action method ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1421.1912ms.
+[09:44:28 INF] 30 Executed action method ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1421.4219ms.
+[09:44:28 INF] 3 Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Common.DTOs.PersonalEventDto, Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[09:44:28 INF] 30 Executing OkObjectResult, writing value of type 'Domain.Models.Employee'.
+[09:44:28 INF] 30 Executed action ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend) in 1942.385ms
+[09:44:28 INF] 30 Executed endpoint 'ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend)'
+[09:44:28 INF] 3 Executed action ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend) in 1944.5012ms
+[09:44:28 INF] 3 Executed endpoint 'ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend)'
+[09:44:28 INF] 30 Request finished HTTP/1.1 GET http://localhost:5077/api/Employee/1 - 200 null application/json; charset=utf-8 5091.2994ms
+[09:44:28 INF] 3 Request finished HTTP/1.1 GET http://localhost:5077/api/PersonalEvent/getByEmployee/1 - 200 null application/json; charset=utf-8 5091.2992ms
+[09:44:33 INF] 34 Request starting HTTP/1.1 GET http://localhost:5077/api/Employee/2 - null null
+[09:44:33 INF] 34 CORS policy execution successful.
+[09:44:33 INF] 34 Executing endpoint 'ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend)'
+[09:44:33 INF] 34 Route matched with {action = "GetEmployeeById", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Domain.Models.Employee]] GetEmployeeById(Int32) on controller ProjectBackend.Controllers.EmployeeController (ProjectBackend).
+[09:44:33 INF] 36 Request starting HTTP/1.1 GET http://localhost:5077/api/PersonalEvent/getByEmployee/2 - null null
+[09:44:33 INF] 34 Executing action method ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend) - Validation state: "Valid"
+[09:44:36 INF] 34 GetEmployeeById was called from EmployeeController
+[09:44:36 INF] 34 GetEmployeeByIdAsync was called from EmployeeService.
+[09:44:36 INF] 34 GetByIdAsync was called from EmployeeRepository
+[09:44:36 INF] 36 CORS policy execution successful.
+[09:44:36 INF] 31 Executed DbCommand (33ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AnnualLeaveDays], [e].[Birthdate], [e].[DepartmentId], [e].[Email], [e].[EmploymentDate], [e].[FirstName], [e].[JobId], [e].[LastName], [e].[Password], [e].[RemainingLeaveDays], [j].[Id], [j].[Role], [j].[Title], [d].[Id], [d].[Name]
+FROM [Employees] AS [e]
+INNER JOIN [Jobs] AS [j] ON [e].[JobId] = [j].[Id]
+INNER JOIN [Departments] AS [d] ON [e].[DepartmentId] = [d].[Id]
+WHERE [e].[Id] = @__id_0
+[09:44:36 INF] 36 Executing endpoint 'ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend)'
+[09:44:36 INF] 36 Route matched with {action = "GetPersonalEventsByEmployeeId", controller = "PersonalEvent"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Common.DTOs.PersonalEventDto]]] GetPersonalEventsByEmployeeId(Int32) on controller ProjectBackend.Controllers.PersonalEventController (ProjectBackend).
+[09:44:36 INF] 36 Executing action method ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend) - Validation state: "Valid"
+[09:44:36 INF] 36 GetPersonalEventsByEmployeeId was called from PersonalEventController
+[09:44:36 INF] 36 GetPersonalEventsByEmployeeId was called from PersonalEventService
+[09:44:36 INF] 36 GetPersonalEventsByEmployeeIdAsync was called from PersonalEventRepository
+[09:44:36 INF] 31 Executed action method ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 164.3902ms.
+[09:44:36 INF] 36 Executed DbCommand (11ms) [Parameters=[@__employeeId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[Description], [e].[Discriminator], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title], [e].[EmployeeId], [e0].[Id], [e0].[AnnualLeaveDays], [e0].[Birthdate], [e0].[DepartmentId], [e0].[Email], [e0].[EmploymentDate], [e0].[FirstName], [e0].[JobId], [e0].[LastName], [e0].[Password], [e0].[RemainingLeaveDays]
+FROM [Events] AS [e]
+INNER JOIN [Employees] AS [e0] ON [e].[EmployeeId] = [e0].[Id]
+WHERE [e].[Discriminator] = N'PersonalEvent' AND [e0].[Id] = @__employeeId_0
+[09:44:36 INF] 31 Executing OkObjectResult, writing value of type 'Domain.Models.Employee'.
+[09:44:36 INF] 36 Executed action method ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 20.7828ms.
+[09:44:36 INF] 36 Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Common.DTOs.PersonalEventDto, Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[09:44:36 INF] 36 Executed action ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend) in 22.7662ms
+[09:44:36 INF] 31 Executed action ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend) in 3010.7721ms
+[09:44:36 INF] 36 Executed endpoint 'ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend)'
+[09:44:37 INF] 31 Executed endpoint 'ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend)'
+[09:44:37 INF] 36 Request finished HTTP/1.1 GET http://localhost:5077/api/PersonalEvent/getByEmployee/2 - 200 null application/json; charset=utf-8 3922.4579ms
+[09:44:37 INF] 31 Request finished HTTP/1.1 GET http://localhost:5077/api/Employee/2 - 200 null application/json; charset=utf-8 3931.3808ms
+[09:44:47 INF] 31 Request starting HTTP/1.1 GET http://localhost:5077/api/PersonalEvent/getByEmployee/1 - null null
+[09:44:47 INF] 31 Executing endpoint 'ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend)'
+[09:44:47 INF] 31 Route matched with {action = "GetPersonalEventsByEmployeeId", controller = "PersonalEvent"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Common.DTOs.PersonalEventDto]]] GetPersonalEventsByEmployeeId(Int32) on controller ProjectBackend.Controllers.PersonalEventController (ProjectBackend).
+[09:44:49 INF] 31 Executing action method ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend) - Validation state: "Valid"
+[09:44:49 INF] 31 GetPersonalEventsByEmployeeId was called from PersonalEventController
+[09:44:49 INF] 31 GetPersonalEventsByEmployeeId was called from PersonalEventService
+[09:44:49 INF] 31 GetPersonalEventsByEmployeeIdAsync was called from PersonalEventRepository
+[09:44:49 INF] 31 Executed DbCommand (11ms) [Parameters=[@__employeeId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[Description], [e].[Discriminator], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title], [e].[EmployeeId], [e0].[Id], [e0].[AnnualLeaveDays], [e0].[Birthdate], [e0].[DepartmentId], [e0].[Email], [e0].[EmploymentDate], [e0].[FirstName], [e0].[JobId], [e0].[LastName], [e0].[Password], [e0].[RemainingLeaveDays]
+FROM [Events] AS [e]
+INNER JOIN [Employees] AS [e0] ON [e].[EmployeeId] = [e0].[Id]
+WHERE [e].[Discriminator] = N'PersonalEvent' AND [e0].[Id] = @__employeeId_0
+[09:44:49 INF] 31 Executed action method ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 93.3911ms.
+[09:44:49 INF] 31 Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Common.DTOs.PersonalEventDto, Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[09:44:49 INF] 31 Executed action ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend) in 99.9587ms
+[09:44:49 INF] 31 Executed endpoint 'ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend)'
+[09:44:49 INF] 31 Request finished HTTP/1.1 GET http://localhost:5077/api/PersonalEvent/getByEmployee/1 - 200 null application/json; charset=utf-8 2792.194ms
+[09:49:04 INF] 47 Request starting HTTP/1.1 GET http://localhost:5077/api/Employee - null null
+[09:49:04 INF] 47 CORS policy execution successful.
+[09:49:04 INF] 47 Executing endpoint 'ProjectBackend.Controllers.EmployeeController.GetAllEmployees (ProjectBackend)'
+[09:49:04 INF] 47 Route matched with {action = "GetAllEmployees", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Common.DTOs.PagedResultDto`1[Domain.Models.Employee]]] GetAllEmployees() on controller ProjectBackend.Controllers.EmployeeController (ProjectBackend).
+[09:49:04 INF] 50 Request starting HTTP/1.1 GET http://localhost:5077/api/PersonalEvent/getByEmployee/1 - null null
+[09:49:04 INF] 50 CORS policy execution successful.
+[09:49:04 INF] 50 Executing endpoint 'ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend)'
+[09:49:04 INF] 50 Route matched with {action = "GetPersonalEventsByEmployeeId", controller = "PersonalEvent"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Common.DTOs.PersonalEventDto]]] GetPersonalEventsByEmployeeId(Int32) on controller ProjectBackend.Controllers.PersonalEventController (ProjectBackend).
+[09:49:04 INF] 48 Request starting HTTP/1.1 GET http://localhost:5077/api/event - null null
+[09:49:04 INF] 48 CORS policy execution successful.
+[09:49:04 INF] 48 Executing endpoint 'ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend)'
+[09:49:04 INF] 51 Request starting HTTP/1.1 GET http://localhost:5077/api/Employee/1 - null null
+[09:49:04 INF] 48 Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Common.DTOs.EventDto]]] GetAllEvents() on controller ProjectBackend.Controllers.EventController (ProjectBackend).
+[09:49:04 INF] 51 CORS policy execution successful.
+[09:49:04 INF] 51 Executing endpoint 'ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend)'
+[09:49:04 INF] 51 Route matched with {action = "GetEmployeeById", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Domain.Models.Employee]] GetEmployeeById(Int32) on controller ProjectBackend.Controllers.EmployeeController (ProjectBackend).
+[09:49:04 INF] 51 Executing action method ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend) - Validation state: "Valid"
+[09:49:04 INF] 51 GetEmployeeById was called from EmployeeController
+[09:49:04 INF] 51 GetEmployeeByIdAsync was called from EmployeeService.
+[09:49:04 INF] 50 Executing action method ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend) - Validation state: "Valid"
+[09:49:04 INF] 48 Executing action method ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend) - Validation state: "Valid"
+[09:49:04 INF] 48 GetAllEvents was called from EventController
+[09:49:04 INF] 47 Executing action method ProjectBackend.Controllers.EmployeeController.GetAllEmployees (ProjectBackend) - Validation state: "Valid"
+[09:49:04 INF] 47 GetAllEmployees was called from EmployeeController
+[09:49:04 INF] 47 GetAllEmployeesAsync was called from EmployeeService.
+[09:49:04 INF] 51 GetByIdAsync was called from EmployeeRepository
+[09:49:04 INF] 50 GetPersonalEventsByEmployeeId was called from PersonalEventController
+[09:49:04 INF] 50 GetPersonalEventsByEmployeeId was called from PersonalEventService
+[09:49:04 INF] 50 GetPersonalEventsByEmployeeIdAsync was called from PersonalEventRepository
+[09:49:04 INF] 47 GetAllEmployeeAsync was called from EmployeeRepository
+[09:49:04 INF] 48 GetAllEventsAsync was called from EventService
+[09:49:04 INF] 48 GetAllAsync was called from EventRepository
+[09:49:04 INF] 52 Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[AnnualLeaveDays], [e].[Birthdate], [e].[DepartmentId], [e].[Email], [e].[EmploymentDate], [e].[FirstName], [e].[JobId], [e].[LastName], [e].[Password], [e].[RemainingLeaveDays], [j].[Id], [j].[Role], [j].[Title], [d].[Id], [d].[Name]
+FROM [Employees] AS [e]
+INNER JOIN [Jobs] AS [j] ON [e].[JobId] = [j].[Id]
+INNER JOIN [Departments] AS [d] ON [e].[DepartmentId] = [d].[Id]
+[09:49:04 INF] 52 Executed action method ProjectBackend.Controllers.EmployeeController.GetAllEmployees (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 275.9005ms.
+[09:49:04 INF] 52 Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Domain.Models.Employee, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[09:49:04 INF] 52 Executed action ProjectBackend.Controllers.EmployeeController.GetAllEmployees (ProjectBackend) in 344.2214ms
+[09:49:04 INF] 52 Executed endpoint 'ProjectBackend.Controllers.EmployeeController.GetAllEmployees (ProjectBackend)'
+[09:49:04 INF] 52 Request finished HTTP/1.1 GET http://localhost:5077/api/Employee - 200 null application/json; charset=utf-8 395.6039ms
+[09:49:04 INF] 50 Request starting HTTP/1.1 GET http://localhost:5077/api/Employee/1 - null null
+[09:49:04 INF] 50 CORS policy execution successful.
+[09:49:04 INF] 50 Executing endpoint 'ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend)'
+[09:49:04 INF] 50 Route matched with {action = "GetEmployeeById", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Domain.Models.Employee]] GetEmployeeById(Int32) on controller ProjectBackend.Controllers.EmployeeController (ProjectBackend).
+[09:49:04 INF] 50 Executing action method ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend) - Validation state: "Valid"
+[09:49:04 INF] 50 GetEmployeeById was called from EmployeeController
+[09:49:04 INF] 50 GetEmployeeByIdAsync was called from EmployeeService.
+[09:49:04 INF] 50 GetByIdAsync was called from EmployeeRepository
+[09:49:04 INF] 50 Executed DbCommand (13ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AnnualLeaveDays], [e].[Birthdate], [e].[DepartmentId], [e].[Email], [e].[EmploymentDate], [e].[FirstName], [e].[JobId], [e].[LastName], [e].[Password], [e].[RemainingLeaveDays], [j].[Id], [j].[Role], [j].[Title], [d].[Id], [d].[Name]
+FROM [Employees] AS [e]
+INNER JOIN [Jobs] AS [j] ON [e].[JobId] = [j].[Id]
+INNER JOIN [Departments] AS [d] ON [e].[DepartmentId] = [d].[Id]
+WHERE [e].[Id] = @__id_0
+[09:49:04 INF] 50 Executed action method ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 28.1748ms.
+[09:49:04 INF] 50 Executing OkObjectResult, writing value of type 'Domain.Models.Employee'.
+[09:49:04 INF] 50 Executed action ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend) in 36.2285ms
+[09:49:04 INF] 50 Executed endpoint 'ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend)'
+[09:49:04 INF] 50 Request finished HTTP/1.1 GET http://localhost:5077/api/Employee/1 - 200 null application/json; charset=utf-8 46.456ms
+[09:49:05 INF] 48 Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AnnualLeaveDays], [e].[Birthdate], [e].[DepartmentId], [e].[Email], [e].[EmploymentDate], [e].[FirstName], [e].[JobId], [e].[LastName], [e].[Password], [e].[RemainingLeaveDays], [j].[Id], [j].[Role], [j].[Title], [d].[Id], [d].[Name]
+FROM [Employees] AS [e]
+INNER JOIN [Jobs] AS [j] ON [e].[JobId] = [j].[Id]
+INNER JOIN [Departments] AS [d] ON [e].[DepartmentId] = [d].[Id]
+WHERE [e].[Id] = @__id_0
+[09:49:05 INF] 50 Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[Description], [e].[Discriminator], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title], [e].[EmployeeId]
+FROM [Events] AS [e]
+WHERE [e].[Discriminator] = N'Event'
+[09:49:05 INF] 48 Executed action method ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 393.5665ms.
+[09:49:05 INF] 50 Executed action method ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 363.1177ms.
+[09:49:05 INF] 48 Executing OkObjectResult, writing value of type 'Domain.Models.Employee'.
+[09:49:05 INF] 50 Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Common.DTOs.EventDto, Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[09:49:05 INF] 50 Executed action ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend) in 416.8436ms
+[09:49:05 INF] 50 Executed endpoint 'ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend)'
+[09:49:05 INF] 48 Executed action ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend) in 406.7523ms
+[09:49:05 INF] 48 Executed endpoint 'ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend)'
+[09:49:05 INF] 48 Request finished HTTP/1.1 GET http://localhost:5077/api/Employee/1 - 499 null application/json; charset=utf-8 418.8617ms
+[09:49:05 INF] 50 Request finished HTTP/1.1 GET http://localhost:5077/api/event - 200 null application/json; charset=utf-8 421.9007ms
+[09:49:05 INF] 55 Request starting HTTP/1.1 GET http://localhost:5077/api/event - null null
+[09:49:05 INF] 55 CORS policy execution successful.
+[09:49:05 INF] 55 Executing endpoint 'ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend)'
+[09:49:05 INF] 55 Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Common.DTOs.EventDto]]] GetAllEvents() on controller ProjectBackend.Controllers.EventController (ProjectBackend).
+[09:49:05 INF] 55 Executing action method ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend) - Validation state: "Valid"
+[09:49:05 INF] 55 GetAllEvents was called from EventController
+[09:49:05 INF] 55 GetAllEventsAsync was called from EventService
+[09:49:05 INF] 55 GetAllAsync was called from EventRepository
+[09:49:05 INF] 50 Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[Description], [e].[Discriminator], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title], [e].[EmployeeId]
+FROM [Events] AS [e]
+WHERE [e].[Discriminator] = N'Event'
+[09:49:05 INF] 50 Executed action method ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 8.088ms.
+[09:49:05 INF] 50 Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Common.DTOs.EventDto, Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[09:49:05 INF] 50 Executed action ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend) in 9.8135ms
+[09:49:05 INF] 50 Executed endpoint 'ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend)'
+[09:49:05 INF] 50 Request finished HTTP/1.1 GET http://localhost:5077/api/event - 200 null application/json; charset=utf-8 11.509ms
+[09:49:05 INF] 55 Executed DbCommand (5ms) [Parameters=[@__employeeId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[Description], [e].[Discriminator], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title], [e].[EmployeeId], [e0].[Id], [e0].[AnnualLeaveDays], [e0].[Birthdate], [e0].[DepartmentId], [e0].[Email], [e0].[EmploymentDate], [e0].[FirstName], [e0].[JobId], [e0].[LastName], [e0].[Password], [e0].[RemainingLeaveDays]
+FROM [Events] AS [e]
+INNER JOIN [Employees] AS [e0] ON [e].[EmployeeId] = [e0].[Id]
+WHERE [e].[Discriminator] = N'PersonalEvent' AND [e0].[Id] = @__employeeId_0
+[09:49:05 INF] 55 Executed action method ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 418.8613ms.
+[09:49:05 INF] 55 Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Common.DTOs.PersonalEventDto, Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[09:49:05 INF] 55 Executed action ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend) in 475.615ms
+[09:49:05 INF] 55 Executed endpoint 'ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend)'
+[09:49:05 INF] 55 Request finished HTTP/1.1 GET http://localhost:5077/api/PersonalEvent/getByEmployee/1 - 200 null application/json; charset=utf-8 484.5241ms
+[09:49:05 INF] 52 Request starting HTTP/1.1 GET http://localhost:5077/api/PersonalEvent/getByEmployee/1 - null null
+[09:49:05 INF] 52 CORS policy execution successful.
+[09:49:05 INF] 52 Executing endpoint 'ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend)'
+[09:49:05 INF] 52 Route matched with {action = "GetPersonalEventsByEmployeeId", controller = "PersonalEvent"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Common.DTOs.PersonalEventDto]]] GetPersonalEventsByEmployeeId(Int32) on controller ProjectBackend.Controllers.PersonalEventController (ProjectBackend).
+[09:49:05 INF] 52 Executing action method ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend) - Validation state: "Valid"
+[09:49:05 INF] 52 GetPersonalEventsByEmployeeId was called from PersonalEventController
+[09:49:05 INF] 52 GetPersonalEventsByEmployeeId was called from PersonalEventService
+[09:49:05 INF] 52 GetPersonalEventsByEmployeeIdAsync was called from PersonalEventRepository
+[09:49:05 INF] 48 Executed DbCommand (6ms) [Parameters=[@__employeeId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[Description], [e].[Discriminator], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title], [e].[EmployeeId], [e0].[Id], [e0].[AnnualLeaveDays], [e0].[Birthdate], [e0].[DepartmentId], [e0].[Email], [e0].[EmploymentDate], [e0].[FirstName], [e0].[JobId], [e0].[LastName], [e0].[Password], [e0].[RemainingLeaveDays]
+FROM [Events] AS [e]
+INNER JOIN [Employees] AS [e0] ON [e].[EmployeeId] = [e0].[Id]
+WHERE [e].[Discriminator] = N'PersonalEvent' AND [e0].[Id] = @__employeeId_0
+[09:49:05 INF] 48 Executed action method ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 10.2171ms.
+[09:49:05 INF] 48 Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Common.DTOs.PersonalEventDto, Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[09:49:05 INF] 48 Executed action ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend) in 12.0371ms
+[09:49:05 INF] 48 Executed endpoint 'ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend)'
+[09:49:05 INF] 48 Request finished HTTP/1.1 GET http://localhost:5077/api/PersonalEvent/getByEmployee/1 - 200 null application/json; charset=utf-8 14.2999ms
+[09:49:28 INF] 50 Request starting HTTP/1.1 GET http://localhost:5077/api/customer?pageNumber=1&pageSize=5 - null null
+[09:49:28 INF] 50 CORS policy execution successful.
+[09:49:28 INF] 50 Executing endpoint 'ProjectBackend.Controllers.CustomerController.GetAllCustomers (ProjectBackend)'
+[09:49:28 INF] 50 Route matched with {action = "GetAllCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Common.DTOs.PagedResultDto`1[Domain.Models.Customer]]] GetAllCustomers(Int32, Int32, System.String, System.String, System.Nullable`1[System.Boolean], System.String) on controller ProjectBackend.Controllers.CustomerController (ProjectBackend).
+[09:49:28 INF] 50 Executing action method ProjectBackend.Controllers.CustomerController.GetAllCustomers (ProjectBackend) - Validation state: "Valid"
+[09:49:28 INF] 50 GetAllCustomers was called from CustomerController
+[09:49:28 INF] 50 GetCustomerAsync was called from CustomerService
+[09:49:28 INF] 50 GetAllAsync was called from CustomerRepository
+[09:49:28 INF] 51 Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Addition], [c].[BillingType], [c].[City], [c].[Country], [c].[Date], [c].[Email], [c].[Name], [c].[Number], [c].[PhoneNumber], [c].[PostalCode], [c].[Status], [c].[Street], [c].[Tva]
+FROM [Customers] AS [c]
+[09:49:28 INF] 51 GetTotalCustomerCountAsync was called from CustomerRepository
+[09:49:28 INF] 55 Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Customers] AS [c]
+[09:49:28 INF] 55 GetAllPaged was called from CustomerRepository
+[09:49:28 INF] 55 Executed action method ProjectBackend.Controllers.CustomerController.GetAllCustomers (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 278.2216ms.
+[09:49:28 INF] 55 Executing OkObjectResult, writing value of type 'Common.DTOs.PagedResultDto`1[[Domain.Models.Customer, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[09:49:28 INF] 55 Executed action ProjectBackend.Controllers.CustomerController.GetAllCustomers (ProjectBackend) in 350.7558ms
+[09:49:28 INF] 55 Executed endpoint 'ProjectBackend.Controllers.CustomerController.GetAllCustomers (ProjectBackend)'
+[09:49:28 INF] 55 Request finished HTTP/1.1 GET http://localhost:5077/api/customer?pageNumber=1&pageSize=5 - 200 null application/json; charset=utf-8 414.6032ms
+[09:49:37 INF] 50 Request starting HTTP/1.1 GET http://localhost:5077/api/Employee - null null
+[09:49:37 INF] 55 Request starting HTTP/1.1 GET http://localhost:5077/api/Employee/1 - null null
+[09:49:37 INF] 51 Request starting HTTP/1.1 GET http://localhost:5077/api/PersonalEvent/getByEmployee/1 - null null
+[09:49:37 INF] 47 Request starting HTTP/1.1 GET http://localhost:5077/api/event - null null
+[09:49:37 INF] 51 CORS policy execution successful.
+[09:49:37 INF] 50 CORS policy execution successful.
+[09:49:37 INF] 47 CORS policy execution successful.
+[09:49:37 INF] 50 Executing endpoint 'ProjectBackend.Controllers.EmployeeController.GetAllEmployees (ProjectBackend)'
+[09:49:37 INF] 51 Executing endpoint 'ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend)'
+[09:49:37 INF] 55 CORS policy execution successful.
+[09:49:37 INF] 47 Executing endpoint 'ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend)'
+[09:49:37 INF] 55 Executing endpoint 'ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend)'
+[09:49:37 INF] 55 Route matched with {action = "GetEmployeeById", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Domain.Models.Employee]] GetEmployeeById(Int32) on controller ProjectBackend.Controllers.EmployeeController (ProjectBackend).
+[09:49:37 INF] 51 Route matched with {action = "GetPersonalEventsByEmployeeId", controller = "PersonalEvent"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Common.DTOs.PersonalEventDto]]] GetPersonalEventsByEmployeeId(Int32) on controller ProjectBackend.Controllers.PersonalEventController (ProjectBackend).
+[09:49:37 INF] 47 Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Common.DTOs.EventDto]]] GetAllEvents() on controller ProjectBackend.Controllers.EventController (ProjectBackend).
+[09:49:37 INF] 50 Route matched with {action = "GetAllEmployees", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Common.DTOs.PagedResultDto`1[Domain.Models.Employee]]] GetAllEmployees() on controller ProjectBackend.Controllers.EmployeeController (ProjectBackend).
+[09:49:37 INF] 47 Executing action method ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend) - Validation state: "Valid"
+[09:49:37 INF] 51 Executing action method ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend) - Validation state: "Valid"
+[09:49:37 INF] 47 GetAllEvents was called from EventController
+[09:49:37 INF] 51 GetPersonalEventsByEmployeeId was called from PersonalEventController
+[09:49:37 INF] 47 GetAllEventsAsync was called from EventService
+[09:49:37 INF] 51 GetPersonalEventsByEmployeeId was called from PersonalEventService
+[09:49:37 INF] 47 GetAllAsync was called from EventRepository
+[09:49:37 INF] 51 GetPersonalEventsByEmployeeIdAsync was called from PersonalEventRepository
+[09:49:37 INF] 50 Executing action method ProjectBackend.Controllers.EmployeeController.GetAllEmployees (ProjectBackend) - Validation state: "Valid"
+[09:49:37 INF] 55 Executing action method ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend) - Validation state: "Valid"
+[09:49:37 INF] 55 GetEmployeeById was called from EmployeeController
+[09:49:37 INF] 55 GetEmployeeByIdAsync was called from EmployeeService.
+[09:49:37 INF] 50 GetAllEmployees was called from EmployeeController
+[09:49:37 INF] 55 GetByIdAsync was called from EmployeeRepository
+[09:49:37 INF] 50 GetAllEmployeesAsync was called from EmployeeService.
+[09:49:37 INF] 50 GetAllEmployeeAsync was called from EmployeeRepository
+[09:49:37 INF] 50 Executed DbCommand (43ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AnnualLeaveDays], [e].[Birthdate], [e].[DepartmentId], [e].[Email], [e].[EmploymentDate], [e].[FirstName], [e].[JobId], [e].[LastName], [e].[Password], [e].[RemainingLeaveDays], [j].[Id], [j].[Role], [j].[Title], [d].[Id], [d].[Name]
+FROM [Employees] AS [e]
+INNER JOIN [Jobs] AS [j] ON [e].[JobId] = [j].[Id]
+INNER JOIN [Departments] AS [d] ON [e].[DepartmentId] = [d].[Id]
+WHERE [e].[Id] = @__id_0
+[09:49:37 INF] 55 Executed DbCommand (42ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[Description], [e].[Discriminator], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title], [e].[EmployeeId]
+FROM [Events] AS [e]
+WHERE [e].[Discriminator] = N'Event'
+[09:49:37 INF] 59 Executed DbCommand (43ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[AnnualLeaveDays], [e].[Birthdate], [e].[DepartmentId], [e].[Email], [e].[EmploymentDate], [e].[FirstName], [e].[JobId], [e].[LastName], [e].[Password], [e].[RemainingLeaveDays], [j].[Id], [j].[Role], [j].[Title], [d].[Id], [d].[Name]
+FROM [Employees] AS [e]
+INNER JOIN [Jobs] AS [j] ON [e].[JobId] = [j].[Id]
+INNER JOIN [Departments] AS [d] ON [e].[DepartmentId] = [d].[Id]
+[09:49:38 INF] 50 Executed action method ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 59.5605ms.
+[09:49:38 INF] 59 Executed action method ProjectBackend.Controllers.EmployeeController.GetAllEmployees (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 60.9088ms.
+[09:49:38 INF] 50 Executing OkObjectResult, writing value of type 'Domain.Models.Employee'.
+[09:49:38 INF] 59 Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Domain.Models.Employee, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[09:49:38 INF] 55 Executed action method ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 63.9753ms.
+[09:49:38 INF] 59 Executed action ProjectBackend.Controllers.EmployeeController.GetAllEmployees (ProjectBackend) in 67.3859ms
+[09:49:38 INF] 59 Executed endpoint 'ProjectBackend.Controllers.EmployeeController.GetAllEmployees (ProjectBackend)'
+[09:49:38 INF] 55 Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Common.DTOs.EventDto, Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[09:49:38 INF] 59 Request finished HTTP/1.1 GET http://localhost:5077/api/Employee - 200 null application/json; charset=utf-8 79.9313ms
+[09:49:38 INF] 55 Executed action ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend) in 82.3671ms
+[09:49:38 INF] 55 Executed endpoint 'ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend)'
+[09:49:38 INF] 55 Request finished HTTP/1.1 GET http://localhost:5077/api/event - 200 null application/json; charset=utf-8 90.4459ms
+[09:49:38 INF] 55 Request starting HTTP/1.1 GET http://localhost:5077/api/event - null null
+[09:49:38 INF] 55 CORS policy execution successful.
+[09:49:38 INF] 55 Executing endpoint 'ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend)'
+[09:49:38 INF] 50 Executed action ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend) in 71.5521ms
+[09:49:38 INF] 50 Executed endpoint 'ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend)'
+[09:49:38 INF] 50 Request finished HTTP/1.1 GET http://localhost:5077/api/Employee/1 - 200 null application/json; charset=utf-8 100.3155ms
+[09:49:38 INF] 55 Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Common.DTOs.EventDto]]] GetAllEvents() on controller ProjectBackend.Controllers.EventController (ProjectBackend).
+[09:49:38 INF] 55 Executing action method ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend) - Validation state: "Valid"
+[09:49:38 INF] 55 GetAllEvents was called from EventController
+[09:49:38 INF] 55 GetAllEventsAsync was called from EventService
+[09:49:38 INF] 55 GetAllAsync was called from EventRepository
+[09:49:38 INF] 50 Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[Description], [e].[Discriminator], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title], [e].[EmployeeId]
+FROM [Events] AS [e]
+WHERE [e].[Discriminator] = N'Event'
+[09:49:38 INF] 50 Executed action method ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 19.0005ms.
+[09:49:38 INF] 47 Request starting HTTP/1.1 GET http://localhost:5077/api/Employee/1 - null null
+[09:49:38 INF] 50 Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Common.DTOs.EventDto, Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[09:49:38 INF] 47 CORS policy execution successful.
+[09:49:38 INF] 50 Executed action ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend) in 24.0617ms
+[09:49:38 INF] 50 Executed endpoint 'ProjectBackend.Controllers.EventController.GetAllEvents (ProjectBackend)'
+[09:49:38 INF] 47 Executing endpoint 'ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend)'
+[09:49:38 INF] 47 Route matched with {action = "GetEmployeeById", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Domain.Models.Employee]] GetEmployeeById(Int32) on controller ProjectBackend.Controllers.EmployeeController (ProjectBackend).
+[09:49:38 INF] 50 Request finished HTTP/1.1 GET http://localhost:5077/api/event - 200 null application/json; charset=utf-8 34.4405ms
+[09:49:38 INF] 47 Executing action method ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend) - Validation state: "Valid"
+[09:49:38 INF] 47 GetEmployeeById was called from EmployeeController
+[09:49:38 INF] 47 GetEmployeeByIdAsync was called from EmployeeService.
+[09:49:38 INF] 47 GetByIdAsync was called from EmployeeRepository
+[09:49:38 INF] 59 Executed DbCommand (8ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AnnualLeaveDays], [e].[Birthdate], [e].[DepartmentId], [e].[Email], [e].[EmploymentDate], [e].[FirstName], [e].[JobId], [e].[LastName], [e].[Password], [e].[RemainingLeaveDays], [j].[Id], [j].[Role], [j].[Title], [d].[Id], [d].[Name]
+FROM [Employees] AS [e]
+INNER JOIN [Jobs] AS [j] ON [e].[JobId] = [j].[Id]
+INNER JOIN [Departments] AS [d] ON [e].[DepartmentId] = [d].[Id]
+WHERE [e].[Id] = @__id_0
+[09:49:38 INF] 59 Executed action method ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 9.9699ms.
+[09:49:38 INF] 59 Executing OkObjectResult, writing value of type 'Domain.Models.Employee'.
+[09:49:38 INF] 59 Executed action ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend) in 12.879ms
+[09:49:38 INF] 59 Executed endpoint 'ProjectBackend.Controllers.EmployeeController.GetEmployeeById (ProjectBackend)'
+[09:49:38 INF] 59 Request finished HTTP/1.1 GET http://localhost:5077/api/Employee/1 - 200 null application/json; charset=utf-8 19.6432ms
+[09:49:38 INF] 47 Executed DbCommand (13ms) [Parameters=[@__employeeId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[Description], [e].[Discriminator], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title], [e].[EmployeeId], [e0].[Id], [e0].[AnnualLeaveDays], [e0].[Birthdate], [e0].[DepartmentId], [e0].[Email], [e0].[EmploymentDate], [e0].[FirstName], [e0].[JobId], [e0].[LastName], [e0].[Password], [e0].[RemainingLeaveDays]
+FROM [Events] AS [e]
+INNER JOIN [Employees] AS [e0] ON [e].[EmployeeId] = [e0].[Id]
+WHERE [e].[Discriminator] = N'PersonalEvent' AND [e0].[Id] = @__employeeId_0
+[09:49:38 INF] 47 Executed action method ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 220.573ms.
+[09:49:38 INF] 47 Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Common.DTOs.PersonalEventDto, Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[09:49:38 INF] 47 Executed action ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend) in 273.8503ms
+[09:49:38 INF] 47 Executed endpoint 'ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend)'
+[09:49:38 INF] 47 Request finished HTTP/1.1 GET http://localhost:5077/api/PersonalEvent/getByEmployee/1 - 200 null application/json; charset=utf-8 277.7907ms
+[09:49:38 INF] 47 Request starting HTTP/1.1 GET http://localhost:5077/api/PersonalEvent/getByEmployee/1 - null null
+[09:49:38 INF] 47 CORS policy execution successful.
+[09:49:38 INF] 47 Executing endpoint 'ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend)'
+[09:49:38 INF] 47 Route matched with {action = "GetPersonalEventsByEmployeeId", controller = "PersonalEvent"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Common.DTOs.PersonalEventDto]]] GetPersonalEventsByEmployeeId(Int32) on controller ProjectBackend.Controllers.PersonalEventController (ProjectBackend).
+[09:49:38 INF] 47 Executing action method ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend) - Validation state: "Valid"
+[09:49:38 INF] 47 GetPersonalEventsByEmployeeId was called from PersonalEventController
+[09:49:38 INF] 47 GetPersonalEventsByEmployeeId was called from PersonalEventService
+[09:49:38 INF] 47 GetPersonalEventsByEmployeeIdAsync was called from PersonalEventRepository
+[09:49:38 INF] 47 Executed DbCommand (11ms) [Parameters=[@__employeeId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[Description], [e].[Discriminator], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title], [e].[EmployeeId], [e0].[Id], [e0].[AnnualLeaveDays], [e0].[Birthdate], [e0].[DepartmentId], [e0].[Email], [e0].[EmploymentDate], [e0].[FirstName], [e0].[JobId], [e0].[LastName], [e0].[Password], [e0].[RemainingLeaveDays]
+FROM [Events] AS [e]
+INNER JOIN [Employees] AS [e0] ON [e].[EmployeeId] = [e0].[Id]
+WHERE [e].[Discriminator] = N'PersonalEvent' AND [e0].[Id] = @__employeeId_0
+[09:49:38 INF] 47 Executed action method ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 15.7668ms.
+[09:49:38 INF] 47 Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Common.DTOs.PersonalEventDto, Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[09:49:38 INF] 47 Executed action ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend) in 17.6574ms
+[09:49:38 INF] 47 Executed endpoint 'ProjectBackend.Controllers.PersonalEventController.GetPersonalEventsByEmployeeId (ProjectBackend)'
+[09:49:38 INF] 47 Request finished HTTP/1.1 GET http://localhost:5077/api/PersonalEvent/getByEmployee/1 - 200 null application/json; charset=utf-8 20.2157ms
+[09:49:49 INF] 62 Application is shutting down...
