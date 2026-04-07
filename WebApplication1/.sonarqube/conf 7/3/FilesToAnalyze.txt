@@ -1,0 +1,14 @@
+﻿/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentRepositoryTests.cs
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentsServiceTests.cs
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/EmployeeHelperTest.cs
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/EmployeesUnitTests.cs
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/PersonalEventTests/PersonalEventRepositoryTests.cs
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/PersonalEventTests/PersonalEventServiceTests.cs
+/Users/mariancatalin/.nuget/packages/microsoft.net.test.sdk/17.8.0/build/netcoreapp3.1/Microsoft.NET.Test.Sdk.Program.cs
+/Users/mariancatalin/.nuget/packages/nunit3testadapter/4.5.0/build/netcoreapp3.1/NUnit3.TestAdapter.dll
+/Users/mariancatalin/.nuget/packages/nunit3testadapter/4.5.0/build/netcoreapp3.1/NUnit3.TestAdapter.pdb
+/Users/mariancatalin/.nuget/packages/nunit3testadapter/4.5.0/build/netcoreapp3.1/nunit.engine.dll
+/Users/mariancatalin/.nuget/packages/nunit3testadapter/4.5.0/build/netcoreapp3.1/nunit.engine.api.dll
+/Users/mariancatalin/.nuget/packages/nunit3testadapter/4.5.0/build/netcoreapp3.1/nunit.engine.core.dll
+/Users/mariancatalin/.nuget/packages/nunit3testadapter/4.5.0/build/netcoreapp3.1/testcentric.engine.metadata.dll

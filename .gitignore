@@ -1,0 +1,120 @@
+# =========================
+# 🔧 .NET / C#
+# =========================
+bin/
+obj/
+out/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.csproj.user
+*.dbmdl
+*.jfm
+*.pdb
+*.cache
+*.ilk
+*.log
+*.vspscc
+*.vssscc
+*.pidb
+*.svclog
+*.sln.docstates
+
+# =========================
+# 🧪 Test Results
+# =========================
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+coverage/
+*.opencover.xml
+
+# =========================
+# 🧠 JetBrains Rider
+# =========================
+.idea/
+*.sln.iml
+
+# =========================
+# 🧰 Visual Studio
+# =========================
+.vs/
+
+# =========================
+# 🔍 SonarQube / SonarCloud
+# =========================
+.sonar/
+.scannerwork/
+sonar-project.properties
+
+# =========================
+# 📦 NuGet
+# =========================
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+
+# =========================
+# 🧾 Logs & temp
+# =========================
+logs/
+*.log
+*.tmp
+*.temp
+
+# =========================
+# 🖥 OS files
+# =========================
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# =========================
+# 🔐 Environment / secrets
+# =========================
+.env
+.env.*
+appsettings.Development.json
+secrets.json
+
+# =========================
+# 🐳 Docker
+# =========================
+docker-compose.override.yml
+
+# =========================
+# 📁 Publish output
+# =========================
+publish/
+wwwroot/dist/
+
+# =========================
+# 🧪 Entity Framework
+# =========================
+Migrations/*Designer.cs
+*.db
+
+# =========================
+# 🔄 Temporary files
+# =========================
+*.swp
+*~
+*.bak
+
+# =========================
+# 🧱 Build artifacts
+# =========================
+*.dll
+*.exe
+
+# =========================
+# 📊 Coverage tools
+# =========================
+coverage-report/

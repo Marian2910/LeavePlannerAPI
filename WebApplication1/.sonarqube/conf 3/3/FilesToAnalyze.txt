@@ -1,0 +1,19 @@
+﻿/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentRepositoryTests.cs
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentsServiceTests.cs
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/EmployeeHelperTest.cs
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/EmployeesUnitTests.cs
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/PersonalEventTests/PersonalEventRepositoryTests.cs
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/PersonalEventTests/PersonalEventServiceTests.cs
+/Users/mariancatalin/.nuget/packages/microsoft.net.test.sdk/17.8.0/build/netcoreapp3.1/Microsoft.NET.Test.Sdk.Program.cs
+/Users/mariancatalin/.nuget/packages/nunit3testadapter/4.5.0/build/netcoreapp3.1/NUnit3.TestAdapter.dll
+/Users/mariancatalin/.nuget/packages/nunit3testadapter/4.5.0/build/netcoreapp3.1/NUnit3.TestAdapter.pdb
+/Users/mariancatalin/.nuget/packages/nunit3testadapter/4.5.0/build/netcoreapp3.1/nunit.engine.dll
+/Users/mariancatalin/.nuget/packages/nunit3testadapter/4.5.0/build/netcoreapp3.1/nunit.engine.api.dll
+/Users/mariancatalin/.nuget/packages/nunit3testadapter/4.5.0/build/netcoreapp3.1/nunit.engine.core.dll
+/Users/mariancatalin/.nuget/packages/nunit3testadapter/4.5.0/build/netcoreapp3.1/testcentric.engine.metadata.dll
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/TestResults/194e7c5c-b9dd-4ccc-9822-9b590489213c/coverage.cobertura.xml
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/TestResults/6d04b691-326f-4faa-80eb-a1b2a507615f/coverage.cobertura.xml
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/TestResults/6f582684-9bd1-4cd5-8ac0-7e279e73bf65/coverage.cobertura.xml
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/TestResults/8dea0aad-961f-446b-8fa3-53aaca207bf0/coverage.cobertura.xml
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/TestResults/efe113f9-3c37-41dc-a8fc-b2de5855819e/coverage.cobertura.xml
