@@ -1,6 +1,0 @@
-﻿/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/DTOs/CustomerDto.cs
-/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/DTOs/EventDto.cs
-/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/DTOs/PagedResultDto.cs
-/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/DTOs/PersonalEventDto.cs
-/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/DTOs/UpdateCustomerDto.cs
-/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/Helper/EmployeeHelper.cs
