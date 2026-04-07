@@ -31,6 +31,10 @@ TestResults/
 coverage/
 *.opencover.xml
 
+.sonarqube/
+
+
+
 # =========================
 # 🧠 JetBrains Rider
 # =========================
