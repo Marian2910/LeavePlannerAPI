@@ -59,19 +59,18 @@ jobs:
             /o:"marian2910" `
             /d:sonar.token="${{ secrets.SONAR_TOKEN }}" `
             /d:sonar.host.url="https://sonarcloud.io" `
-            /d:sonar.cs.cobertura.reportsPaths="coverage.xml"
+            /d:sonar.cs.cobertura.reportsPaths="**/coverage.cobertura.xml"
 
-          # BUILD (FIXED PATH)
+          # BUILD
           dotnet build WebApplication1/ProjectBackend.sln --no-incremental
 
-          # TEST (WITH COVERAGE)
+          # TEST (NO COPY, NO HACKS)
           dotnet test WebApplication1/ProjectBackend.sln `
             --collect:"XPlat Code Coverage" `
             --results-directory TestResults
 
-          # COPY COVERAGE (FIXED)
-          $coverage = Get-ChildItem -Recurse -Filter coverage.cobertura.xml | Select-Object -First 1
-          Copy-Item $coverage.FullName coverage.xml
+          # DEBUG (optional, helps if issues)
+          Get-ChildItem -Recurse TestResults
 
           # END
           & $scanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
