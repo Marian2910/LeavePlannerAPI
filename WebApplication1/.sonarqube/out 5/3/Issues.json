@@ -1,0 +1,2170 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Microsoft (R) Visual C# Compiler",
+        "version": "4.11.0.0",
+        "fileVersion": "4.11.0-3.24365.8 (9e9c7c1d)",
+        "semanticVersion": "4.11.0",
+        "language": "en-RO"
+      },
+      "results": [
+        {
+          "ruleId": "CS8603",
+          "level": "warning",
+          "message": "Possible null reference return.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs",
+                "region": {
+                  "startLine": 89,
+                  "startColumn": 20,
+                  "endLine": 89,
+                  "endColumn": 88
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8603",
+          "level": "warning",
+          "message": "Possible null reference return.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs",
+                "region": {
+                  "startLine": 94,
+                  "startColumn": 20,
+                  "endLine": 94,
+                  "endColumn": 86
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8603",
+          "level": "warning",
+          "message": "Possible null reference return.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/EmployeesUnitTests.cs",
+                "region": {
+                  "startLine": 85,
+                  "startColumn": 20,
+                  "endLine": 85,
+                  "endColumn": 82
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8602",
+          "level": "warning",
+          "message": "Dereference of a possibly null reference.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/EmployeesUnitTests.cs",
+                "region": {
+                  "startLine": 101,
+                  "startColumn": 25,
+                  "endLine": 101,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8602",
+          "level": "warning",
+          "message": "Dereference of a possibly null reference.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs",
+                "region": {
+                  "startLine": 165,
+                  "startColumn": 25,
+                  "endLine": 165,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field 'employee' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/EmployeesUnitTests.cs",
+                "region": {
+                  "startLine": 16,
+                  "startColumn": 40,
+                  "endLine": 16,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/EmployeesUnitTests.cs",
+                "region": {
+                  "startLine": 16,
+                  "startColumn": 40,
+                  "endLine": 16,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field 'dbContext' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/EmployeesUnitTests.cs",
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 38,
+                  "endLine": 17,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/EmployeesUnitTests.cs",
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 38,
+                  "endLine": 17,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field 'employeeRepository' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/EmployeesUnitTests.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 36,
+                  "endLine": 18,
+                  "endColumn": 54
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/EmployeesUnitTests.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 36,
+                  "endLine": 18,
+                  "endColumn": 54
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field 'loggerRepository' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/EmployeesUnitTests.cs",
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 45,
+                  "endLine": 19,
+                  "endColumn": 61
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/EmployeesUnitTests.cs",
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 45,
+                  "endLine": 19,
+                  "endColumn": 61
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field 'mapper' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/EmployeesUnitTests.cs",
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 25,
+                  "endLine": 20,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/EmployeesUnitTests.cs",
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 25,
+                  "endLine": 20,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field 'employeeService' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/EmployeesUnitTests.cs",
+                "region": {
+                  "startLine": 21,
+                  "startColumn": 33,
+                  "endLine": 21,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/EmployeesUnitTests.cs",
+                "region": {
+                  "startLine": 21,
+                  "startColumn": 33,
+                  "endLine": 21,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field 'loggerService' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/EmployeesUnitTests.cs",
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 42,
+                  "endLine": 22,
+                  "endColumn": 55
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/EmployeesUnitTests.cs",
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 42,
+                  "endLine": 22,
+                  "endColumn": 55
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field '_documentRepository' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentRepositoryTests.cs",
+                "region": {
+                  "startLine": 24,
+                  "startColumn": 36,
+                  "endLine": 24,
+                  "endColumn": 55
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentRepositoryTests.cs",
+                "region": {
+                  "startLine": 24,
+                  "startColumn": 36,
+                  "endLine": 24,
+                  "endColumn": 55
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field '_applicationDBContext' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentRepositoryTests.cs",
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 38,
+                  "endLine": 25,
+                  "endColumn": 59
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentRepositoryTests.cs",
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 38,
+                  "endLine": 25,
+                  "endColumn": 59
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field '_logger' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentRepositoryTests.cs",
+                "region": {
+                  "startLine": 26,
+                  "startColumn": 51,
+                  "endLine": 26,
+                  "endColumn": 58
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentRepositoryTests.cs",
+                "region": {
+                  "startLine": 26,
+                  "startColumn": 51,
+                  "endLine": 26,
+                  "endColumn": 58
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8602",
+          "level": "warning",
+          "message": "Dereference of a possibly null reference.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs",
+                "region": {
+                  "startLine": 217,
+                  "startColumn": 25,
+                  "endLine": 217,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field '_documentService' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentsServiceTests.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 33,
+                  "endLine": 18,
+                  "endColumn": 49
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentsServiceTests.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 33,
+                  "endLine": 18,
+                  "endColumn": 49
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field '_customerRepository' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentsServiceTests.cs",
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 43,
+                  "endLine": 19,
+                  "endColumn": 62
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentsServiceTests.cs",
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 43,
+                  "endLine": 19,
+                  "endColumn": 62
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field '_documentRepository' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentsServiceTests.cs",
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 43,
+                  "endLine": 20,
+                  "endColumn": 62
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentsServiceTests.cs",
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 43,
+                  "endLine": 20,
+                  "endColumn": 62
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field '_mapper' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentsServiceTests.cs",
+                "region": {
+                  "startLine": 21,
+                  "startColumn": 31,
+                  "endLine": 21,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentsServiceTests.cs",
+                "region": {
+                  "startLine": 21,
+                  "startColumn": 31,
+                  "endLine": 21,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field '_logger' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentsServiceTests.cs",
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 48,
+                  "endLine": 22,
+                  "endColumn": 55
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentsServiceTests.cs",
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 48,
+                  "endLine": 22,
+                  "endColumn": 55
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8602",
+          "level": "warning",
+          "message": "Dereference of a possibly null reference.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/PersonalEventTests/PersonalEventRepositoryTests.cs",
+                "region": {
+                  "startLine": 62,
+                  "startColumn": 25,
+                  "endLine": 62,
+                  "endColumn": 43
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8602",
+          "level": "warning",
+          "message": "Dereference of a possibly null reference.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs",
+                "region": {
+                  "startLine": 289,
+                  "startColumn": 25,
+                  "endLine": 289,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field 'customer' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs",
+                "region": {
+                  "startLine": 24,
+                  "startColumn": 40,
+                  "endLine": 24,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs",
+                "region": {
+                  "startLine": 24,
+                  "startColumn": 40,
+                  "endLine": 24,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field 'dbContext' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs",
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 38,
+                  "endLine": 25,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs",
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 38,
+                  "endLine": 25,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field 'customerRepository' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs",
+                "region": {
+                  "startLine": 26,
+                  "startColumn": 36,
+                  "endLine": 26,
+                  "endColumn": 54
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs",
+                "region": {
+                  "startLine": 26,
+                  "startColumn": 36,
+                  "endLine": 26,
+                  "endColumn": 54
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field 'loggerRepository' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs",
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 45,
+                  "endLine": 27,
+                  "endColumn": 61
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs",
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 45,
+                  "endLine": 27,
+                  "endColumn": 61
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field 'mapper' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs",
+                "region": {
+                  "startLine": 28,
+                  "startColumn": 25,
+                  "endLine": 28,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs",
+                "region": {
+                  "startLine": 28,
+                  "startColumn": 25,
+                  "endLine": 28,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field 'loggerService' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs",
+                "region": {
+                  "startLine": 29,
+                  "startColumn": 42,
+                  "endLine": 29,
+                  "endColumn": 55
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs",
+                "region": {
+                  "startLine": 29,
+                  "startColumn": 42,
+                  "endLine": 29,
+                  "endColumn": 55
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field 'customerService' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs",
+                "region": {
+                  "startLine": 30,
+                  "startColumn": 33,
+                  "endLine": 30,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs",
+                "region": {
+                  "startLine": 30,
+                  "startColumn": 33,
+                  "endLine": 30,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field '_personalEventRepository' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/PersonalEventTests/PersonalEventRepositoryTests.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 41,
+                  "endLine": 18,
+                  "endColumn": 65
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/PersonalEventTests/PersonalEventRepositoryTests.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 41,
+                  "endLine": 18,
+                  "endColumn": 65
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field '_applicationDBContext' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/PersonalEventTests/PersonalEventRepositoryTests.cs",
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 38,
+                  "endLine": 19,
+                  "endColumn": 59
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/PersonalEventTests/PersonalEventRepositoryTests.cs",
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 38,
+                  "endLine": 19,
+                  "endColumn": 59
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field '_logger' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/PersonalEventTests/PersonalEventRepositoryTests.cs",
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 50,
+                  "endLine": 20,
+                  "endColumn": 57
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/PersonalEventTests/PersonalEventRepositoryTests.cs",
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 50,
+                  "endLine": 20,
+                  "endColumn": 57
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field '_personalEventService' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/PersonalEventTests/PersonalEventServiceTests.cs",
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 38,
+                  "endLine": 20,
+                  "endColumn": 59
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/PersonalEventTests/PersonalEventServiceTests.cs",
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 38,
+                  "endLine": 20,
+                  "endColumn": 59
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field '_personalEventRepository' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/PersonalEventTests/PersonalEventServiceTests.cs",
+                "region": {
+                  "startLine": 21,
+                  "startColumn": 48,
+                  "endLine": 21,
+                  "endColumn": 72
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/PersonalEventTests/PersonalEventServiceTests.cs",
+                "region": {
+                  "startLine": 21,
+                  "startColumn": 48,
+                  "endLine": 21,
+                  "endColumn": 72
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field '_employeeRepository' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/PersonalEventTests/PersonalEventServiceTests.cs",
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 43,
+                  "endLine": 22,
+                  "endColumn": 62
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/PersonalEventTests/PersonalEventServiceTests.cs",
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 43,
+                  "endLine": 22,
+                  "endColumn": 62
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field '_mapper' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/PersonalEventTests/PersonalEventServiceTests.cs",
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 31,
+                  "endLine": 23,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/PersonalEventTests/PersonalEventServiceTests.cs",
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 31,
+                  "endLine": 23,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field '_logger' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the field as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/PersonalEventTests/PersonalEventServiceTests.cs",
+                "region": {
+                  "startLine": 24,
+                  "startColumn": 53,
+                  "endLine": 24,
+                  "endColumn": 60
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/PersonalEventTests/PersonalEventServiceTests.cs",
+                "region": {
+                  "startLine": 24,
+                  "startColumn": 53,
+                  "endLine": 24,
+                  "endColumn": 60
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "NUnit2045",
+          "level": "note",
+          "message": "Call independent Assert statements from inside an Assert.Multiple",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs",
+                "region": {
+                  "startLine": 126,
+                  "startColumn": 13,
+                  "endLine": 126,
+                  "endColumn": 57
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "NUnit2045",
+          "level": "note",
+          "message": "Call independent Assert statements from inside an Assert.Multiple",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs",
+                "region": {
+                  "startLine": 138,
+                  "startColumn": 13,
+                  "endLine": 138,
+                  "endColumn": 57
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "NUnit2007",
+          "level": "warning",
+          "message": "The actual value should not be a constant - perhaps the actual value and the expected value have switched places",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/EmployeesUnitTests.cs",
+                "region": {
+                  "startLine": 110,
+                  "startColumn": 25,
+                  "endLine": 110,
+                  "endColumn": 53
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "NUnit2045",
+          "level": "note",
+          "message": "Call independent Assert statements from inside an Assert.Multiple",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/EmployeesUnitTests.cs",
+                "region": {
+                  "startLine": 109,
+                  "startColumn": 13,
+                  "endLine": 109,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1822",
+          "level": "note",
+          "message": "Member 'CreateTestEmployee' does not access instance data and can be marked as static",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/EmployeesUnitTests.cs",
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 40,
+                  "endLine": 67,
+                  "endColumn": 58
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1825",
+          "level": "note",
+          "message": "Avoid unnecessary zero-length array allocations.  Use Array.Empty<byte>() instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentsServiceTests.cs",
+                "region": {
+                  "startLine": 83,
+                  "startColumn": 28,
+                  "endLine": 83,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1825",
+          "level": "note",
+          "message": "Avoid unnecessary zero-length array allocations.  Use Array.Empty<byte>() instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentsServiceTests.cs",
+                "region": {
+                  "startLine": 92,
+                  "startColumn": 28,
+                  "endLine": 92,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1825",
+          "level": "note",
+          "message": "Avoid unnecessary zero-length array allocations.  Use Array.Empty<byte>() instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentsServiceTests.cs",
+                "region": {
+                  "startLine": 101,
+                  "startColumn": 28,
+                  "endLine": 101,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1825",
+          "level": "note",
+          "message": "Avoid unnecessary zero-length array allocations.  Use Array.Empty<byte>() instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentsServiceTests.cs",
+                "region": {
+                  "startLine": 114,
+                  "startColumn": 28,
+                  "endLine": 114,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1825",
+          "level": "note",
+          "message": "Avoid unnecessary zero-length array allocations.  Use Array.Empty<byte>() instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentsServiceTests.cs",
+                "region": {
+                  "startLine": 123,
+                  "startColumn": 28,
+                  "endLine": 123,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1825",
+          "level": "note",
+          "message": "Avoid unnecessary zero-length array allocations.  Use Array.Empty<byte>() instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentsServiceTests.cs",
+                "region": {
+                  "startLine": 132,
+                  "startColumn": 28,
+                  "endLine": 132,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1861",
+          "level": "note",
+          "message": "Prefer 'static readonly' fields over constant array arguments if the called method is called repeatedly and is not mutating the passed array",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentsServiceTests.cs",
+                "region": {
+                  "startLine": 83,
+                  "startColumn": 28,
+                  "endLine": 83,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "paramName": "item"
+            }
+          }
+        },
+        {
+          "ruleId": "CA1861",
+          "level": "note",
+          "message": "Prefer 'static readonly' fields over constant array arguments if the called method is called repeatedly and is not mutating the passed array",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentsServiceTests.cs",
+                "region": {
+                  "startLine": 92,
+                  "startColumn": 28,
+                  "endLine": 92,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "paramName": "item"
+            }
+          }
+        },
+        {
+          "ruleId": "CA1861",
+          "level": "note",
+          "message": "Prefer 'static readonly' fields over constant array arguments if the called method is called repeatedly and is not mutating the passed array",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentsServiceTests.cs",
+                "region": {
+                  "startLine": 101,
+                  "startColumn": 28,
+                  "endLine": 101,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "paramName": "item"
+            }
+          }
+        },
+        {
+          "ruleId": "CA1861",
+          "level": "note",
+          "message": "Prefer 'static readonly' fields over constant array arguments if the called method is called repeatedly and is not mutating the passed array",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentsServiceTests.cs",
+                "region": {
+                  "startLine": 114,
+                  "startColumn": 28,
+                  "endLine": 114,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "paramName": "item"
+            }
+          }
+        },
+        {
+          "ruleId": "CA1861",
+          "level": "note",
+          "message": "Prefer 'static readonly' fields over constant array arguments if the called method is called repeatedly and is not mutating the passed array",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentsServiceTests.cs",
+                "region": {
+                  "startLine": 123,
+                  "startColumn": 28,
+                  "endLine": 123,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "paramName": "item"
+            }
+          }
+        },
+        {
+          "ruleId": "CA1861",
+          "level": "note",
+          "message": "Prefer 'static readonly' fields over constant array arguments if the called method is called repeatedly and is not mutating the passed array",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentsServiceTests.cs",
+                "region": {
+                  "startLine": 132,
+                  "startColumn": 28,
+                  "endLine": 132,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "paramName": "item"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2045",
+          "level": "note",
+          "message": "Call independent Assert statements from inside an Assert.Multiple",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs",
+                "region": {
+                  "startLine": 113,
+                  "startColumn": 13,
+                  "endLine": 113,
+                  "endColumn": 57
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2699",
+          "level": "warning",
+          "message": "Add at least one assertion to this test case.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs",
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 27,
+                  "endLine": 221,
+                  "endColumn": 62
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1825",
+          "level": "note",
+          "message": "Avoid unnecessary zero-length array allocations.  Use Array.Empty<byte>() instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentsServiceTests.cs",
+                "region": {
+                  "startLine": 179,
+                  "startColumn": 24,
+                  "endLine": 179,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1825",
+          "level": "note",
+          "message": "Avoid unnecessary zero-length array allocations.  Use Array.Empty<byte>() instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentRepositoryTests.cs",
+                "region": {
+                  "startLine": 119,
+                  "startColumn": 28,
+                  "endLine": 119,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1825",
+          "level": "note",
+          "message": "Avoid unnecessary zero-length array allocations.  Use Array.Empty<byte>() instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentRepositoryTests.cs",
+                "region": {
+                  "startLine": 128,
+                  "startColumn": 28,
+                  "endLine": 128,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1825",
+          "level": "note",
+          "message": "Avoid unnecessary zero-length array allocations.  Use Array.Empty<byte>() instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentRepositoryTests.cs",
+                "region": {
+                  "startLine": 137,
+                  "startColumn": 28,
+                  "endLine": 137,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1825",
+          "level": "note",
+          "message": "Avoid unnecessary zero-length array allocations.  Use Array.Empty<byte>() instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentRepositoryTests.cs",
+                "region": {
+                  "startLine": 146,
+                  "startColumn": 28,
+                  "endLine": 146,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1825",
+          "level": "note",
+          "message": "Avoid unnecessary zero-length array allocations.  Use Array.Empty<byte>() instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentRepositoryTests.cs",
+                "region": {
+                  "startLine": 155,
+                  "startColumn": 28,
+                  "endLine": 155,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1861",
+          "level": "note",
+          "message": "Prefer 'static readonly' fields over constant array arguments if the called method is called repeatedly and is not mutating the passed array",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentRepositoryTests.cs",
+                "region": {
+                  "startLine": 119,
+                  "startColumn": 28,
+                  "endLine": 119,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "paramName": "item"
+            }
+          }
+        },
+        {
+          "ruleId": "CA1861",
+          "level": "note",
+          "message": "Prefer 'static readonly' fields over constant array arguments if the called method is called repeatedly and is not mutating the passed array",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentRepositoryTests.cs",
+                "region": {
+                  "startLine": 128,
+                  "startColumn": 28,
+                  "endLine": 128,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "paramName": "item"
+            }
+          }
+        },
+        {
+          "ruleId": "CA1861",
+          "level": "note",
+          "message": "Prefer 'static readonly' fields over constant array arguments if the called method is called repeatedly and is not mutating the passed array",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentRepositoryTests.cs",
+                "region": {
+                  "startLine": 137,
+                  "startColumn": 28,
+                  "endLine": 137,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "paramName": "item"
+            }
+          }
+        },
+        {
+          "ruleId": "CA1861",
+          "level": "note",
+          "message": "Prefer 'static readonly' fields over constant array arguments if the called method is called repeatedly and is not mutating the passed array",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentRepositoryTests.cs",
+                "region": {
+                  "startLine": 146,
+                  "startColumn": 28,
+                  "endLine": 146,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "paramName": "item"
+            }
+          }
+        },
+        {
+          "ruleId": "CA1861",
+          "level": "note",
+          "message": "Prefer 'static readonly' fields over constant array arguments if the called method is called repeatedly and is not mutating the passed array",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentRepositoryTests.cs",
+                "region": {
+                  "startLine": 155,
+                  "startColumn": 28,
+                  "endLine": 155,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "paramName": "item"
+            }
+          }
+        },
+        {
+          "ruleId": "NUnit2045",
+          "level": "note",
+          "message": "Call independent Assert statements from inside an Assert.Multiple",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs",
+                "region": {
+                  "startLine": 308,
+                  "startColumn": 13,
+                  "endLine": 308,
+                  "endColumn": 58
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1806",
+          "level": "note",
+          "message": "GetAllPersonalEvents creates a new instance of PersonalEvent which is never used. Pass the instance as an argument to another method, assign the instance to a variable, or remove the object creation if it is unnecessary.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/PersonalEventTests/PersonalEventServiceTests.cs",
+                "region": {
+                  "startLine": 61,
+                  "startColumn": 17,
+                  "endLine": 70,
+                  "endColumn": 18
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1822",
+          "level": "note",
+          "message": "Member 'CreateTestCustomer' does not access instance data and can be marked as static",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/mariancatalin/Documents/Personal/Red%20to%20blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs",
+                "region": {
+                  "startLine": 66,
+                  "startColumn": 40,
+                  "endLine": 66,
+                  "endColumn": 58
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        }
+      ],
+      "rules": {
+        "CA1806": {
+          "id": "CA1806",
+          "shortDescription": "Do not ignore method results",
+          "fullDescription": "A new object is created but never used; or a method that creates and returns a new string is called and the new string is never used; or a COM or P/Invoke method returns an HRESULT or error code that is never used.",
+          "defaultLevel": "note",
+          "helpUri": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1806",
+          "properties": {
+            "category": "Performance",
+            "isEnabledByDefault": true,
+            "tags": [
+              "PortedFromFxCop",
+              "Telemetry",
+              "EnabledRuleInAggressiveMode"
+            ]
+          }
+        },
+        "CA1822": {
+          "id": "CA1822",
+          "shortDescription": "Mark members as static",
+          "fullDescription": "Members that do not access instance data or call instance methods can be marked as static. After you mark the methods as static, the compiler will emit nonvirtual call sites to these members. This can give you a measurable performance gain for performance-sensitive code.",
+          "defaultLevel": "note",
+          "helpUri": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1822",
+          "properties": {
+            "category": "Performance",
+            "isEnabledByDefault": true,
+            "tags": [
+              "PortedFromFxCop",
+              "Telemetry",
+              "EnabledRuleInAggressiveMode"
+            ]
+          }
+        },
+        "CA1825": {
+          "id": "CA1825",
+          "shortDescription": "Avoid zero-length array allocations",
+          "defaultLevel": "note",
+          "helpUri": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1825",
+          "properties": {
+            "category": "Performance",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Telemetry",
+              "EnabledRuleInAggressiveMode"
+            ]
+          }
+        },
+        "CA1861": {
+          "id": "CA1861",
+          "shortDescription": "Avoid constant arrays as arguments",
+          "fullDescription": "Constant arrays passed as arguments are not reused when called repeatedly, which implies a new array is created each time. Consider extracting them to 'static readonly' fields to improve performance if the passed array is not mutated within the called method.",
+          "defaultLevel": "note",
+          "helpUri": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1861",
+          "properties": {
+            "category": "Performance",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Telemetry",
+              "EnabledRuleInAggressiveMode"
+            ]
+          }
+        },
+        "CS8602": {
+          "id": "CS8602",
+          "shortDescription": "Dereference of a possibly null reference.",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8602)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "CS8603": {
+          "id": "CS8603",
+          "shortDescription": "Possible null reference return.",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8603)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "CS8618": {
+          "id": "CS8618",
+          "shortDescription": "Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8618)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "NUnit2007": {
+          "id": "NUnit2007",
+          "shortDescription": "The actual value should not be a constant",
+          "fullDescription": "The actual value should not be a constant. This indicates that the actual value and the expected value have switched places.",
+          "defaultLevel": "warning",
+          "helpUri": "https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2007.md",
+          "properties": {
+            "category": "Assertion",
+            "isEnabledByDefault": true
+          }
+        },
+        "NUnit2045": {
+          "id": "NUnit2045",
+          "shortDescription": "Use Assert.Multiple",
+          "fullDescription": "Hosting Asserts inside an Assert.Multiple allows detecting more than one failure.",
+          "defaultLevel": "note",
+          "helpUri": "https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2045.md",
+          "properties": {
+            "category": "Assertion",
+            "isEnabledByDefault": true
+          }
+        },
+        "S2699": {
+          "id": "S2699",
+          "shortDescription": "Tests should include assertions",
+          "fullDescription": "A test case without assertions ensures only that no exceptions are thrown. Beyond basic runnability, it ensures nothing about the behavior of the code under test.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2699",
+          "properties": {
+            "category": "Blocker Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

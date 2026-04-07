@@ -5,12 +5,17 @@ namespace Common.DTOs
     public class EventDto
     {
         public int Id { get; set; }
-        [Required]
-        public string Title { get; set; }
+
+        [Required(ErrorMessage = "The title is required.")]
+        public required string Title { get; set; }
+
         public string? Description { get; set; }
-        [Required]
-        public DateTime StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
-        public string? Location { get; set; }
+
+        [Required(ErrorMessage = "The start date is required.")]
+        public required DateTime StartDate { get; set; }
+
+        public DateTime? EndDate { get; set; } = null;
+
+        public string? Location { get; set; } = string.Empty;
     }
 }

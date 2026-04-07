@@ -1,17 +1,23 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Domain.Models
+namespace LeavePlanner.Domain.Models
 {
     public class Document
     {
         [Key]
         public int Id { get; set; }
-        [Required(ErrorMessage = "Name is required")]
-        public string Name {  get; set; }
-        public string Type { get; set; }
-        public DateTime Date { get; set; }
-        public byte[] File { get; set; }
-        public Customer Customer { get; set; }
 
+        [Required(ErrorMessage = "Name is required")]
+        public required string Name { get; set; }
+
+        public required string Type { get; set; }
+
+        public required DateTime Date { get; set; }
+
+        [Required(ErrorMessage = "File content is required")]
+        public required byte[] File { get; set; }
+
+        [Required(ErrorMessage = "Customer is required")]
+        public required Customer Customer { get; set; }
     }
 }

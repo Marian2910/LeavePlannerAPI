@@ -1,59 +1,77 @@
 ﻿using AutoMapper;
 using Common.Helper;
-using Domain.Models;
+using LeavePlanner.Domain.Models;
 using LeavePlanner.Infrastructure.Interfaces;
 using Microsoft.Extensions.Logging;
 
-namespace Domain.Services
+namespace LeavePlanner.Domain.Services
 {
-    public class EmployeeService
+    public class EmployeeService(
+        IEmployeeRepository employeeRepository,
+        IMapper mapper,
+        ILogger<EmployeeService> logger)
     {
-        private readonly IEmployeeRepository _employeeRepository;
-        private readonly IMapper _mapper;
-        private readonly ILogger<EmployeeService> _logger;
-
-        public EmployeeService(IEmployeeRepository employeeRepository, IMapper mapper, ILogger<EmployeeService> logger)
-        {
-            _employeeRepository = employeeRepository;
-            _mapper = mapper;
-            _logger = logger;
-        }
-
         public async Task<IEnumerable<Employee>> GetAllEmployeesAsync()
         {
-            _logger.LogInformation("GetAllEmployeesAsync was called from EmployeeService.");
+            logger.LogInformation("Fetching all employees.");
 
-            var employees = await _employeeRepository.GetAllEmployeeAsync();
+            var employeeEntities = await employeeRepository.GetAllEmployeeAsync();
 
-            return _mapper.Map<IEnumerable<Employee>>(employees);
+            return mapper.Map<IEnumerable<Employee>>(employeeEntities);
         }
 
         public async Task<Employee> GetEmployeeByIdAsync(int id)
         {
-            _logger.LogInformation("GetEmployeeByIdAsync was called from EmployeeService.");
+            logger.LogInformation("Fetching employee with Id {EmployeeId}.", id);
 
-            var employeeEntity = await _employeeRepository.GetByIdAsync(id);
+            if (id <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(id), "Employee ID must be greater than zero.");
+            }
 
-            return _mapper.Map<Employee>(employeeEntity);
+            var employeeEntity = await employeeRepository.GetByIdAsync(id);
+
+            if (employeeEntity == null)
+            {
+                throw new KeyNotFoundException($"Employee with ID {id} was not found.");
+            }
+
+            return mapper.Map<Employee>(employeeEntity);
         }
 
         public async Task UpdateLeaveDaysForEmployeeAsync(int employeeId)
         {
-            _logger.LogInformation("UpdateLeaveDaysForEmployeeAsync was called from EmployeeService.");
+            logger.LogInformation("Updating leave days for employee with Id {EmployeeId}.", employeeId);
 
-            var employee = await _employeeRepository.GetByIdAsync(employeeId);
-
-            if (employee != null)
+            if (employeeId <= 0)
             {
-                var expectedLeaveDays = EmployeeHelper.CalculateLeaveDays(employee.EmploymentDate, employee.RemainingLeaveDays);
-
-                if (employee.AnnualLeaveDays < expectedLeaveDays)
-                {
-                    employee.AnnualLeaveDays = expectedLeaveDays;
-                    await _employeeRepository.UpdateEmployeeAsync(employee);
-                }
+                throw new ArgumentOutOfRangeException(nameof(employeeId), "Employee ID must be greater than zero.");
             }
 
+            var employee = await employeeRepository.GetByIdAsync(employeeId);
+
+            var expectedLeaveDays = EmployeeHelper.CalculateLeaveDays(
+                employee.EmploymentDate);
+
+            if (employee.AnnualLeaveDays >= expectedLeaveDays)
+            {
+                logger.LogInformation(
+                    "No update needed for employee {EmployeeId}. Current leave days: {CurrentLeaveDays}, Expected: {ExpectedLeaveDays}.",
+                    employeeId,
+                    employee.AnnualLeaveDays,
+                    expectedLeaveDays);
+
+                return;
+            }
+
+            employee.AnnualLeaveDays = expectedLeaveDays;
+
+            await employeeRepository.UpdateEmployeeAsync(employee);
+
+            logger.LogInformation(
+                "Updated leave days for employee {EmployeeId} to {NewLeaveDays}.",
+                employeeId,
+                expectedLeaveDays);
         }
     }
 }

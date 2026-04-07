@@ -1,55 +1,63 @@
-﻿using LeavePlanner.Infrastructure.Configuration;
-using LeavePlanner.Infrastructure.Entities;
-using LeavePlanner.Infrastructure.Interfaces;
+﻿using LeavePlanner.Infrastructure.Interfaces;
 using LeavePlanner.Infrastructure.Validators;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
+using LeavePlanner.Infrastructure.Configuration;
+using EmployeeEntity = LeavePlanner.Infrastructure.Entities.Employee;
+
 namespace LeavePlanner.Infrastructure.Repositories
 {
-    public class EmployeeRepository : IEmployeeRepository
+    public class EmployeeRepository(ApplicationDbContext dbContext, ILogger<EmployeeRepository> logger) : IEmployeeRepository
     {
-        private readonly ApplicationDBContext _dbContext;
-        private readonly ILogger<EmployeeRepository> _logger;
-
-        public EmployeeRepository(ApplicationDBContext dbContext, ILogger<EmployeeRepository> logger)
+        public async Task<EmployeeEntity> GetByIdAsync(int id)
         {
-            _dbContext = dbContext;
-            _logger = logger;
-        }
+            logger.LogInformation("Fetching employee with Id {EmployeeId}.", id);
 
-        public async Task<Employee> GetByIdAsync(int id)
-        {
-            _logger.LogInformation($"{nameof(GetByIdAsync)} was called from {nameof(EmployeeRepository)}");
+            if (id <= 0)
+                throw new ArgumentOutOfRangeException(nameof(id));
 
-            var employeeToBeValidated = await _dbContext.Employees
+            var employee = await dbContext.Employees
                 .Include(e => e.Job)
                 .Include(e => e.Department)
                 .FirstOrDefaultAsync(e => e.Id == id);
 
-            await Validator.ValidEntity(employeeToBeValidated, _logger);
+            if (employee == null)
+            {
+                logger.LogWarning("Employee with Id {EmployeeId} not found.", id);
+            }
 
-            return employeeToBeValidated;
+            await Validator.ValidEntity(employee, logger);
+
+            return employee ?? throw new InvalidOperationException();
         }
 
-        public async Task<IEnumerable<Employee>> GetAllEmployeeAsync()
+        public async Task<IEnumerable<EmployeeEntity>> GetAllEmployeeAsync()
         {
-            _logger.LogInformation($"{nameof(GetAllEmployeeAsync)} was called from {nameof(EmployeeRepository)}");
+            logger.LogInformation("Fetching all employees.");
 
-            var employees = await _dbContext.Employees.AsNoTracking()
+            var employees = await dbContext.Employees
+                .AsNoTracking()
                 .Include(e => e.Job)
                 .Include(e => e.Department)
                 .ToListAsync();
 
-            await Validator.ValidEntities(employees, _logger);
+            await Validator.ValidEntities(employees, logger);
 
             return employees;
         }
 
-        public async Task UpdateEmployeeAsync(Employee employee)
+        public async Task UpdateEmployeeAsync(EmployeeEntity? employee)
         {
-            _dbContext.Employees.Update(employee);
-            await _dbContext.SaveChangesAsync();
+            logger.LogInformation("Updating employee with Id {EmployeeId}.", employee?.Id);
+
+            if (employee == null)
+                throw new ArgumentNullException(nameof(employee));
+
+            await Validator.ValidEntity(employee, logger);
+
+            dbContext.Employees.Update(employee);
+            await dbContext.SaveChangesAsync();
         }
     }
 }

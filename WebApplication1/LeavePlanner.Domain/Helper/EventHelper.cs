@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Domain.Helper
+﻿
+namespace LeavePlanner.Domain.Helper
 {
-    public class EventHelper
+    public static class EventHelper
     {
-        public static int getWorkDaysBetweenDates(DateTime startDate, DateTime? endDate)
+        public static int GetWorkDaysBetweenDates(DateTime startDate, DateTime? endDate)
         {
             if (startDate > endDate)
             {

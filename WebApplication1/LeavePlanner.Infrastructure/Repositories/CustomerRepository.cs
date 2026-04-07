@@ -1,118 +1,163 @@
-using LeavePlanner.Infrastructure.Configuration;
-using LeavePlanner.Infrastructure.Entities;
 using LeavePlanner.Infrastructure.Interfaces;
 using LeavePlanner.Infrastructure.Validators;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query.Internal;
 using Microsoft.Extensions.Logging;
+
+using Db = LeavePlanner.Infrastructure.Configuration.ApplicationDbContext;
+using CustomerEntity = LeavePlanner.Infrastructure.Entities.Customer;
 
 namespace LeavePlanner.Infrastructure.Repositories
 {
-    public class CustomerRepository : ICustomerRepository
+    public class CustomerRepository(Db dbContext, ILogger<CustomerRepository> logger) : ICustomerRepository
     {
-        private readonly ApplicationDBContext _dbContext;
-        private readonly ILogger<CustomerRepository> _logger;
-
-        public CustomerRepository(ApplicationDBContext dbContext, ILogger<CustomerRepository> logger)
+        public async Task AddCustomerAsync(CustomerEntity customer)
         {
-            _dbContext = dbContext;
-            _logger = logger;
-        }
+            logger.LogInformation("Adding customer.");
 
-        public async Task AddCustomerAsync(Customer customer)
-        {
-            _logger.LogInformation($"{nameof(AddCustomerAsync)} was called from {nameof(CustomerRepository)}");
+            if (customer == null)
+                throw new ArgumentNullException(nameof(customer));
 
-            await Validator.ValidEntity(customer, _logger);
+            await Validator.ValidEntity(customer, logger);
 
-            await _dbContext.Customers.AddAsync(customer);
-            await _dbContext.SaveChangesAsync();
+            await dbContext.Customers.AddAsync(customer);
+            await dbContext.SaveChangesAsync();
         }
 
         public async Task DeleteCustomerAsync(int id)
         {
-            _logger.LogInformation($"{nameof(DeleteCustomerAsync)} was called from {nameof(CustomerRepository)}");
+            logger.LogInformation("Deleting (soft) customer with Id {CustomerId}.", id);
 
-            var customer = await _dbContext.Customers.FindAsync(id);
-            await Validator.ValidEntity(customer, _logger);
-            if (customer != null)
+            if (id <= 0)
+                throw new ArgumentOutOfRangeException(nameof(id));
+
+            var customer = await dbContext.Customers.FindAsync(id);
+
+            if (customer == null)
             {
-                customer.Status = false;
-                _dbContext.SaveChangesAsync();
+                logger.LogWarning("Customer with Id {CustomerId} not found.", id);
+                return;
             }
+
+            await Validator.ValidEntity(customer, logger);
+
+            customer.Status = false;
+
+            await dbContext.SaveChangesAsync(); // FIX: awaited
         }
 
-        public async Task<IEnumerable<Customer>> GetAllAsync()
+        public async Task<IEnumerable<CustomerEntity>> GetAllAsync()
         {
-            _logger.LogInformation($"{nameof(GetAllAsync)} was called from {nameof(CustomerRepository)}");
+            logger.LogInformation("Fetching all customers.");
 
-            var customersToBeValidated = await _dbContext.Customers.AsNoTracking().ToListAsync();
-            await Validator.ValidEntities(customersToBeValidated, _logger);
+            var customers = await dbContext.Customers
+                .AsNoTracking()
+                .ToListAsync();
 
-            return customersToBeValidated;
+            await Validator.ValidEntities(customers, logger);
+
+            return customers;
         }
 
-        public async Task<Customer> GetByIdAsync(int id)
+        public async Task<CustomerEntity> GetByIdAsync(int id)
         {
-            _logger.LogInformation($"{nameof(GetByIdAsync)} was called from {nameof(CustomerRepository)}");
+            logger.LogInformation("Fetching customer with Id {CustomerId}.", id);
 
-            var customerToBeValidated = await _dbContext.Customers.AsNoTracking().FirstOrDefaultAsync(c => c.Id == id);
-            await Validator.ValidEntity(customerToBeValidated, _logger);
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(id);
 
-            return customerToBeValidated;
+            var customer = await dbContext.Customers
+                .AsNoTracking()
+                .FirstOrDefaultAsync(c => c.Id == id);
+
+            if (customer == null)
+            {
+                logger.LogWarning("Customer with Id {CustomerId} not found.", id);
+            }
+
+            await Validator.ValidEntity(customer, logger);
+
+            return customer ?? throw new InvalidOperationException();
         }
 
-        public async Task UpdateCustomerAsync(Customer customer)
+        public async Task UpdateCustomerAsync(CustomerEntity customer)
         {
-            _logger.LogInformation($"{nameof(UpdateCustomerAsync)} was called from {nameof(CustomerRepository)}");
+            logger.LogInformation("Updating customer with Id {CustomerId}.", customer.Id);
 
-            await Validator.ValidEntity(customer, _logger);
+            ArgumentNullException.ThrowIfNull(customer);
 
-            _dbContext.Customers.Update(customer);
-            await _dbContext.SaveChangesAsync();
+            await Validator.ValidEntity(customer, logger);
+
+            dbContext.Customers.Update(customer);
+            await dbContext.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Customer>> SearchCustomersAsync(string name)
+        public async Task<IEnumerable<CustomerEntity>> SearchCustomersAsync(string name)
         {
-            _logger.LogInformation($"{nameof(SearchCustomersAsync)} was called from {nameof(CustomerRepository)}");
+            logger.LogInformation("Searching customers by name {Name}.", name);
 
-            var customers = await _dbContext.Customers.Where(c => c.Name.Contains(name)).ToListAsync();
-            await Validator.ValidEntities(customers, _logger);
+            if (string.IsNullOrWhiteSpace(name))
+                return Enumerable.Empty<CustomerEntity>();
+
+            var customers = await dbContext.Customers
+                .Where(c => c.Name.Contains(name))
+                .AsNoTracking()
+                .ToListAsync();
+
+            await Validator.ValidEntities(customers, logger);
 
             return customers;
         }
 
         public async Task<int> GetTotalCustomerCountAsync()
         {
-            _logger.LogInformation($"{nameof(GetTotalCustomerCountAsync)} was called from {nameof(CustomerRepository)}");
+            logger.LogInformation("Getting total customer count.");
 
-            return await _dbContext.Customers.CountAsync();
+            return await dbContext.Customers.CountAsync();
         }
 
-        public async Task<IEnumerable<Customer>> FilterCustomersByStatusAsync(bool status, int pageNumber, int pageSize)
+        public async Task<IEnumerable<CustomerEntity>> FilterCustomersByStatusAsync(bool status, int pageNumber, int pageSize)
         {
-            _logger.LogInformation("FilterCustomersByStatusAsync was called from CustomerRepository");
+            logger.LogInformation(
+                "Filtering customers by status {Status}, page {PageNumber}, size {PageSize}.",
+                status, pageNumber, pageSize);
 
-            var customers = await _dbContext.Customers.AsNoTracking().Where(c => c.Status == status).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
-            await Validator.ValidEntities(customers, _logger);
+            if (pageNumber <= 0 || pageSize <= 0)
+                throw new ArgumentOutOfRangeException("status");
+
+            var customers = await dbContext.Customers
+                .AsNoTracking()
+                .Where(c => c.Status == status)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            await Validator.ValidEntities(customers, logger);
 
             return customers;
         }
 
-        public async Task DeleteMultipleCustomers(int[] id)
+        public async Task DeleteMultipleCustomers(int[]? id)
         {
-            _logger.LogInformation("DeleteMultipleCustomers was called from CustomerRepository");
+            logger.LogInformation("Deleting multiple customers.");
 
-            var customers = await _dbContext.Customers.Where(c => id.Contains(c.Id)).ToListAsync();
-            if (customers != null)
+            if (id == null || id.Length == 0)
+                return;
+
+            var customers = await dbContext.Customers
+                .Where(c => id.Contains(c.Id))
+                .ToListAsync();
+
+            if (customers.Count == 0)
             {
-                foreach (var customer in customers)
-                {
-                    customer.Status = false;
-                    await _dbContext.SaveChangesAsync();
-                }
+                logger.LogWarning("No customers found for bulk delete.");
+                return;
             }
+
+            foreach (var customer in customers)
+            {
+                customer.Status = false;
+            }
+
+            await dbContext.SaveChangesAsync();
         }
     }
 }

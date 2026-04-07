@@ -1,48 +1,40 @@
 using AutoMapper;
-using Domain.Helper;
-using Domain.Models;
+using LeavePlanner.Domain.Helper;
+using LeavePlanner.Domain.Models;
 using LeavePlanner.Infrastructure.Interfaces;
-using LeavePlanner.Infrastructure.Repositories;
 using Microsoft.Extensions.Logging;
 
-namespace Domain.Services
+namespace LeavePlanner.Domain.Services
 {
-    public class DocumentService
+    public class DocumentService(
+        IDocumentRepository documentRepository,
+        ICustomerRepository customerRepository,
+        IMapper mapper,
+        ILogger<DocumentService> logger)
     {
-        private readonly IDocumentRepository _documentRepository;
-        private readonly ICustomerRepository _customerRepository;
-        private readonly IMapper _mapper;
-        private readonly ILogger<DocumentService> _logger;
-
-        public DocumentService(IDocumentRepository documentRepository,
-                               ICustomerRepository customerRepository,
-                               IMapper mapper,
-                               ILogger<DocumentService> logger)
-        {
-            _documentRepository = documentRepository;
-            _customerRepository = customerRepository;
-            _mapper = mapper;
-            _logger = logger;
-        }
-
         public async Task<IEnumerable<Document>> GetDocumentsByCustomerIdAsync(int customerId)
         {
-            _logger.LogInformation("GetDocumentsByCustomerIdAsync was called from DocumentService");
+            logger.LogInformation("{MethodName} invoked for Customer ID: {CustomerId}", nameof(GetDocumentsByCustomerIdAsync), customerId);
 
-            var documents = await _documentRepository.GetDocumentsByCustomerIdAsync(customerId);
+            await ValidationHelper.ValidCustomerExists(customerId, customerRepository, logger);
 
-            return _mapper.Map<IEnumerable<Document>>(documents);
+            var documentEntities = await documentRepository.GetDocumentsByCustomerIdAsync(customerId);
+
+            logger.LogInformation("Retrieved {DocumentCount} documents for Customer ID: {CustomerId}", documentEntities.Count(), customerId);
+
+            return mapper.Map<IEnumerable<Document>>(documentEntities);
         }
 
         public async Task DeleteDocument(int customerId, int documentId)
         {
-            _logger.LogInformation($"{nameof(DeleteDocument)} was called from {nameof(DocumentService)}");
+            logger.LogInformation("{MethodName} invoked for Customer ID: {CustomerId}, Document ID: {DocumentId}", nameof(DeleteDocument), customerId, documentId);
 
-            await ValidationHelper.ValidCustomerExists(customerId, _customerRepository, _logger);
-            await DocumentHelper.ValidDocumentExists(customerId, documentId, _documentRepository, _logger);
+            await ValidationHelper.ValidCustomerExists(customerId, customerRepository, logger);
+            await ValidationHelper.ValidDocumentExists(customerId, documentId, documentRepository, logger);
 
-            await _documentRepository.DeleteDocumentAsync(customerId, documentId);
+            await documentRepository.DeleteDocumentAsync(customerId, documentId);
 
+            logger.LogInformation("Document ID: {DocumentId} successfully deleted for Customer ID: {CustomerId}", documentId, customerId);
         }
     }
 }

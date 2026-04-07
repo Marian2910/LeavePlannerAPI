@@ -1,191 +1,177 @@
 ﻿using AutoMapper;
 using Common.DTOs;
-using Domain.Helper;
-using Domain.Models;
+using LeavePlanner.Domain.Helper;
+using LeavePlanner.Domain.Models;
 using LeavePlanner.Infrastructure.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using DocumentEntity = LeavePlanner.Infrastructure.Entities.Document;
+using CustomerEntity = LeavePlanner.Infrastructure.Entities.Customer;
 
-namespace Domain.Services
+namespace LeavePlanner.Domain.Services
 {
-    public class CustomerService
+    public class CustomerService(
+        ICustomerRepository customerRepository,
+        IMapper mapper,
+        ILogger<CustomerService> logger)
     {
-        private readonly ICustomerRepository _customerRepository;
-        private readonly IMapper _mapper;
-        private readonly ILogger<CustomerService> _logger;
-
-        public CustomerService(ICustomerRepository customerRepository, IMapper mapper, ILogger<CustomerService> logger)
+        public async Task AddCustomer(Customer customer)
         {
-            _customerRepository = customerRepository;
-            _mapper = mapper;
-            _logger = logger;
+            logger.LogInformation("Executing {MethodName}", nameof(AddCustomer));
+            var customerEntity = mapper.Map<CustomerEntity>(customer);
+
+            await customerRepository.AddCustomerAsync(customerEntity);
         }
 
-        public async Task AddCustomer(Customer customerDto)
+        public async Task UpdateCustomer(Customer customer)
         {
-            _logger.LogInformation("AddCustomer was called from CustomerService");
+            logger.LogInformation("Executing {MethodName} for Customer ID: {CustomerId}", nameof(UpdateCustomer), customer.Id);
 
-            var customer = _mapper.Map<LeavePlanner.Infrastructure.Entities.Customer>(customerDto);
+            await ValidationHelper.ValidCustomerExists(customer.Id, customerRepository, logger);
+            var updatedCustomerEntity = mapper.Map<CustomerEntity>(customer);
 
-            await _customerRepository.AddCustomerAsync(customer);
-        }
-
-
-        public async Task UpdateCustomer(Customer customerDto)
-        {
-            _logger.LogInformation("UpdateCustomer was called from CustomerService");
-
-            await ValidationHelper.ValidCustomerExists(customerDto.Id, _customerRepository, _logger);
-
-            var updatedCustomer = _mapper.Map<LeavePlanner.Infrastructure.Entities.Customer>(customerDto);
-
-            await _customerRepository.UpdateCustomerAsync(updatedCustomer);
-
+            await customerRepository.UpdateCustomerAsync(updatedCustomerEntity);
         }
 
         public async Task AddDocumentsToCustomer(int id, IEnumerable<IFormFile> formFiles)
         {
-            _logger.LogInformation("AddDocumentsToCustomer was called from CustomerService");
+            logger.LogInformation("Executing {MethodName} for Customer ID: {CustomerId}", nameof(AddDocumentsToCustomer), id);
 
-            await ValidationHelper.ValidCustomerExists(id, _customerRepository, _logger);
+            await ValidationHelper.ValidCustomerExists(id, customerRepository, logger);
 
-            var receivedCustomer = GetCustomerByIdAsync(id).Result;
-            var customer = _mapper.Map<LeavePlanner.Infrastructure.Entities.Customer>(receivedCustomer);
-
+            var customerEntity = await customerRepository.GetByIdAsync(id)
+                                    ?? throw new InvalidOperationException($"Customer with ID {id} not found.");
+            
             foreach (var file in formFiles)
             {
                 using var memoryStream = new MemoryStream();
                 await file.CopyToAsync(memoryStream);
-                if (memoryStream.Length > 0 && (file.ContentType == "application/pdf" || file.ContentType == "application/vnd.openxmlformats-officedocument.wordprocessingml.document" || file.ContentType == "application/msword"))
+
+                if (memoryStream.Length == 0 || 
+                    (file.ContentType != "application/pdf" && file.ContentType != "application/vnd.openxmlformats-officedocument.wordprocessingml.document" && file.ContentType != "application/msword"))
                 {
-                    var fileByte = memoryStream.ToArray();
-                    var document = new LeavePlanner.Infrastructure.Entities.Document
-                    {
-                        Name = file.FileName,
-                        Type = file.ContentType,
-                        Date = DateTime.Now,
-                        File = fileByte,
-                        Customer = customer,
-                    };
-                    customer.Documents.Add(document);
+                    throw new ArgumentException("Only PDF or DOCX files are supported.");
                 }
-                else
+
+                var document = new DocumentEntity
                 {
-                    throw new Exception("Only PDF or DOCX files!");
-                }
+                    Name = file.FileName,
+                    Type = file.ContentType,
+                    CreatedAt = DateTime.Now,
+                    File = memoryStream.ToArray(),
+                    Customer = customerEntity,
+                };
+
+                customerEntity.Documents?.Add(document);
             }
 
-            await _customerRepository.UpdateCustomerAsync(customer);
-
+            await customerRepository.UpdateCustomerAsync(customerEntity);
         }
 
         public async Task DeleteCustomer(int customerId)
         {
-            _logger.LogInformation("DeleteCustomer was called from CustomerService");
+            logger.LogInformation("Executing {MethodName} for Customer ID: {CustomerId}", nameof(DeleteCustomer), customerId);
 
-            await ValidationHelper.ValidCustomerExists(customerId, _customerRepository, _logger);
+            await ValidationHelper.ValidCustomerExists(customerId, customerRepository, logger);
 
-            await _customerRepository.DeleteCustomerAsync(customerId);
+            await customerRepository.DeleteCustomerAsync(customerId);
         }
 
         public async Task<PagedResultDto<Customer>> GetCustomersAsync(int pageNumber, int pageSize, string? sortDirection = null, string? sortCriteria = null, bool? status = null, string? search = null)
         {
-            _logger.LogInformation("GetCustomerAsync was called from CustomerService");
+            logger.LogInformation("Executing {MethodName}", nameof(GetCustomersAsync));
 
-            await ValidationHelper.ValidPagination(pageNumber, pageSize, _logger);
+            await ValidationHelper.ValidPagination(pageNumber, pageSize, logger);
 
-            var customerEntities = await _customerRepository.GetAllAsync();
+            var customerEntities = search != null
+                ? await customerRepository.SearchCustomersAsync(search)
+                : await customerRepository.GetAllAsync();
 
-            var customers = _mapper.Map<IEnumerable<Customer>>(customerEntities);
+            var customers = mapper.Map<IEnumerable<Customer>>(customerEntities);
 
-            var totalCount = await _customerRepository.GetTotalCustomerCountAsync();
-
-            if (search != null) {
-                customerEntities = await _customerRepository.SearchCustomersAsync(search);
-                customers = _mapper.Map<IEnumerable<Customer>>(customerEntities);
-            }
-
-            if (sortDirection != null && sortCriteria != null)
+            if (sortCriteria != null && sortDirection != null)
             {
-                customers = sortCriteria.ToLower() switch
-                {
-                    "name" => sortDirection.ToLower() == "asc" ? customers.OrderBy(c => c.Name).ToList() : customers.OrderByDescending(c => c.Name).ToList(),
-                    "date" => sortDirection.ToLower() == "asc" ? customers.OrderBy(c => c.Date).ToList() : customers.OrderByDescending(c => c.Date).ToList(),
-                    _ => throw new Exception("Invalid sorting criteria.")
-                };
+                customers = SortCustomers(customers, sortCriteria, sortDirection);
             }
 
-            if (status != null) {
-                customers = customers.Where(x => x.Status == status);
-            }
-
-
-            var pagedCustomers = GetAllPaged(customers, pageNumber, pageSize);
-
-            var pagedResultDto = new PagedResultDto<Customer>
+            if (status.HasValue)
             {
-                Items = _mapper.Map<IEnumerable<Customer>>(pagedCustomers),
+                customers = customers.Where(c => c.Status == status.Value);
+            }
+
+            var totalCount = await customerRepository.GetTotalCustomerCountAsync();
+            var pagedCustomers = GetPagedResults(customers, pageNumber, pageSize);
+
+            return new PagedResultDto<Customer>
+            {
+                Items = pagedCustomers.ToList(),
                 TotalCount = totalCount
             };
-
-            return pagedResultDto;
         }
 
         public async Task<Customer> GetCustomerByIdAsync(int id)
         {
-            _logger.LogInformation("GetCustomerByIdAsync was called from CustomerService");
+            logger.LogInformation("Executing {MethodName} for Customer ID: {CustomerId}", nameof(GetCustomerByIdAsync), id);
 
-            var customerEntity = await _customerRepository.GetByIdAsync(id);
+            var customerEntity = await customerRepository.GetByIdAsync(id)
+                                ?? throw new InvalidOperationException($"Customer with ID {id} not found.");
 
-            await ValidationHelper.ValidCustomerExists(id, _customerRepository, _logger);
-
-            var customer = _mapper.Map<Domain.Models.Customer>(customerEntity);
-
-            return _mapper.Map<Domain.Models.Customer>(customerEntity);
+            return mapper.Map<Customer>(customerEntity);
         }
 
         public async Task<PagedResultDto<Customer>> SearchCustomersByNameAsync(string name, int pageNumber, int pageSize)
         {
-            _logger.LogInformation("SearchCustomersByNameAsync was called from CustomerService");
+            logger.LogInformation("Executing {MethodName} with Search Term: {SearchTerm}", nameof(SearchCustomersByNameAsync), name);
 
-            var customerEntities = await _customerRepository.SearchCustomersAsync(name);
+            await ValidationHelper.ValidPagination(pageNumber, pageSize, logger);
 
-            var customers = _mapper.Map<IEnumerable<Customer>>(customerEntities);
+            var customerEntities = await customerRepository.SearchCustomersAsync(name);
+            var customers = mapper.Map<IEnumerable<Customer>>(customerEntities);
 
-            var pagedCustomers = GetAllPaged(customers, pageNumber, pageSize);
+            var pagedCustomers = GetPagedResults(customers, pageNumber, pageSize);
 
-            var pagedResultDto = new PagedResultDto<Customer>
+            return new PagedResultDto<Customer>
             {
-                Items = _mapper.Map<List<Customer>>(pagedCustomers),
+                Items = pagedCustomers.ToList(),
                 TotalCount = customerEntities.Count()
             };
-
-            return pagedResultDto;
         }
 
         public async Task<IEnumerable<Customer>> FilterCustomersByStatusAsync(bool status, int pageNumber, int pageSize)
         {
-            _logger.LogInformation("FilterCustomersByStatusAsync was called from CustomerService");
+            logger.LogInformation("Executing {MethodName} with Status: {Status}", nameof(FilterCustomersByStatusAsync), status);
 
-            await ValidationHelper.ValidPagination(pageNumber, pageSize, _logger);
+            await ValidationHelper.ValidPagination(pageNumber, pageSize, logger);
 
-            var pagedFilteredCustomers = await _customerRepository.FilterCustomersByStatusAsync(status, pageNumber, pageSize);
+            var filteredCustomers = await customerRepository.FilterCustomersByStatusAsync(status, pageNumber, pageSize);
 
-            return _mapper.Map<IEnumerable<Customer>>(pagedFilteredCustomers);
+            return mapper.Map<IEnumerable<Customer>>(filteredCustomers);
         }
 
-        public IEnumerable<Customer> GetAllPaged(IEnumerable<Customer> customers, int pageNumber, int pageSize)
+        public async Task DeleteMultipleCustomers(int[] ids)
         {
-            _logger.LogInformation("GetAllPaged was called from CustomerRepository");
+            logger.LogInformation("Executing {MethodName} for Customer IDs: {CustomerIds}", nameof(DeleteMultipleCustomers), ids);
 
-            return customers.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            await customerRepository.DeleteMultipleCustomers(ids);
         }
 
-        public async Task DeleteMulipleCustomers(int[] id)
+        private static IEnumerable<Customer> GetPagedResults(IEnumerable<Customer> customers, int pageNumber, int pageSize)
         {
-            _logger.LogInformation("DeleteMultipleCustomers was called from CustomerService");
+            return customers.Skip((pageNumber - 1) * pageSize).Take(pageSize);
+        }
 
-            await _customerRepository.DeleteMultipleCustomers(id);
+        private static IEnumerable<Customer> SortCustomers(IEnumerable<Customer> customers, string sortCriteria, string sortDirection)
+        {
+            return sortCriteria.ToLower() switch
+            {
+                "name" => sortDirection.ToLower() == "asc"
+                        ? customers.OrderBy(c => c.Name)
+                        : customers.OrderByDescending(c => c.Name),
+                "date" => sortDirection.ToLower() == "asc"
+                        ? customers.OrderBy(c => c.Date)
+                        : customers.OrderByDescending(c => c.Date),
+                _ => throw new ArgumentException($"Invalid sorting criteria: {sortCriteria}.")
+            };
         }
     }
 }

@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj" />
+    <ProjectReference Include="..\LeavePlanner.Common\LeavePlanner.Common.csproj" />
     <ProjectReference Include="..\LeavePlanner.Infrastructure\LeavePlanner.Infrastructure.csproj" />
   </ItemGroup>
 

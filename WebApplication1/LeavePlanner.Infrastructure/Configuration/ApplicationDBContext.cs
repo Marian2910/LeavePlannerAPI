@@ -3,9 +3,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LeavePlanner.Infrastructure.Configuration
 {
-    public class ApplicationDBContext : DbContext
+    public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
     {
-        public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options) { }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Document> Documents { get; set; }

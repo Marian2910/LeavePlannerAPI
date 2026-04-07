@@ -3,31 +3,22 @@ using Common.DTOs;
 using LeavePlanner.Infrastructure.Interfaces;
 using Microsoft.Extensions.Logging;
 
-namespace Domain.Services
+namespace LeavePlanner.Domain.Services
 {
-    public class EventService
+    public class EventService(
+        IEventRepository eventRepository,
+        IMapper mapper,
+        ILogger<EventService> logger)
     {
-        private readonly IEventRepository _eventRepository;
-        private readonly IMapper _mapper;
-        private readonly ILogger<EventService> _logger;
-
-        public EventService(IEventRepository eventRepository, IMapper mapper, ILogger<EventService> logger)
-        {
-            _eventRepository = eventRepository;
-            _mapper = mapper;
-            _logger = logger;
-        }
-
+        
         public async Task<IEnumerable<EventDto>> GetAllEventsAsync()
         {
-            _logger.LogInformation("GetAllEventsAsync was called from EventService");
+            logger.LogInformation("Fetching all events.");
 
-            var events = await _eventRepository.GetAllAsync();
-            var mappedEvents = _mapper.Map<IEnumerable<Domain.Models.Event>>(events);
+            var eventEntities = await eventRepository.GetAllAsync();
 
-            return _mapper.Map<IEnumerable<Common.DTOs.EventDto>>(mappedEvents);
+            // Direct mapping to DTOs (avoid unnecessary intermediate mapping)
+            return mapper.Map<IEnumerable<EventDto>>(eventEntities);
         }
-
     }
-
 }

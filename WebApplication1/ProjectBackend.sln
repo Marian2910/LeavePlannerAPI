@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectBackend", "WebApplication1\ProjectBackend.csproj", "{296D2E18-2A33-4175-A2BC-12FBCEC61912}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeavePlanner.Api", "WebApplication1\LeavePlanner.Api.csproj", "{296D2E18-2A33-4175-A2BC-12FBCEC61912}"
 	ProjectSection(ProjectDependencies) = postProject
 		{B5658E5F-88DC-43A6-B2A6-E331C2F282CC} = {B5658E5F-88DC-43A6-B2A6-E331C2F282CC}
 		{DFB6425A-1197-4E6D-AC27-69730E50CCCA} = {DFB6425A-1197-4E6D-AC27-69730E50CCCA}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{DFB6425A-1197-4E6D-AC27-69730E50CCCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeavePlanner.Common", "LeavePlanner.Common\LeavePlanner.Common.csproj", "{DFB6425A-1197-4E6D-AC27-69730E50CCCA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{00FF8F03-FD1C-4B57-9CEC-C42AF45B704D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeavePlanner.Domain", "LeavePlanner.Domain\LeavePlanner.Domain.csproj", "{00FF8F03-FD1C-4B57-9CEC-C42AF45B704D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{C69E4A59-E178-4694-9B9C-8FB0B1EBDBFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeavePlanner.Infrastructure", "LeavePlanner.Infrastructure\LeavePlanner.Infrastructure.csproj", "{C69E4A59-E178-4694-9B9C-8FB0B1EBDBFB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject1", "TestProject1\TestProject1.csproj", "{B5658E5F-88DC-43A6-B2A6-E331C2F282CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeavePlanner.Tests", "LeavePlanner.Tests\LeavePlanner.Tests.csproj", "{B5658E5F-88DC-43A6-B2A6-E331C2F282CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

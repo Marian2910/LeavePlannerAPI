@@ -1,75 +1,84 @@
-﻿using LeavePlanner.Infrastructure.Configuration;
-using LeavePlanner.Infrastructure.Entities;
-using LeavePlanner.Infrastructure.Interfaces;
+﻿using LeavePlanner.Infrastructure.Interfaces;
 using LeavePlanner.Infrastructure.Validators;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using LeavePlanner.Infrastructure.Configuration;
+using PersonalEventEntity = LeavePlanner.Infrastructure.Entities.PersonalEvent;
 
 namespace LeavePlanner.Infrastructure.Repositories
 {
-    public class PersonalEventRepository : IPersonalEventRepository
+    public class PersonalEventRepository(ApplicationDbContext dbContext, ILogger<PersonalEventRepository> logger) : IPersonalEventRepository
     {
-        private readonly ApplicationDBContext _dbContext;
-        private readonly ILogger<PersonalEventRepository> _logger;
-
-        public PersonalEventRepository(ApplicationDBContext dbContext, ILogger<PersonalEventRepository> logger)
+        public async Task AddPersonalEventAsync(PersonalEventEntity personalEvent)
         {
-            _dbContext = dbContext;
-            _logger = logger;
+            logger.LogInformation(
+                "Adding personal event for employee {EmployeeId}.",
+                personalEvent.EmployeeId);
+
+            ArgumentNullException.ThrowIfNull(personalEvent);
+
+            await Validator.ValidEntity(personalEvent, logger);
+
+            // Ensure EF does not try to insert/update Employee
+            dbContext.Entry(personalEvent.Employee).State = EntityState.Unchanged;
+
+            await dbContext.PersonalEvents.AddAsync(personalEvent);
+            await dbContext.SaveChangesAsync();
         }
 
-        public async Task AddPersonalEventAsync(PersonalEvent personalEvent)
+        public async Task<IEnumerable<PersonalEventEntity>> GetAllPersonalEventsAsync()
         {
-            _logger.LogInformation($"{nameof(AddPersonalEventAsync)} was called from {nameof(PersonalEventRepository)}");
+            logger.LogInformation("Fetching all personal events.");
 
-            await Validator.ValidEntity(personalEvent, _logger);
+            var personalEvents = await dbContext.PersonalEvents
+                .AsNoTracking()
+                .Include(e => e.Employee)
+                .ToListAsync();
 
-            if (personalEvent.Employee != null)
+            await Validator.ValidEntities(personalEvents, logger);
+
+            return personalEvents;
+        }
+
+        public async Task<PersonalEventEntity> GetPersonalEventByIdAsync(int id)
+        {
+            logger.LogInformation("Fetching personal event with Id {EventId}.", id);
+
+            if (id <= 0)
+                throw new ArgumentOutOfRangeException(nameof(id));
+
+            var personalEvent = await dbContext.PersonalEvents
+                .Include(e => e.Employee)
+                .FirstOrDefaultAsync(e => e.Id == id);
+
+            if (personalEvent == null)
             {
-                _dbContext.Entry(personalEvent.Employee).State = EntityState.Unchanged;
+                logger.LogWarning("Personal event with Id {EventId} not found.", id);
             }
 
-            await _dbContext.PersonalEvents.AddAsync(personalEvent);
-            await _dbContext.SaveChangesAsync();
+            await Validator.ValidEntity(personalEvent, logger);
+
+            return personalEvent ?? throw new InvalidOperationException();
         }
 
-        public async Task<IEnumerable<PersonalEvent>> GetAllPersonalEventsAsync()
+        public async Task<IEnumerable<PersonalEventEntity>> GetPersonalEventsByEmployeeIdAsync(int employeeId)
         {
-            _logger.LogInformation($"{nameof(GetAllPersonalEventsAsync)} was called from {nameof(PersonalEventRepository)}");
+            logger.LogInformation(
+                "Fetching personal events for employee {EmployeeId}.",
+                employeeId);
 
-            var personalEventsToBeValidated = await _dbContext.PersonalEvents
-                                                              .Include(e => e.Employee)
-                                                              .AsNoTracking()
-                                                              .ToListAsync();
-            await Validator.ValidEntities(personalEventsToBeValidated, _logger);
-            
-            return personalEventsToBeValidated;
-        }
-         
-        public async Task<PersonalEvent> GetPersonalEventByIdAsync(int id)
-        {
-            _logger.LogInformation($"{nameof(GetPersonalEventByIdAsync)} was called from {nameof(PersonalEventRepository)}");
+            if (employeeId <= 0)
+                throw new ArgumentOutOfRangeException(nameof(employeeId));
 
-            var personalEventToBeValidated = await _dbContext.PersonalEvents
-                                                             .Include(e => e.Employee)
-                                                             .FirstOrDefaultAsync(c => c.Id == id);
-            await Validator.ValidEntity(personalEventToBeValidated, _logger);
+            var personalEvents = await dbContext.PersonalEvents
+                .AsNoTracking()
+                .Include(e => e.Employee)
+                .Where(e => e.EmployeeId == employeeId) // FIX: avoid navigation property
+                .ToListAsync();
 
-            return personalEventToBeValidated;
-        }
+            await Validator.ValidEntities(personalEvents, logger);
 
-        public async Task<IEnumerable<PersonalEvent>> GetPersonalEventsByEmployeeIdAsync(int employeeId)
-        {
-            _logger.LogInformation($"{nameof(GetPersonalEventsByEmployeeIdAsync)} was called from {nameof(PersonalEventRepository)}");
-
-            var personalEventsToBeValidated = await _dbContext.PersonalEvents
-                                                              .Include(e => e.Employee)
-                                                              .AsNoTracking()
-                                                              .Where(e => e.Employee.Id == employeeId)
-                                                              .ToListAsync();
-            await Validator.ValidEntities(personalEventsToBeValidated, _logger);
-
-            return personalEventsToBeValidated;
+            return personalEvents;
         }
     }
 }

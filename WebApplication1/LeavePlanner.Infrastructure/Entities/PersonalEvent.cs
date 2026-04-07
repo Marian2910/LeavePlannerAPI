@@ -2,6 +2,10 @@
 {
     public class PersonalEvent : Event
     {
-        public Employee Employee { get; set; }
+        // Foreign key
+        public int EmployeeId { get; set; }
+
+        // Navigation property
+        public Employee Employee { get; set; } = null!;
     }
 }

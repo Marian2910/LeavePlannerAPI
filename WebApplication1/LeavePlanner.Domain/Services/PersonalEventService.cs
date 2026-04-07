@@ -1,68 +1,96 @@
 ﻿using AutoMapper;
-using Domain.Helper;
-using Domain.Models;
-using LeavePlanner.Infrastructure.Exceptions;
+using LeavePlanner.Domain.Helper;
+using LeavePlanner.Domain.Models;
 using LeavePlanner.Infrastructure.Interfaces;
 using Microsoft.Extensions.Logging;
+using PersonalEventEntity = LeavePlanner.Infrastructure.Entities.PersonalEvent;
 
-namespace Domain.Services
+namespace LeavePlanner.Domain.Services
 {
-    public class PersonalEventService
+    public class PersonalEventService(
+        IPersonalEventRepository personalEventRepository,
+        IEmployeeRepository employeeRepository,
+        IMapper mapper,
+        ILogger<PersonalEventService> logger)
     {
-        private readonly IPersonalEventRepository _personalEventRepository;
-        private readonly IEmployeeRepository _employeeRepository;
-        private readonly IMapper _mapper;
-        private readonly ILogger<PersonalEventService> _logger;
-
-        public PersonalEventService(IPersonalEventRepository personalEventRepository, IEmployeeRepository employeeRepository, IMapper mapper, ILogger<PersonalEventService> logger)
+        public async Task AddEventAsync(PersonalEvent? personalEvent)
         {
-            _personalEventRepository = personalEventRepository;
-            _employeeRepository = employeeRepository;
-            _mapper = mapper;
-            _logger = logger;
-        }
+            logger.LogInformation(
+                "Adding personal event for employee {EmployeeId}.",
+                personalEvent?.EmployeeId);
 
-        public async Task AddEventAsync(PersonalEvent personalEvent)
-        {
-            _logger.LogInformation("AddEventAsync was called from PersonalEventService");
-            var existingEmployee = await _employeeRepository.GetByIdAsync(personalEvent.EmployeeId) ?? throw new NullEntity("Employee not found.");
+            ArgumentNullException.ThrowIfNull(personalEvent);
+            
 
-            int leaveDaysToSubstract = EventHelper.getWorkDaysBetweenDates(personalEvent.StartDate, personalEvent.EndDate);
-            if (leaveDaysToSubstract > existingEmployee.RemainingLeaveDays)
+            var existingEmployee = await employeeRepository.GetByIdAsync(personalEvent.EmployeeId);
+            
+
+            int leaveDaysToSubtract = EventHelper.GetWorkDaysBetweenDates(
+                personalEvent.StartDate,
+                personalEvent.EndDate);
+
+            if (leaveDaysToSubtract > existingEmployee.RemainingLeaveDays)
             {
-                throw new InvalidOperationException("Employee does not have enough leave days.");
+                throw new InvalidOperationException(
+                    $"Employee {personalEvent.EmployeeId} does not have enough leave days.");
             }
-            existingEmployee.RemainingLeaveDays -= leaveDaysToSubstract;
 
-            var personalEventMapped = _mapper.Map<LeavePlanner.Infrastructure.Entities.PersonalEvent>(personalEvent);
-            personalEventMapped.Employee = existingEmployee;
+            existingEmployee.RemainingLeaveDays -= leaveDaysToSubtract;
 
-            await _employeeRepository.UpdateEmployeeAsync(existingEmployee);
-            await _personalEventRepository.AddPersonalEventAsync(personalEventMapped);
+            var personalEventEntity = mapper.Map<PersonalEventEntity>(personalEvent);
+            personalEventEntity.Employee = existingEmployee;
+
+            await employeeRepository.UpdateEmployeeAsync(existingEmployee);
+            await personalEventRepository.AddPersonalEventAsync(personalEventEntity);
+
+            logger.LogInformation(
+                "Personal event added for employee {EmployeeId}. Days subtracted: {Days}.",
+                personalEvent.EmployeeId,
+                leaveDaysToSubtract);
         }
 
         public async Task<IEnumerable<PersonalEvent>> GetAllPersonalEventsAsync()
         {
-            _logger.LogInformation("GetAllPersonalEventsAsync was called from PersonalEventService");
+            logger.LogInformation("Fetching all personal events.");
 
-            var personalEvents = await _personalEventRepository.GetAllPersonalEventsAsync();
-            return _mapper.Map<IEnumerable<Domain.Models.PersonalEvent>>(personalEvents);
+            var personalEventEntities = await personalEventRepository.GetAllPersonalEventsAsync();
+
+            return mapper.Map<IEnumerable<PersonalEvent>>(personalEventEntities);
         }
 
         public async Task<PersonalEvent> GetPersonalEventByIdAsync(int id)
         {
-            _logger.LogInformation("GetPersonalEventByIdAsync was called from PersonalEventService");
+            logger.LogInformation("Fetching personal event with Id {EventId}.", id);
 
-            var personalEvent = await _personalEventRepository.GetPersonalEventByIdAsync(id);
-            return _mapper.Map<PersonalEvent>(personalEvent);
+            if (id <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(id), "Event ID must be greater than zero.");
+            }
+
+            var personalEventEntity = await personalEventRepository.GetPersonalEventByIdAsync(id);
+
+            if (personalEventEntity == null)
+            {
+                throw new KeyNotFoundException($"Personal event with ID {id} not found.");
+            }
+
+            return mapper.Map<PersonalEvent>(personalEventEntity);
         }
 
         public async Task<IEnumerable<PersonalEvent>> GetPersonalEventsByEmployeeId(int employeeId)
         {
-            _logger.LogInformation("GetPersonalEventsByEmployeeId was called from PersonalEventService");
+            logger.LogInformation(
+                "Fetching personal events for employee {EmployeeId}.",
+                employeeId);
 
-            var personalEvents = await _personalEventRepository.GetPersonalEventsByEmployeeIdAsync(employeeId);
-            return _mapper.Map<IEnumerable<Domain.Models.PersonalEvent>>(personalEvents);
+            if (employeeId <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(employeeId), "Employee ID must be greater than zero.");
+            }
+
+            var personalEventEntities = await personalEventRepository.GetPersonalEventsByEmployeeIdAsync(employeeId);
+
+            return mapper.Map<IEnumerable<PersonalEvent>>(personalEventEntities);
         }
     }
 }

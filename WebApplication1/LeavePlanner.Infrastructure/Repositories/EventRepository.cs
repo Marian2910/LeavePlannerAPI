@@ -1,29 +1,24 @@
-﻿using LeavePlanner.Infrastructure.Configuration;
-using LeavePlanner.Infrastructure.Entities;
-using LeavePlanner.Infrastructure.Interfaces;
+﻿using LeavePlanner.Infrastructure.Interfaces;
 using LeavePlanner.Infrastructure.Validators;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using LeavePlanner.Infrastructure.Configuration;
+using EventEntity = LeavePlanner.Infrastructure.Entities.Event;
 
 namespace LeavePlanner.Infrastructure.Repositories
 {
-    public class EventRepository : IEventRepository
+    public class EventRepository(ApplicationDbContext dbContext, ILogger<EventRepository> logger) : IEventRepository
     {
-        private readonly ApplicationDBContext _dbContext;
-        private readonly ILogger<EventRepository> _logger;
-
-        public EventRepository(ApplicationDBContext dBContext, ILogger<EventRepository> logger)
+        public async Task<IEnumerable<EventEntity>> GetAllAsync()
         {
-            _dbContext = dBContext;
-            _logger = logger;
-        }
+            logger.LogInformation("Fetching all base events.");
 
-        public async Task<IEnumerable<Event>> GetAllAsync()
-        {
-            _logger.LogInformation($"{nameof(GetAllAsync)} was called from {nameof(EventRepository)}");
+            var events = await dbContext.Events
+                .AsNoTracking()
+                .Where(e => EF.Property<string>(e, "Discriminator") == "Event")
+                .ToListAsync();
 
-            var events = await _dbContext.Events.Where(e => e.Discriminator == "Event").ToListAsync();
-            await Validator.ValidEntities(events, _logger);
+            await Validator.ValidEntities(events, logger);
 
             return events;
         }

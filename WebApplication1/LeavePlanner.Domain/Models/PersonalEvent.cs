@@ -1,4 +1,4 @@
-﻿namespace Domain.Models
+﻿namespace LeavePlanner.Domain.Models
 {
     public class PersonalEvent : Event
     {

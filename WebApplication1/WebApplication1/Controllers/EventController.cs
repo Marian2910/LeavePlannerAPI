@@ -1,32 +1,33 @@
 ﻿using AutoMapper;
 using Common.DTOs;
-using Domain.Services;
+using LeavePlanner.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
-namespace ProjectBackend.Controllers
+namespace LeavePlanner.Api.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public class EventController(EventService eventService, IMapper mapper, ILogger<EventController> logger) : ControllerBase
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class EventController : ControllerBase
+    private readonly EventService _eventService = eventService ?? throw new ArgumentNullException(nameof(eventService));
+    private readonly ILogger<EventController> _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+    private readonly IMapper _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<EventDto>>> GetAllEvents()
     {
-        private readonly EventService _eventService;
-        private readonly IMapper _mapper;
-        private readonly ILogger<EventController> _logger;
+        _logger.LogInformation("Fetching all events.");
 
-        public EventController(EventService eventService, IMapper mapper, ILogger<EventController> logger)
+        var events = await _eventService.GetAllEventsAsync();
+
+        if (!events.Any())
         {
-            _eventService = eventService;
-            _mapper = mapper;
-            _logger = logger;
+            _logger.LogInformation("No events found.");
+            return NotFound(new { message = "No events found." });
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<EventDto>>> GetAllEvents()
-        {
-            _logger.LogInformation($"{nameof(GetAllEvents)} was called from {nameof(EventController)}");
-            var events = await _eventService.GetAllEventsAsync();
-            return Ok(events);
-        }
-
+        _logger.LogInformation("Successfully retrieved all events.");
+        return Ok(events);
     }
 }

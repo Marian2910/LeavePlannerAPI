@@ -6,7 +6,9 @@ namespace LeavePlanner.Infrastructure.Entities
     {
         [Key]
         public int Id { get; set; }
+        
         [Required(ErrorMessage = "Name is required!")]
-        public string Name { get; set; }
+        [MaxLength(50)]
+        public required string Name { get; set; }
     }
 }

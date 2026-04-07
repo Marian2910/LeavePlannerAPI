@@ -1,0 +1,260 @@
+{
+  "scannerProperties": [
+    {
+      "key": "sonar.scanner.app",
+      "value": "ScannerMSBuild"
+    },
+    {
+      "key": "sonar.scanner.appVersion",
+      "value": "11.2.1"
+    },
+    {
+      "key": "sonar.scanner.bootstrapStartTime",
+      "value": "1775334681000"
+    },
+    {
+      "key": "sonar.projectKey",
+      "value": "LeavePlanner"
+    },
+    {
+      "key": "sonar.working.directory",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/.sonar"
+    },
+    {
+      "key": "sonar.projectBaseDir",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1"
+    },
+    {
+      "key": "sonar.pullrequest.cache.basepath",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1"
+    },
+    {
+      "key": "sonar.sources",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/Common/obj/Common.csproj.nuget.dgspec.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/Common/obj/project.assets.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/Domain/obj/Domain.csproj.nuget.dgspec.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/Domain/obj/project.assets.json"
+    },
+    {
+      "key": "sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "sonar.modules",
+      "value": "DFB6425A-1197-4E6D-AC27-69730E50CCCA,00FF8F03-FD1C-4B57-9CEC-C42AF45B704D,C69E4A59-E178-4694-9B9C-8FB0B1EBDBFB,B5658E5F-88DC-43A6-B2A6-E331C2F282CC,296D2E18-2A33-4175-A2BC-12FBCEC61912"
+    },
+    {
+      "key": "DFB6425A-1197-4E6D-AC27-69730E50CCCA.sonar.projectKey",
+      "value": "LeavePlanner:DFB6425A-1197-4E6D-AC27-69730E50CCCA"
+    },
+    {
+      "key": "DFB6425A-1197-4E6D-AC27-69730E50CCCA.sonar.projectName",
+      "value": "LeavePlanner.Common"
+    },
+    {
+      "key": "DFB6425A-1197-4E6D-AC27-69730E50CCCA.sonar.projectBaseDir",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common"
+    },
+    {
+      "key": "DFB6425A-1197-4E6D-AC27-69730E50CCCA.sonar.working.directory",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/.sonar/mod0"
+    },
+    {
+      "key": "DFB6425A-1197-4E6D-AC27-69730E50CCCA.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "DFB6425A-1197-4E6D-AC27-69730E50CCCA.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "DFB6425A-1197-4E6D-AC27-69730E50CCCA.sonar.sources",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/DTOs/CustomerDto.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/DTOs/EventDto.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/DTOs/PagedResultDto.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/DTOs/PersonalEventDto.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/DTOs/UpdateCustomerDto.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/Helper/EmployeeHelper.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/obj/LeavePlanner.Common.csproj.nuget.dgspec.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/obj/Common.csproj.nuget.dgspec.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/obj/project.packagespec.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/obj/project.assets.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/obj/Debug/net8.0/Common.sourcelink.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/obj/Debug/net8.0/LeavePlanner.Common.sourcelink.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/bin/Debug/net8.0/LeavePlanner.Common.deps.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/bin/Debug/net8.0/Common.runtimeconfig.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/bin/Debug/net8.0/LeavePlanner.Common.runtimeconfig.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/bin/Debug/net8.0/Common.deps.json"
+    },
+    {
+      "key": "DFB6425A-1197-4E6D-AC27-69730E50CCCA.sonar.cs.analyzer.projectOutPaths",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/0,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/5"
+    },
+    {
+      "key": "DFB6425A-1197-4E6D-AC27-69730E50CCCA.sonar.cs.roslyn.reportFilePaths",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/0/Issues.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/5/Issues.json"
+    },
+    {
+      "key": "DFB6425A-1197-4E6D-AC27-69730E50CCCA.sonar.cs.scanner.telemetry",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/0/Telemetry.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/5/Telemetry.json"
+    },
+    {
+      "key": "00FF8F03-FD1C-4B57-9CEC-C42AF45B704D.sonar.projectKey",
+      "value": "LeavePlanner:00FF8F03-FD1C-4B57-9CEC-C42AF45B704D"
+    },
+    {
+      "key": "00FF8F03-FD1C-4B57-9CEC-C42AF45B704D.sonar.projectName",
+      "value": "LeavePlanner.Domain"
+    },
+    {
+      "key": "00FF8F03-FD1C-4B57-9CEC-C42AF45B704D.sonar.projectBaseDir",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain"
+    },
+    {
+      "key": "00FF8F03-FD1C-4B57-9CEC-C42AF45B704D.sonar.working.directory",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/.sonar/mod1"
+    },
+    {
+      "key": "00FF8F03-FD1C-4B57-9CEC-C42AF45B704D.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "00FF8F03-FD1C-4B57-9CEC-C42AF45B704D.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "00FF8F03-FD1C-4B57-9CEC-C42AF45B704D.sonar.sources",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/obj/Domain.csproj.nuget.dgspec.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/obj/project.packagespec.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/obj/project.assets.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/obj/LeavePlanner.Domain.csproj.nuget.dgspec.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/obj/Debug/net8.0/LeavePlanner.Domain.sourcelink.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/obj/Debug/net8.0/Domain.sourcelink.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/bin/Debug/net8.0/Domain.deps.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/bin/Debug/net8.0/Domain.runtimeconfig.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/bin/Debug/net8.0/LeavePlanner.Domain.runtimeconfig.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/bin/Debug/net8.0/LeavePlanner.Domain.deps.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/Helper/DocumentHelper.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/Helper/EventHelper.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/Helper/ValidationHelper.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/MappingProfiles/MappingProfiles.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/Models/Customer.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/Models/Department.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/Models/Document.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/Models/Employee.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/Models/Event.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/Models/Job.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/Models/PersonalEvent.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/Services/CustomerService.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/Services/DocumentService.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/Services/EmployeeService.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/Services/EventService.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/Services/PersonalEventService.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/Services/Schedulers/AnniversaryScheduler.cs"
+    },
+    {
+      "key": "00FF8F03-FD1C-4B57-9CEC-C42AF45B704D.sonar.cs.analyzer.projectOutPaths",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/7,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/2"
+    },
+    {
+      "key": "00FF8F03-FD1C-4B57-9CEC-C42AF45B704D.sonar.cs.roslyn.reportFilePaths",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/7/Issues.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/2/Issues.json"
+    },
+    {
+      "key": "00FF8F03-FD1C-4B57-9CEC-C42AF45B704D.sonar.cs.scanner.telemetry",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/7/Telemetry.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/2/Telemetry.json"
+    },
+    {
+      "key": "C69E4A59-E178-4694-9B9C-8FB0B1EBDBFB.sonar.projectKey",
+      "value": "LeavePlanner:C69E4A59-E178-4694-9B9C-8FB0B1EBDBFB"
+    },
+    {
+      "key": "C69E4A59-E178-4694-9B9C-8FB0B1EBDBFB.sonar.projectName",
+      "value": "LeavePlanner.Infrastructure"
+    },
+    {
+      "key": "C69E4A59-E178-4694-9B9C-8FB0B1EBDBFB.sonar.projectBaseDir",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure"
+    },
+    {
+      "key": "C69E4A59-E178-4694-9B9C-8FB0B1EBDBFB.sonar.working.directory",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/.sonar/mod2"
+    },
+    {
+      "key": "C69E4A59-E178-4694-9B9C-8FB0B1EBDBFB.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "C69E4A59-E178-4694-9B9C-8FB0B1EBDBFB.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "C69E4A59-E178-4694-9B9C-8FB0B1EBDBFB.sonar.sources",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/obj/LeavePlanner.Infrastructure.csproj.nuget.dgspec.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/obj/Infrastructure.csproj.nuget.dgspec.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/obj/project.packagespec.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/obj/project.assets.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/obj/Debug/net8.0/Infrastructure.sourcelink.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/obj/Debug/net8.0/LeavePlanner.Infrastructure.sourcelink.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/bin/Debug/net8.0/LeavePlanner.Infrastructure.runtimeconfig.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/bin/Debug/net8.0/LeavePlanner.Infrastructure.deps.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/bin/Debug/net8.0/Infrastructure.runtimeconfig.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/bin/Debug/net8.0/Infrastructure.deps.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/Configuration/ApplicationDBContext.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/Entities/Customer.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/Entities/Department.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/Entities/Document.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/Entities/Employee.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/Entities/Event.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/Entities/Job.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/Entities/PersonalEvent.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/Exceptions/LessThanZeroNumbers.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/Exceptions/NotNullEntity.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/Exceptions/NullEntity.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/Interfaces/ICustomerRepository.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/Interfaces/IDocumentRepository.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/Interfaces/IEmployeeRepository.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/Interfaces/IEventRepository.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/Interfaces/IPersonalEventRepository.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/Middleware/CustomExceptionHandler.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/Migrations/20240920085252_intialMigration.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/Migrations/20240920085252_intialMigration.Designer.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/Migrations/ApplicationDBContextModelSnapshot.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/Repositories/CustomerRepository.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/Repositories/DocumentRepository.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/Repositories/EmployeeRepository.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/Repositories/EventRepository.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/Repositories/PersonalEventRepository.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/Validators/Validator.cs"
+    },
+    {
+      "key": "C69E4A59-E178-4694-9B9C-8FB0B1EBDBFB.sonar.cs.analyzer.projectOutPaths",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/6,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/1"
+    },
+    {
+      "key": "C69E4A59-E178-4694-9B9C-8FB0B1EBDBFB.sonar.cs.roslyn.reportFilePaths",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/6/Issues.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/1/Issues.json"
+    },
+    {
+      "key": "C69E4A59-E178-4694-9B9C-8FB0B1EBDBFB.sonar.cs.scanner.telemetry",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/6/Telemetry.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/1/Telemetry.json"
+    },
+    {
+      "key": "B5658E5F-88DC-43A6-B2A6-E331C2F282CC.sonar.projectKey",
+      "value": "LeavePlanner:B5658E5F-88DC-43A6-B2A6-E331C2F282CC"
+    },
+    {
+      "key": "B5658E5F-88DC-43A6-B2A6-E331C2F282CC.sonar.projectName",
+      "value": "LeavePlanner.Tests"
+    },
+    {
+      "key": "B5658E5F-88DC-43A6-B2A6-E331C2F282CC.sonar.projectBaseDir",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests"
+    },
+    {
+      "key": "B5658E5F-88DC-43A6-B2A6-E331C2F282CC.sonar.working.directory",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/.sonar/mod3"
+    },
+    {
+      "key": "B5658E5F-88DC-43A6-B2A6-E331C2F282CC.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "B5658E5F-88DC-43A6-B2A6-E331C2F282CC.sonar.sources",
+      "value": ""
+    },
+    {
+      "key": "B5658E5F-88DC-43A6-B2A6-E331C2F282CC.sonar.tests",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/obj/TestProject1.csproj.nuget.dgspec.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/obj/LeavePlanner.Tests.csproj.nuget.dgspec.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/obj/project.packagespec.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/obj/project.assets.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/obj/Debug/net8.0/LeavePlanner.Tests.sourcelink.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/obj/Debug/net8.0/TestProject1.sourcelink.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/bin/Debug/net8.0/LeavePlanner.Tests.deps.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/bin/Debug/net8.0/LeavePlanner.Tests.runtimeconfig.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/bin/Debug/net8.0/TestProject1.deps.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/bin/Debug/net8.0/TestProject1.runtimeconfig.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/CustomersUnitTests.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentRepositoryTests.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/DocumentTest/DocumentsServiceTests.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/EmployeeHelperTest.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/EmployeesUnitTests.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/PersonalEventTests/PersonalEventRepositoryTests.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Tests/PersonalEventTests/PersonalEventServiceTests.cs"
+    },
+    {
+      "key": "B5658E5F-88DC-43A6-B2A6-E331C2F282CC.sonar.cs.analyzer.projectOutPaths",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/8,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/3"
+    },
+    {
+      "key": "B5658E5F-88DC-43A6-B2A6-E331C2F282CC.sonar.cs.roslyn.reportFilePaths",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/8/Issues.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/3/Issues.json"
+    },
+    {
+      "key": "B5658E5F-88DC-43A6-B2A6-E331C2F282CC.sonar.cs.scanner.telemetry",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/8/Telemetry.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/3/Telemetry.json"
+    },
+    {
+      "key": "296D2E18-2A33-4175-A2BC-12FBCEC61912.sonar.projectKey",
+      "value": "LeavePlanner:296D2E18-2A33-4175-A2BC-12FBCEC61912"
+    },
+    {
+      "key": "296D2E18-2A33-4175-A2BC-12FBCEC61912.sonar.projectName",
+      "value": "LeavePlanner.Api"
+    },
+    {
+      "key": "296D2E18-2A33-4175-A2BC-12FBCEC61912.sonar.projectBaseDir",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1"
+    },
+    {
+      "key": "296D2E18-2A33-4175-A2BC-12FBCEC61912.sonar.working.directory",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/.sonar/mod4"
+    },
+    {
+      "key": "296D2E18-2A33-4175-A2BC-12FBCEC61912.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "296D2E18-2A33-4175-A2BC-12FBCEC61912.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "296D2E18-2A33-4175-A2BC-12FBCEC61912.sonar.sources",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/appsettings.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/appsettings.ConnectionString.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/appsettings.Development.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/obj/ProjectBackend.csproj.nuget.dgspec.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/obj/LeavePlanner.Api.csproj.nuget.dgspec.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/obj/project.packagespec.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/obj/project.assets.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/Logs/log-20240927.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/Logs/log-20240926.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/Logs/log-20241003.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/Logs/log-20260404.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/Logs/log-20240929.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/Properties/launchSettings.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/obj/Debug/net8.0/staticwebassets.build.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/obj/Debug/net8.0/staticwebassets.build.endpoints.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/obj/Debug/net8.0/LeavePlanner.Api.sourcelink.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/obj/Debug/net8.0/ProjectBackend.sourcelink.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/bin/Debug/net8.0/LeavePlanner.Tests.deps.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/bin/Debug/net8.0/appsettings.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/bin/Debug/net8.0/ProjectBackend.deps.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/bin/Debug/net8.0/LeavePlanner.Tests.runtimeconfig.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/bin/Debug/net8.0/LeavePlanner.Api.runtimeconfig.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/bin/Debug/net8.0/TestProject1.deps.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/bin/Debug/net8.0/ProjectBackend.staticwebassets.endpoints.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/bin/Debug/net8.0/appsettings.Development.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/bin/Debug/net8.0/LeavePlanner.Api.deps.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/bin/Debug/net8.0/TestProject1.runtimeconfig.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/bin/Debug/net8.0/ProjectBackend.runtimeconfig.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/bin/Debug/net8.0/Logs/log-20240927.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/bin/Debug/net8.0/Logs/log-20240926.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/bin/Debug/net8.0/Logs/log-20241003.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/bin/Debug/net8.0/Logs/log-20260404.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/bin/Debug/net8.0/Logs/log-20240929.json,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/Controllers/CustomerController.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/Controllers/DataController.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/Controllers/DocumentController.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/Controllers/EmployeeController.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/Controllers/EventController.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/Controllers/PersonalEventController.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/MappingProfiles/BackendMappingProfiles.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/Program.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/obj/Debug/net8.0/LeavePlanner.Api.GlobalUsings.g.cs,\"/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs\",/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/obj/Debug/net8.0/LeavePlanner.Api.AssemblyInfo.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/obj/Debug/net8.0/LeavePlanner.Api.MvcApplicationPartsAssemblyInfo.cs,/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/WebApplication1.http"
+    },
+    {
+      "key": "296D2E18-2A33-4175-A2BC-12FBCEC61912.sonar.cs.analyzer.projectOutPaths",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/4"
+    },
+    {
+      "key": "296D2E18-2A33-4175-A2BC-12FBCEC61912.sonar.cs.roslyn.reportFilePaths",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/4/Issues.json"
+    },
+    {
+      "key": "296D2E18-2A33-4175-A2BC-12FBCEC61912.sonar.cs.scanner.telemetry",
+      "value": "/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/.sonarqube/out/4/Telemetry.json"
+    },
+    {
+      "key": "sonar.login",
+      "value": "***"
+    },
+    {
+      "key": "sonar.host.url",
+      "value": "http://localhost:9000"
+    },
+    {
+      "key": "sonar.coverageReportPaths",
+      "value": "LeavePlanner.Tests/TestResults/*/coverage.cobertura.xml"
+    },
+    {
+      "key": "sonar.visualstudio.enable",
+      "value": "false"
+    }
+  ]
+}

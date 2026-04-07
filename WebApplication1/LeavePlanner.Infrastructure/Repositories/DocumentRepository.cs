@@ -1,57 +1,70 @@
 using LeavePlanner.Infrastructure.Configuration;
-using LeavePlanner.Infrastructure.Entities;
 using LeavePlanner.Infrastructure.Interfaces;
 using LeavePlanner.Infrastructure.Validators;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
+using DocumentEntity = LeavePlanner.Infrastructure.Entities.Document;
+
 namespace LeavePlanner.Infrastructure.Repositories
 {
-    public class DocumentRepository : IDocumentRepository
+    public class DocumentRepository(ApplicationDbContext dbContext, ILogger<DocumentRepository> logger) : IDocumentRepository
     {
-        private readonly ApplicationDBContext _dbContext;
-        private readonly ILogger<DocumentRepository> _logger;
-
-        public DocumentRepository(ApplicationDBContext dbContext, ILogger<DocumentRepository> logger)
-        {
-            _dbContext = dbContext;
-            _logger = logger;
-        }
-
         public async Task DeleteDocumentAsync(int customerId, int documentId)
         {
-            _logger.LogInformation($"{nameof(DeleteDocumentAsync)} was called from {nameof(DocumentRepository)}");
-        
+            logger.LogInformation(
+                "Deleting document {DocumentId} for customer {CustomerId}.",
+                documentId, customerId);
+
             var document = await GetDocumentByCustomerIdAsync(customerId, documentId);
 
-            if (document != null) 
-            { 
-                _dbContext.Remove(document);
-                _dbContext.SaveChangesAsync();
+            dbContext.Documents.Remove(document);
+            await dbContext.SaveChangesAsync(); // FIX: awaited
+        }
+
+        public async Task<DocumentEntity> GetDocumentByCustomerIdAsync(int customerId, int documentId)
+        {
+            logger.LogInformation(
+                "Fetching document {DocumentId} for customer {CustomerId}.",
+                documentId, customerId);
+
+            if (customerId <= 0 || documentId <= 0)
+                throw new ArgumentOutOfRangeException("customerId");
+
+            var document = await dbContext.Documents
+                .AsNoTracking()
+                .FirstOrDefaultAsync(doc =>
+                    doc.CustomerId == customerId &&
+                    doc.Id == documentId);
+
+            if (document == null)
+            {
+                logger.LogWarning(
+                    "Document {DocumentId} for customer {CustomerId} not found.",
+                    documentId, customerId);
             }
+
+            await Validator.ValidEntity(document, logger);
+
+            return document ?? throw new InvalidOperationException();
         }
 
-        public async Task<Document> GetDocumentByCustomerIdAsync(int customerId, int documentId)
+        public async Task<IEnumerable<DocumentEntity>> GetDocumentsByCustomerIdAsync(int customerId)
         {
-            _logger.LogInformation($"{nameof(GetDocumentByCustomerIdAsync)} was called from {nameof(DocumentRepository)}");
-            
-            var document = _dbContext.Documents.Where(doc => doc.Customer.Id == customerId).FirstOrDefault(doc => doc.Id == documentId);
-            await Validator.ValidEntity<Document>(document, _logger);
+            logger.LogInformation(
+                "Fetching documents for customer {CustomerId}.",
+                customerId);
 
-            return document;
-        }
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(customerId);
 
-        public async Task<IEnumerable<Document>> GetDocumentsByCustomerIdAsync(int customerId)
-        {
-            _logger.LogInformation($"{nameof(GetDocumentsByCustomerIdAsync)} was called from {nameof(DocumentRepository)}");
+            var documents = await dbContext.Documents
+                .AsNoTracking()
+                .Where(doc => doc.CustomerId == customerId)
+                .ToListAsync();
 
-            var documentsToBeValidated = await _dbContext.Documents
-                                   .Where(doc => doc.Customer.Id == customerId)
-                                   .AsNoTracking()
-                                   .ToListAsync(); 
-            await Validator.ValidEntities(documentsToBeValidated, _logger);
+            await Validator.ValidEntities(documents, logger);
 
-            return documentsToBeValidated;
+            return documents;
         }
     }
 }

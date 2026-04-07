@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
-using Domain.Models;
-namespace Domain.MappingProfiles
+using LeavePlanner.Domain.Models;
+
+namespace LeavePlanner.Domain.MappingProfiles
 {
     public class MappingProfiles : Profile
     {

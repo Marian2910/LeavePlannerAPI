@@ -1,12 +1,12 @@
-using Domain.MappingProfiles;
-using Domain.Services;
-using Domain.Services.Schedulers;
-using Infrastructure.Configuration;
-using Infrastructure.Interfaces;
-using Infrastructure.Middleware;
-using Infrastructure.Repositories;
+using LeavePlanner.Domain.MappingProfiles;
+using LeavePlanner.Domain.Services;
+using LeavePlanner.Domain.Services.Schedulers;
+using LeavePlanner.Infrastructure.Configuration;
+using LeavePlanner.Infrastructure.Interfaces;
+using LeavePlanner.Infrastructure.Middleware;
+using LeavePlanner.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
-using ProjectBackend.MappingProfiles;
+using LeavePlanner.Api.MappingProfiles;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,7 +22,7 @@ builder.Configuration
 
 var connectionString = builder.Configuration.GetConnectionString("LeavePlanner");
 
-builder.Services.AddDbContext<ApplicationDBContext>(options =>
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(connectionString);
 });
@@ -62,7 +62,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseCors(c => c
-.SetIsOriginAllowed(origin => true)
+.SetIsOriginAllowed(_ => true)
 .AllowAnyHeader()
 .AllowAnyMethod());
 app.UseHttpsRedirection();

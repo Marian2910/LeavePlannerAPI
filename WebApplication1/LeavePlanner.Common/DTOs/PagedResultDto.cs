@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Common.DTOs
+﻿namespace Common.DTOs
 {
     public class PagedResultDto<T>
     {
-        public IEnumerable<T> Items { get; set; }
-        public int TotalCount { get; set; }
+        public required IEnumerable<T> Items { get; set; } = Enumerable.Empty<T>();
+
+        public required int TotalCount { get; set; }
     }
 }
