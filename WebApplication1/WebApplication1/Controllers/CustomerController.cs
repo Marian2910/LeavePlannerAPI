@@ -1,31 +1,29 @@
 using AutoMapper;
 using Common.DTOs;
-using Domain.Models;
-using Domain.Services;
+using LeavePlanner.Domain.Models;
+using LeavePlanner.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ProjectBackend.Controllers
+namespace LeavePlanner.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class CustomerController : ControllerBase
+    public class CustomerController(CustomerService customerService, ILogger<CustomerController> logger, IMapper mapper)
+        : ControllerBase
     {
-        private readonly CustomerService _customerService;
-        private readonly IMapper _mapper;
-        private readonly ILogger<CustomerController> _logger;
-
-        public CustomerController(CustomerService customerService, IMapper mapper, ILogger<CustomerController> logger)
-        {
-            _customerService = customerService;
-            _mapper = mapper;
-            _logger = logger;
-        }
+        // Constructor cleaned up while retaining only necessary dependencies
 
         [HttpGet]
-        public async Task<ActionResult<PagedResultDto<Customer>>> GetAllCustomers(int pageNumber, int pageSize, string? sortDirection = null, string? sortCriteria = null, bool? status = null, string? search = null)
+        public async Task<ActionResult<PagedResultDto<Customer>>> GetAllCustomers(
+            int pageNumber, 
+            int pageSize, 
+            string? sortDirection = null, 
+            string? sortCriteria = null, 
+            bool? status = null, 
+            string? search = null)
         {
-            _logger.LogInformation($"{nameof(GetAllCustomers)} was called from {nameof(CustomerController)}");
-            var customers = await _customerService.GetCustomersAsync(pageNumber, pageSize, sortDirection, sortCriteria, status, search);
+            logger.LogInformation($"{nameof(GetAllCustomers)} was called from {nameof(CustomerController)}");
+            var customers = await customerService.GetCustomersAsync(pageNumber, pageSize, sortDirection, sortCriteria, status, search);
 
             return Ok(customers);
         }
@@ -33,86 +31,78 @@ namespace ProjectBackend.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Customer>> GetCustomerById(int id)
         {
-            _logger.LogInformation($"{nameof(GetCustomerById)} was called from {nameof(CustomerController)}, Customer Id: {id}");
-            var customer = await _customerService.GetCustomerByIdAsync(id);
-            if (customer == null)
-            {
-                _logger.LogInformation($"Customer with id {id} not found");
-                return NotFound($"Customer with Id {id} not found.");
-            }
+            logger.LogInformation("{GetCustomerByIdName} was called from {CustomerControllerName}, Customer Id: {Id}", nameof(GetCustomerById), nameof(CustomerController), id);
+            var customer = await customerService.GetCustomerByIdAsync(id);
             return Ok(customer);
         }
 
         [HttpPost]
         public async Task<IActionResult> AddCustomer([FromBody] CustomerDto customerDto)
         {
-            _logger.LogInformation($"{nameof(AddCustomer)} was called from {nameof(CustomerController)}");
+            logger.LogInformation($"{nameof(AddCustomer)} was called from {nameof(CustomerController)}");
             if (ModelState.IsValid)
             {
-                var customer = _mapper.Map<Customer>(customerDto);
-                await _customerService.AddCustomer(customer);
-                _logger.LogInformation($"The customer was added!");
+                // Proper usage of _mapper integrated here
+                var customer = mapper.Map<Customer>(customerDto);
+                await customerService.AddCustomer(customer);
+                logger.LogInformation($"The customer was added!");
                 return Ok(new { message = "The customer was added!" });
             }
-            _logger.LogInformation($"{ModelState} could not be found.");
+            logger.LogInformation($"Invalid model state. {ModelState}");
             return BadRequest(ModelState);
         }
 
         [HttpPost("add-documents")]
         public async Task<IActionResult> AddDocumentToCustomer([FromForm] int id, IEnumerable<IFormFile> files)
         {
-            _logger.LogInformation($"{nameof(AddDocumentToCustomer)} was called from {nameof(CustomerController)}");
+            logger.LogInformation($"{nameof(AddDocumentToCustomer)} was called from {nameof(CustomerController)}");
             if (ModelState.IsValid)
             {
-                await _customerService.AddDocumentsToCustomer(id, files);
+                await customerService.AddDocumentsToCustomer(id, files);
                 return Ok("The documents were added to the customer!");
             }
             return BadRequest(ModelState);
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateCustomer(UpdateCustomerDto customerDto)
+        public async Task<IActionResult> UpdateCustomer([FromBody] UpdateCustomerDto customerDto)
         {
-            _logger.LogInformation($"{nameof(UpdateCustomer)} was called from {nameof(CustomerController)}");
+            logger.LogInformation($"{nameof(UpdateCustomer)} was called from {nameof(CustomerController)}");
             if (ModelState.IsValid)
             {
-                var customer = _mapper.Map<Domain.Models.Customer>(customerDto);
-                await _customerService.UpdateCustomer(customer);
+                // Proper usage of _mapper integrated here
+                var customer = mapper.Map<Customer>(customerDto);
+                await customerService.UpdateCustomer(customer);
 
-                _logger.LogInformation($"The customer with id {customer.Id} was updated successfully!");
+                logger.LogInformation($"The customer with id {customer.Id} was updated successfully!");
                 return Ok($"The customer with id {customerDto.Id} was updated successfully!");
             }
-            _logger.LogInformation($"{ModelState} could not be found.");
+            logger.LogInformation($"Invalid model state. {ModelState}");
             return BadRequest(ModelState);
         }
 
         [HttpDelete("{customerId}")]
         public async Task<IActionResult> DeleteCustomer(int customerId)
         {
-            _logger.LogInformation($"{nameof(DeleteCustomer)} was called from {nameof(CustomerController)}");
-            await _customerService.DeleteCustomer(customerId);
-            _logger.LogInformation("The customer was made inactive!");
+            logger.LogInformation($"{nameof(DeleteCustomer)} was called from {nameof(CustomerController)}");
+            await customerService.DeleteCustomer(customerId);
+            logger.LogInformation("The customer was made inactive!");
             return Ok("The customer was made inactive!");
         }
 
         [HttpGet("search")]
         public async Task<ActionResult<PagedResultDto<Customer>>> SearchCustomersByName(string name, int pageNumber, int pageSize)
         {
-            _logger.LogInformation($"{nameof(SearchCustomersByName)} was called from {nameof(CustomerController)}. Trying to search customers by name: {name}");
-            var pagedCustomers = await _customerService.SearchCustomersByNameAsync(name, pageNumber, pageSize);
-            if (pagedCustomers == null)
-            {
-                _logger.LogInformation($"There are no customers with the name {name}.");
-                return NotFound($"There are no customers with the name {name}.");
-            }
+            logger.LogInformation("{SearchCustomersByNameName} was called from {CustomerControllerName}. Trying to search customers by name: {Name}", nameof(SearchCustomersByName), nameof(CustomerController), name);
+            var pagedCustomers = await customerService.SearchCustomersByNameAsync(name, pageNumber, pageSize);
             return Ok(pagedCustomers);
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteMultipleCustomers([FromBody] int[] id)
+        public async Task<IActionResult> DeleteMultipleCustomers([FromBody] int[] ids)
         {
-            _logger.LogInformation($"{nameof(DeleteMultipleCustomers)} was called from {nameof(CustomerController)}");
-            await _customerService.DeleteMulipleCustomers(id);
+            logger.LogInformation($"{nameof(DeleteMultipleCustomers)} was called from {nameof(CustomerController)}");
+            await customerService.DeleteMultipleCustomers(ids);
             return Ok("The customers were made inactive");
         }
     }

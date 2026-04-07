@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Common.DTOs;
-using Domain.Models;
+using LeavePlanner.Domain.Models;
 
-namespace ProjectBackend.MappingProfiles
+namespace LeavePlanner.Api.MappingProfiles
 {
     public class BackendMappingProfiles : Profile
     {
