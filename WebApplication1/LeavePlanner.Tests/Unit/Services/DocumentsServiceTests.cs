@@ -6,6 +6,8 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 
+using DocumentEntity = LeavePlanner.Infrastructure.Entities.Document;
+
 namespace LeavePlanner.Tests.Unit.Services
 {
     public class DocumentsServiceTests
@@ -67,64 +69,64 @@ namespace LeavePlanner.Tests.Unit.Services
                 Date = DateTime.Now
             };
 
-            var documents = new List<Infrastructure.Entities.Document>
+            var documents = new List<DocumentEntity>
             {
-                new Infrastructure.Entities.Document
+                new()
                 {
                     Id = 1,
                     Name = "Document1",
                     Type = "PDF",
                     CreatedAt = DateTime.Now,
-                    File = new byte[] { },
+                    File = [],
                     Customer = customer1
                 },
-                new Infrastructure.Entities.Document
+                new()
                 {
                     Id = 2,
                     Name = "Document2",
                     Type = "Word",
                     CreatedAt = DateTime.Now.AddDays(-1),
-                    File = new byte[] { },
+                    File = [],
                     Customer = customer1
                 },
-                new Infrastructure.Entities.Document
+                new()
                 {
                     Id = 3,
                     Name = "Document3",
                     Type = "Excel",
                     CreatedAt = DateTime.Now.AddDays(-2),
-                    File = new byte[] { },
+                    File = [],
                     Customer = customer1
                 },
             };
 
             var documentsEntities = new List<Document>
             {
-                new Document
+                new()
                 {
                     Id = 1,
                     Name = "Document1",
                     Type = "PDF",
                     Date = DateTime.Now,
-                    File = new byte[] { },
+                    File = [],
                     Customer = customer1Entity
                 },
-                new Document
+                new()
                 {
                     Id = 2,
                     Name = "Document2",
                     Type = "Word",
                     Date = DateTime.Now.AddDays(-1),
-                    File = new byte[] { },
+                    File = [],
                     Customer = customer1Entity
                 },
-                new Document
+                new()
                 {
                     Id = 3,
                     Name = "Document3",
                     Type = "Excel",
                     Date = DateTime.Now.AddDays(-2),
-                    File = new byte[] { },
+                    File = [],
                     Customer = customer1Entity
                 },
 
@@ -140,7 +142,7 @@ namespace LeavePlanner.Tests.Unit.Services
             //assert
             var enumerable = result as Document[] ?? result.ToArray();
             Assert.That(enumerable, Is.Not.Null);
-            Assert.That(enumerable.Count(), Is.EqualTo(3));
+            Assert.That(enumerable.Length, Is.EqualTo(3));
         }
 
         [Test]
@@ -165,13 +167,13 @@ namespace LeavePlanner.Tests.Unit.Services
                 Date = DateTime.Now
             };
 
-            var document = new Infrastructure.Entities.Document
+            var document = new DocumentEntity
             {
                 Id = 1,
                 Name = "Document1",
                 Type = "PDF",
                 CreatedAt = DateTime.Now,
-                File = new byte[] { },
+                File = [],
                 Customer = customer
             };
 

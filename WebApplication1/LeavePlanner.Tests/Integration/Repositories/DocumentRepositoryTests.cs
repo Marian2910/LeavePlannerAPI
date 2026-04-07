@@ -22,9 +22,9 @@ namespace LeavePlanner.Tests.Integration.Repositories
         {
             context.Documents.AddRange(new List<Document>
             {
-                new Document { Id = 1, CustomerId = 1 },
-                new Document { Id = 2, CustomerId = 1 },
-                new Document { Id = 3, CustomerId = 2 }
+                new() { Id = 1, CustomerId = 1 },
+                new() { Id = 2, CustomerId = 1 },
+                new() { Id = 3, CustomerId = 2 }
             });
 
             await context.SaveChangesAsync();
@@ -40,13 +40,13 @@ namespace LeavePlanner.Tests.Integration.Repositories
             var options = CreateOptions();
 
             // Seed
-            using (var context = new ApplicationDbContext(options))
+            await using (var context = new ApplicationDbContext(options))
             {
                 await SeedData(context);
             }
 
             // Act
-            using (var context = new ApplicationDbContext(options))
+            await using (var context = new ApplicationDbContext(options))
             {
                 var logger = new Mock<ILogger<DocumentRepository>>();
                 var repo = new DocumentRepository(context, logger.Object);
@@ -55,7 +55,7 @@ namespace LeavePlanner.Tests.Integration.Repositories
             }
 
             // Assert (NEW context → avoids tracking issues)
-            using (var context = new ApplicationDbContext(options))
+            await using (var context = new ApplicationDbContext(options))
             {
                 var exists = await context.Documents.AnyAsync(d => d.Id == 1);
                 Assert.False(exists);
@@ -67,7 +67,7 @@ namespace LeavePlanner.Tests.Integration.Repositories
         {
             var options = CreateOptions();
 
-            using var context = new ApplicationDbContext(options);
+            await using var context = new ApplicationDbContext(options);
             var logger = new Mock<ILogger<DocumentRepository>>();
             var repo = new DocumentRepository(context, logger.Object);
 
@@ -84,12 +84,12 @@ namespace LeavePlanner.Tests.Integration.Repositories
         {
             var options = CreateOptions();
 
-            using (var context = new ApplicationDbContext(options))
+            await using (var context = new ApplicationDbContext(options))
             {
                 await SeedData(context);
             }
 
-            using (var context = new ApplicationDbContext(options))
+            await using (var context = new ApplicationDbContext(options))
             {
                 var logger = new Mock<ILogger<DocumentRepository>>();
                 var repo = new DocumentRepository(context, logger.Object);
@@ -106,7 +106,7 @@ namespace LeavePlanner.Tests.Integration.Repositories
         {
             var options = CreateOptions();
 
-            using var context = new ApplicationDbContext(options);
+            await using var context = new ApplicationDbContext(options);
             var logger = new Mock<ILogger<DocumentRepository>>();
             var repo = new DocumentRepository(context, logger.Object);
 
@@ -119,7 +119,7 @@ namespace LeavePlanner.Tests.Integration.Repositories
         {
             var options = CreateOptions();
 
-            using var context = new ApplicationDbContext(options);
+            await using var context = new ApplicationDbContext(options);
             var logger = new Mock<ILogger<DocumentRepository>>();
             var repo = new DocumentRepository(context, logger.Object);
 
@@ -136,12 +136,12 @@ namespace LeavePlanner.Tests.Integration.Repositories
         {
             var options = CreateOptions();
 
-            using (var context = new ApplicationDbContext(options))
+            await using (var context = new ApplicationDbContext(options))
             {
                 await SeedData(context);
             }
 
-            using (var context = new ApplicationDbContext(options))
+            await using (var context = new ApplicationDbContext(options))
             {
                 var logger = new Mock<ILogger<DocumentRepository>>();
                 var repo = new DocumentRepository(context, logger.Object);
@@ -157,7 +157,7 @@ namespace LeavePlanner.Tests.Integration.Repositories
         {
             var options = CreateOptions();
 
-            using var context = new ApplicationDbContext(options);
+            await using var context = new ApplicationDbContext(options);
             var logger = new Mock<ILogger<DocumentRepository>>();
             var repo = new DocumentRepository(context, logger.Object);
 

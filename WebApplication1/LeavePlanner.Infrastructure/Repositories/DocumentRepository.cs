@@ -29,7 +29,7 @@ namespace LeavePlanner.Infrastructure.Repositories
                 documentId, customerId);
 
             if (customerId <= 0 || documentId <= 0)
-                throw new ArgumentOutOfRangeException("customerId");
+                throw new ArgumentOutOfRangeException(nameof(customerId));
 
             var document = await dbContext.Documents
                 .AsNoTracking()

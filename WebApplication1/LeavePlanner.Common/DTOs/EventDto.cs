@@ -2,7 +2,7 @@
 
 namespace Common.DTOs
 {
-    public class EventDto
+    public abstract class EventDto
     {
         public int Id { get; set; }
 

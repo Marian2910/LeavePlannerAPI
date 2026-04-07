@@ -37,7 +37,6 @@ namespace LeavePlanner.Infrastructure.Repositories
             logger.LogInformation("Fetching all employees.");
 
             var employees = await dbContext.Employees
-                .AsNoTracking()
                 .Include(e => e.Job)
                 .Include(e => e.Department)
                 .ToListAsync();

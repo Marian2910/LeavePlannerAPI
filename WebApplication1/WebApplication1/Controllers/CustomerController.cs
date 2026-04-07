@@ -11,8 +11,6 @@ namespace LeavePlanner.Api.Controllers
     public class CustomerController(CustomerService customerService, ILogger<CustomerController> logger, IMapper mapper)
         : ControllerBase
     {
-        // Constructor cleaned up while retaining only necessary dependencies
-
         [HttpGet]
         public async Task<ActionResult<PagedResultDto<Customer>>> GetAllCustomers(
             int pageNumber, 

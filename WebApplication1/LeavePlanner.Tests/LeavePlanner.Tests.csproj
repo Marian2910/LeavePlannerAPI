@@ -35,6 +35,7 @@
   <ItemGroup>
     <ProjectReference Include="..\LeavePlanner.Common\LeavePlanner.Common.csproj" />
     <ProjectReference Include="..\LeavePlanner.Domain\LeavePlanner.Domain.csproj" />
+    <ProjectReference Include="..\WebApplication1\LeavePlanner.Api.csproj" />
   </ItemGroup>
 
 </Project>

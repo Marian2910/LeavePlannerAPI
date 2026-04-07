@@ -8,72 +8,64 @@ namespace LeavePlanner.Api.Controllers
     [Route("api/[controller]")]
     public class DataController(ApplicationDbContext dbContext) : Controller
     {
-        private readonly ApplicationDbContext _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
-
-        // Constructor remains simple, only keeping the needed dependency
-
+        
         [HttpPost("createData")]
         public IActionResult CreateData()
         {
-            // Removed unnecessary "using" block for `_dbContext` because the controller itself manages its lifetime.
-            if (!_dbContext.Jobs.Any())
+            if (!dbContext.Jobs.Any())
             {
                 var jobs = new[]
                 {
-                    new Job { Title = "Finance Manager", Role = "admin" },
-                    new Job { Title = "Front-End Developer", Role = "user" },
-                    new Job { Title = "Back-End Developer", Role = "user" },
-                    new Job { Title = "Full-Stack Developer", Role = "user" }
+                    new Job { Title = "Finance Manager" },
+                    new Job { Title = "Front-End Developer" },
+                    new Job { Title = "Back-End Developer" },
+                    new Job { Title = "Full-Stack Developer" }
                 };
-                _dbContext.Jobs.AddRange(jobs);
-                _dbContext.SaveChanges();
+                dbContext.Jobs.AddRange(jobs);
+                dbContext.SaveChanges();
             }
 
-            if (!_dbContext.Departments.Any())
+            if (!dbContext.Departments.Any())
             {
                 var departments = new[]
                 {
                     new Department { Name = "Finance" },
                     new Department { Name = "IT/Tech" }
                 };
-                _dbContext.Departments.AddRange(departments);
-                _dbContext.SaveChanges();
+                dbContext.Departments.AddRange(departments);
+                dbContext.SaveChanges();
             }
 
             // Retrieve jobs and departments only once
-            var jobsByTitle = _dbContext.Jobs.ToDictionary(j => j.Title);
-            var departmentsByName = _dbContext.Departments.ToDictionary(d => d.Name);
+            var jobsByTitle = dbContext.Jobs.ToDictionary(j => j.Title);
+            var departmentsByName = dbContext.Departments.ToDictionary(d => d.Name);
 
-            if (!_dbContext.Employees.Any())
+            if (!dbContext.Employees.Any())
             {
                 var employees = new[]
                 {
                     new Employee {
-                        FirstName = "Jane", LastName = "Doe", Email = "jane.doe@red-to-blue.com", Password = "janedoe",
                         Job = jobsByTitle["Finance Manager"], Department = departmentsByName["Finance"],
                         Birthdate = new DateTime(1995, 10, 22), RemainingLeaveDays = 30, EmploymentDate = new DateTime(2019, 05, 01), AnnualLeaveDays = 31
                     },
                     new Employee {
-                        FirstName = "Ted", LastName = "Marshal", Email = "ted.marshal@red-to-blue.com", Password = "tedmarshal",
                         Job = jobsByTitle["Front-End Developer"], Department = departmentsByName["IT/Tech"],
                         Birthdate = new DateTime(1995, 10, 22), RemainingLeaveDays = 28, EmploymentDate = new DateTime(2021, 10, 15), AnnualLeaveDays = 29
                     },
                     new Employee {
-                        FirstName = "Paula", LastName = "Smith", Email = "paula.smith@red-to-blue.com", Password = "paulasmith",
                         Job = jobsByTitle["Back-End Developer"], Department = departmentsByName["IT/Tech"],
                         Birthdate = new DateTime(1995, 10, 22), RemainingLeaveDays = 25, EmploymentDate = new DateTime(2023, 10, 01), AnnualLeaveDays = 27
                     },
                     new Employee {
-                        FirstName = "Millie", LastName = "James", Email = "millie.james@red-to-blue.com", Password = "milliejames",
                         Job = jobsByTitle["Full-Stack Developer"], Department = departmentsByName["IT/Tech"],
                         Birthdate = new DateTime(1998, 03, 13), RemainingLeaveDays = 22, EmploymentDate = new DateTime(2020, 02, 10), AnnualLeaveDays = 30
                     }
                 };
-                _dbContext.Employees.AddRange(employees);
-                _dbContext.SaveChanges();
+                dbContext.Employees.AddRange(employees);
+                dbContext.SaveChanges();
             }
 
-            if (!_dbContext.Customers.Any())
+            if (!dbContext.Customers.Any())
             {
                 var customers = new[]
                 {
@@ -103,8 +95,8 @@ namespace LeavePlanner.Api.Controllers
                         BillingType = "Weekly", Tva = 5, Addition = "N/A", Date = new DateTime(2005, 07, 10)
                     }
                 };
-                _dbContext.Customers.AddRange(customers);
-                _dbContext.SaveChanges();
+                dbContext.Customers.AddRange(customers);
+                dbContext.SaveChanges();
             }
 
             return Ok("Data populated successfully.");
