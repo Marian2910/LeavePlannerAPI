@@ -5,7 +5,7 @@ namespace LeavePlanner.Infrastructure.Entities
     public class Employee
     {
         [Key]
-        public int Id { get; set; }
+        public int Id { get; init; }
 
         [Required(ErrorMessage = "First name is required.")]
         [MaxLength(100)]
@@ -24,18 +24,16 @@ namespace LeavePlanner.Infrastructure.Entities
         [MaxLength(255)]
         public string Password { get; set; } = string.Empty;
 
-        public int JobId { get; set; }
+        public int JobId { get; init; }
         
-        public int DepartmentId { get; set; }
+        public int DepartmentId { get; init; }
 
-        public Job? Job { get; set; }
-        public Department? Department { get; set; }
+        public Job? Job { get; init; }
+        public Department? Department { get; init; }
 
-        public ICollection<PersonalEvent> PersonalEvents { get; set; } = new List<PersonalEvent>();
+        public DateTime Birthdate { get; init; }
 
-        public DateTime Birthdate { get; set; }
-
-        public DateTime EmploymentDate { get; set; } = DateTime.UtcNow;
+        public DateTime EmploymentDate { get; init; } = DateTime.UtcNow;
 
         public int RemainingLeaveDays { get; set; } = 30;
 

@@ -41,11 +41,7 @@ public class PersonalEventServiceTests
         return new EmployeeEntity
         {
             Id = 1,
-            FirstName = "John",
-            LastName = "Doe",
-            Email = "test@test.com",
-            Password = "Password123!",
-            Job = new JobEntity { Id = 1, Title = "Dev", Role = "Backend" },
+            Job = new JobEntity { Id = 1, Title = "Dev" },
             Department = new DepartmentEntity { Id = 1, Name = "IT" },
             Birthdate = DateTime.Now.AddYears(-25),
             RemainingLeaveDays = remainingDays

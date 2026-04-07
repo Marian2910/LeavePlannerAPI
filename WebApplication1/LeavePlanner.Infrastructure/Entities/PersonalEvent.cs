@@ -3,7 +3,7 @@
     public class PersonalEvent : Event
     {
         // Foreign key
-        public int EmployeeId { get; set; }
+        public int EmployeeId { get; init; }
 
         // Navigation property
         public Employee Employee { get; set; } = null!;

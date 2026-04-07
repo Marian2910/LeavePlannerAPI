@@ -6,22 +6,13 @@ using LeavePlanner.Infrastructure.Exceptions;
 
 namespace LeavePlanner.Infrastructure.Middleware
 {
-    public class CustomExceptionHandler
+    public class CustomExceptionHandler(ILogger<CustomExceptionHandler> logger, RequestDelegate next)
     {
-        private readonly ILogger _logger;
-        private readonly RequestDelegate _next;
-
-        public CustomExceptionHandler(ILogger<CustomExceptionHandler> logger, RequestDelegate next)
-        {
-            _logger = logger;
-            _next = next;
-        }
-
         public async Task InvokeAsync(HttpContext context)
         {
             try
             {
-                await _next(context);
+                await next(context);
             }
             catch (Exception ex)
             {
@@ -59,7 +50,7 @@ namespace LeavePlanner.Infrastructure.Middleware
                     message = "Sorry, it’s not you—it’s us. Our server is having some trouble. Hang tight!";
                     break;
             }
-            _logger.LogError(ex.Message, ex.StackTrace);
+            logger.LogError(ex.Message, ex.StackTrace);
             var result = JsonSerializer.Serialize(new { errorMessage = message });
             await context.Response.WriteAsync(result);
         }

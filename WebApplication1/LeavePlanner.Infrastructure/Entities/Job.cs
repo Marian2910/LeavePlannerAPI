@@ -5,13 +5,10 @@ namespace LeavePlanner.Infrastructure.Entities
     public class Job
     {
         [Key]
-        public int Id { get; set; }
+        public int Id { get; init; }
 
         [Required(ErrorMessage = "Job title is required.")]
         [MaxLength(100)]
-        public string Title { get; set; } = string.Empty;
-
-        [MaxLength(100)]
-        public string? Role { get; set; }
+        public string Title { get; init; } = string.Empty;
     }
 }

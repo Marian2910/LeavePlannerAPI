@@ -1,161 +1,186 @@
-﻿using LeavePlanner.Infrastructure.Configuration;
-using LeavePlanner.Infrastructure.Entities;
+﻿using LeavePlanner.Infrastructure.Entities;
+using LeavePlanner.Infrastructure.Exceptions;
 using LeavePlanner.Infrastructure.Repositories;
-using Microsoft.EntityFrameworkCore;
+using LeavePlanner.Tests.Integration.Fixtures;
 using Microsoft.Extensions.Logging;
 using Moq;
-using NUnit.Framework;
+using Xunit;
 
-namespace LeavePlanner.Tests.Integration.Repositories
+namespace LeavePlanner.Tests.Integration.Repositories;
+
+public class PersonalEventRepositoryTests
 {
-    [TestFixture]
-    public class PersonalEventRepositoryTests
+    private readonly Mock<ILogger<PersonalEventRepository>> _loggerMock = new();
+
+    private static Employee CreateEmployee(int id = 1)
     {
-        private static readonly DbContextOptions<ApplicationDbContext> DbContextOptions = new DbContextOptionsBuilder<ApplicationDbContext>()
-            .UseInMemoryDatabase(databaseName: "PersonalEventDB")
-            .Options;
-
-        private PersonalEventRepository _personalEventRepository;
-        private ApplicationDbContext _applicationDbContext;
-        private ILogger<PersonalEventRepository> _logger;
-
-        [OneTimeSetUp]
-        public async Task SetUp()
+        return new Employee
         {
-            _applicationDbContext = new ApplicationDbContext(DbContextOptions);
-            _applicationDbContext.Database.EnsureCreated();
-            _logger = new Mock<ILogger<PersonalEventRepository>>().Object;
-            _personalEventRepository = new PersonalEventRepository(_applicationDbContext, _logger);
-            await SeedDatabase();
-        }
+            Id = id,
+            FirstName = "John",
+            LastName = "Doe",
+            Email = $"john{id}@test.com",
+            Password = "Password123!",
+            JobId = 1,
+            DepartmentId = 1,
+            Birthdate = DateTime.UtcNow.AddYears(-25),
+            EmploymentDate = DateTime.UtcNow,
+            RemainingLeaveDays = 30,
+            AnnualLeaveDays = 30
+        };
+    }
 
-        [Test]
-        public async Task AddPersonalEventsAsync()
+    private static PersonalEvent CreatePersonalEvent(int id = 1, int employeeId = 1)
+    {
+        return new PersonalEvent
         {
-            //arrange
-            var employee = new Employee
-            {
-                Id = 3,
-                FirstName = "Maia",
-                LastName = "Pop",
-                Email = "lalalal@mail.com",
-                Password = "password"
-            };
-            _applicationDbContext.Employees.Add(employee);
-            await _applicationDbContext.SaveChangesAsync();
-            var personalEvent = new PersonalEvent
-            {
-                Id = 4,
-                Title = "Test",
-                Description = "Test",
-                StartDate = DateTime.Now,
-                EndDate = DateTime.Now,
-                Location = "Cluj",
-                Employee = employee
-            };
-            //act
-            await _personalEventRepository.AddPersonalEventAsync(personalEvent);
-            await _applicationDbContext.SaveChangesAsync();
+            Id = id,
+            Title = "Vacation",
+            StartDate = DateTime.UtcNow,
+            EndDate = DateTime.UtcNow.AddDays(1),
+            EmployeeId = employeeId
+        };
+    }
 
-            //assert
-            var addedPersonalEvent = await _applicationDbContext.PersonalEvents.Include(e => e.Employee).FirstOrDefaultAsync(e => e.Title == "Test");
-            Assert.That(addedPersonalEvent?.Title, Is.EqualTo("Test"));
-        }
+    [Fact]
+    public async Task AddPersonalEventAsync_ShouldAddEvent()
+    {
+        await using var context = DbContextFactory.CreateContext();
 
-        [Test]
-        public async Task GetAllPersonalEvents()
-        {
-            //act 
-            var result = await _personalEventRepository.GetAllPersonalEventsAsync();
+        var employee = CreateEmployee();
+        context.Employees.Add(employee);
+        await context.SaveChangesAsync();
 
-            //assert
-            Assert.That(result.Count(), Is.EqualTo(4));
-        }
+        var repo = new PersonalEventRepository(context, _loggerMock.Object);
 
-        [Test]
-        public async Task GetPersonalEventById()
-        {
-            //act
-            int personalEventId = 1;
-            var personalEvent = await _personalEventRepository.GetPersonalEventByIdAsync(personalEventId);
+        var personalEvent = CreatePersonalEvent(employeeId: employee.Id);
+        personalEvent.Employee = employee;
 
-            //assert
-            Assert.That(personalEvent.Title, Is.EqualTo("Event 1"));
+        await repo.AddPersonalEventAsync(personalEvent);
 
-        }
+        Assert.Single(context.PersonalEvents);
+    }
 
-        [Test]
-        public async Task GetPersonalEventByEmployeeId()
-        {
-            //act
-            int employeeId = 1;
-            var result = await _personalEventRepository.GetPersonalEventsByEmployeeIdAsync(employeeId);
+    [Fact]
+    public async Task AddPersonalEventAsync_ShouldThrow_WhenNull()
+    {
+        await using var context = DbContextFactory.CreateContext();
+        var repo = new PersonalEventRepository(context, _loggerMock.Object);
 
-            //assert
-            Assert.That(result.Count(), Is.EqualTo(2));
-        }
+        await Assert.ThrowsAsync<NullReferenceException>(() =>
+            repo.AddPersonalEventAsync(null!));
+    }
 
-        [OneTimeTearDown]
-        public void CleanUp()
-        {
-            _applicationDbContext.Dispose();
-        }
+    [Fact]
+    public async Task GetAllPersonalEventsAsync_ShouldReturnEvents()
+    {
+        await using var context = DbContextFactory.CreateContext();
 
-        private async Task SeedDatabase()
-        {
-            var employee1 = new Employee
-            {
-                Id = 1,
-                FirstName = "Maria",
-                LastName = "Popa",
-                Email = "mariaPopa@mail.com",
-                Password = "password",
-            };
-            var employee2 = new Employee
-            {
-                Id = 2,
-                FirstName = "Maria",
-                LastName = "Popa",
-                Email = "mariaPopa@mail.com",
-                Password = "password",
-            };
+        var employee = CreateEmployee();
+        context.Employees.Add(employee);
 
-            var personalEvents = new List<PersonalEvent>
-            {
-                new PersonalEvent
-                {
-                    Id = 1,
-                    Title = "Event 1",
-                    Description = "Test",
-                    StartDate = DateTime.Now,
-                    EndDate = DateTime.Now,
-                    Location = "Cluj",
-                    Employee = employee1
-                },
-                new PersonalEvent
-                {
-                    Id = 2,
-                    Title = "Event 2",
-                    Description = "Test",
-                    StartDate = DateTime.Now,
-                    EndDate = DateTime.Now,
-                    Location = "Cluj",
-                    Employee = employee2
-                },
-                new PersonalEvent
-                {
-                    Id = 3,
-                    Title = "Event 1",
-                    Description = "Test",
-                    StartDate = DateTime.Now,
-                    EndDate = DateTime.Now,
-                    Location = "Cluj",
-                    Employee = employee1
-                }
-            };
-            await _applicationDbContext.Employees.AddRangeAsync(employee1, employee2);
-            await _applicationDbContext.PersonalEvents.AddRangeAsync(personalEvents);
-            await _applicationDbContext.SaveChangesAsync();
-        }
+        var e1 = CreatePersonalEvent(1, employee.Id);
+        var e2 = CreatePersonalEvent(2, employee.Id);
+
+        e1.Employee = employee;
+        e2.Employee = employee;
+
+        context.PersonalEvents.AddRange(e1, e2);
+
+        await context.SaveChangesAsync();
+
+        var repo = new PersonalEventRepository(context, _loggerMock.Object);
+
+        var result = await repo.GetAllPersonalEventsAsync();
+
+        var list = result.ToList();
+
+        Assert.Equal(2, list.Count);
+        Assert.All(list, e => Assert.NotNull(e.Employee));
+    }
+
+    [Fact]
+    public async Task GetPersonalEventByIdAsync_ShouldReturnEvent()
+    {
+        await using var context = DbContextFactory.CreateContext();
+
+        var employee = CreateEmployee();
+        context.Employees.Add(employee);
+
+        var personalEvent = CreatePersonalEvent(1, employee.Id);
+        personalEvent.Employee = employee;
+
+        context.PersonalEvents.Add(personalEvent);
+
+        await context.SaveChangesAsync();
+
+        var repo = new PersonalEventRepository(context, _loggerMock.Object);
+
+        var result = await repo.GetPersonalEventByIdAsync(1);
+
+        Assert.Equal(1, result.Id);
+        Assert.NotNull(result.Employee);
+    }
+
+    [Fact]
+    public async Task GetPersonalEventByIdAsync_ShouldThrow_WhenInvalidId()
+    {
+        await using var context = DbContextFactory.CreateContext();
+        var repo = new PersonalEventRepository(context, _loggerMock.Object);
+
+        await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() =>
+            repo.GetPersonalEventByIdAsync(0));
+    }
+
+    [Fact]
+    public async Task GetPersonalEventByIdAsync_ShouldThrow_WhenNotFound()
+    {
+        await using var context = DbContextFactory.CreateContext();
+        var repo = new PersonalEventRepository(context, _loggerMock.Object);
+
+        await Assert.ThrowsAsync<NullEntity>(() =>
+            repo.GetPersonalEventByIdAsync(999));
+    }
+
+    [Fact]
+    public async Task GetPersonalEventsByEmployeeIdAsync_ShouldReturnEvents()
+    {
+        await using var context = DbContextFactory.CreateContext();
+
+        var employee = CreateEmployee(1);
+        var otherEmployee = CreateEmployee(2);
+
+        context.Employees.AddRange(employee, otherEmployee);
+
+        var e1 = CreatePersonalEvent(1, 1);
+        var e2 = CreatePersonalEvent(2, 1);
+        var e3 = CreatePersonalEvent(3, 2);
+
+        e1.Employee = employee;
+        e2.Employee = employee;
+        e3.Employee = otherEmployee;
+
+        context.PersonalEvents.AddRange(e1, e2, e3);
+
+        await context.SaveChangesAsync();
+
+        var repo = new PersonalEventRepository(context, _loggerMock.Object);
+
+        var result = await repo.GetPersonalEventsByEmployeeIdAsync(1);
+
+        var list = result.ToList();
+
+        Assert.Equal(2, list.Count);
+        Assert.All(list, e => Assert.Equal(1, e.EmployeeId));
+    }
+
+    [Fact]
+    public async Task GetPersonalEventsByEmployeeIdAsync_ShouldThrow_WhenInvalidId()
+    {
+        await using var context = DbContextFactory.CreateContext();
+        var repo = new PersonalEventRepository(context, _loggerMock.Object);
+
+        await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() =>
+            repo.GetPersonalEventsByEmployeeIdAsync(0));
     }
 }
