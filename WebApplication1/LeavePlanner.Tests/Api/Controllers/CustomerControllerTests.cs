@@ -256,7 +256,7 @@ public class CustomerControllerTests
         _repositoryMock.Setup(r => r.UpdateCustomerAsync(customerEntity)).Returns(Task.CompletedTask);
 
         var result = await _controller.AddDocumentToCustomer(1, new[] { fileMock.Object });
-
+      
         Assert.IsType<OkObjectResult>(result);
     }
 }
