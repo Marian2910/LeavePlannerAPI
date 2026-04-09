@@ -8,17 +8,12 @@ namespace LeavePlanner.Infrastructure.Validators
         private const string SingleEntityNotFoundMessage = "No entity of type {EntityType} was found.";
         private const string MultipleEntitiesNotFoundMessage = "No entities of type {EntityType} were found.";
 
-        private static void LogMissingEntity<T>(ILogger logger, string messageTemplate)
-        {
-            logger.LogError(messageTemplate, typeof(T).Name);
-        }
-
         public static Task ValidEntities<T>(IEnumerable<T>? entities, ILogger logger)
         {
             if (entities != null && entities.Any())
                 return Task.CompletedTask;
 
-            LogMissingEntity<T>(logger, MultipleEntitiesNotFoundMessage);
+            logger.LogError(MultipleEntitiesNotFoundMessage, typeof(T).Name);
 
             throw new NullEntityException($"No entities of type {typeof(T).Name} were found.");
         }
@@ -29,7 +24,7 @@ namespace LeavePlanner.Infrastructure.Validators
             if (entity is not null)
                 return Task.CompletedTask;
 
-            LogMissingEntity<T>(logger, SingleEntityNotFoundMessage);
+            logger.LogError(SingleEntityNotFoundMessage, typeof(T).Name);
 
             throw new NullEntityException($"No entity of type {typeof(T).Name} was found.");
         }
