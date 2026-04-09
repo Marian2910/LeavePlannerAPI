@@ -29,6 +29,9 @@ public class CustomerServiceTests
             _loggerMock.Object);
     }
 
+    private static DateTime CreateUtcDate(int year, int month, int day) =>
+        DateTime.SpecifyKind(new DateTime(year, month, day), DateTimeKind.Utc);
+
     private static Customer CreateCustomer(int id = 1)
     {
         return new Customer
@@ -177,16 +180,16 @@ public class CustomerServiceTests
     {
         var entities = new List<CustomerEntity>
         {
-            CreateCustomerEntityForQuery(1, "Gamma", true, new DateTime(2024, 3, 1)),
-            CreateCustomerEntityForQuery(2, "Alpha", false, new DateTime(2024, 1, 1)),
-            CreateCustomerEntityForQuery(3, "Beta", true, new DateTime(2024, 2, 1))
+            CreateCustomerEntityForQuery(1, "Gamma", true, CreateUtcDate(2024, 3, 1)),
+            CreateCustomerEntityForQuery(2, "Alpha", false, CreateUtcDate(2024, 1, 1)),
+            CreateCustomerEntityForQuery(3, "Beta", true, CreateUtcDate(2024, 2, 1))
         };
 
         var models = new List<Customer>
         {
-            CreateCustomerForQuery(1, "Gamma", true, new DateTime(2024, 3, 1)),
-            CreateCustomerForQuery(2, "Alpha", false, new DateTime(2024, 1, 1)),
-            CreateCustomerForQuery(3, "Beta", true, new DateTime(2024, 2, 1))
+            CreateCustomerForQuery(1, "Gamma", true, CreateUtcDate(2024, 3, 1)),
+            CreateCustomerForQuery(2, "Alpha", false, CreateUtcDate(2024, 1, 1)),
+            CreateCustomerForQuery(3, "Beta", true, CreateUtcDate(2024, 2, 1))
         };
 
         _repoMock.Setup(r => r.SearchCustomersAsync("be")).ReturnsAsync(entities);
@@ -224,7 +227,7 @@ public class CustomerServiceTests
     [Fact]
     public async Task GetCustomersAsync_ShouldThrow_WhenPaginationIsInvalid()
     {
-        await Assert.ThrowsAsync<LeavePlanner.Infrastructure.Exceptions.LessThanZeroNumbers>(() =>
+        await Assert.ThrowsAsync<LeavePlanner.Infrastructure.Exceptions.LessThanZeroNumbersException>(() =>
             _service.GetCustomersAsync(0, 10));
     }
     

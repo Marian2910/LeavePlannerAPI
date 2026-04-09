@@ -31,7 +31,7 @@ namespace LeavePlanner.Domain.Models
         [Required(ErrorMessage = "Birthdate is required.")]
         public required DateTime Birthdate { get; set; }
 
-        public DateTime EmploymentDate { get; set; } = DateTime.Now;
+        public DateTime EmploymentDate { get; set; } = DateTime.UtcNow;
 
         public int RemainingLeaveDays { get; set; } = 0;
 

@@ -28,8 +28,8 @@ namespace LeavePlanner.Infrastructure.Repositories
                 "Fetching document {DocumentId} for customer {CustomerId}.",
                 documentId, customerId);
 
-            if (customerId <= 0 || documentId <= 0)
-                throw new ArgumentOutOfRangeException(nameof(customerId));
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(customerId);
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(documentId);
 
             var document = await dbContext.Documents
                 .AsNoTracking()

@@ -6,12 +6,24 @@ using System.Diagnostics;
 
 namespace LeavePlanner.Domain.Services.Schedulers
 {
-    public class AnniversaryScheduler(IServiceProvider serviceProvider, ILogger<AnniversaryScheduler> logger, Timer timer)
-        : IHostedService, IDisposable
+    public class AnniversaryScheduler : IHostedService, IDisposable
     {
-        private readonly IServiceProvider _serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
-        private readonly ILogger<AnniversaryScheduler> _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        private Timer _timer = timer;
+        private const int DefaultLeaveDays = 30;
+        private readonly IServiceProvider _serviceProvider;
+        private readonly ILogger<AnniversaryScheduler> _logger;
+        private Timer _timer;
+        private bool _disposed;
+
+        public AnniversaryScheduler(IServiceProvider serviceProvider, ILogger<AnniversaryScheduler> logger, Timer timer)
+        {
+            ArgumentNullException.ThrowIfNull(serviceProvider);
+            ArgumentNullException.ThrowIfNull(logger);
+            ArgumentNullException.ThrowIfNull(timer);
+
+            _serviceProvider = serviceProvider;
+            _logger = logger;
+            _timer = timer;
+        }
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
@@ -54,7 +66,7 @@ namespace LeavePlanner.Domain.Services.Schedulers
             {
                 // Log unexpected exceptions during execution
                 _logger.LogError(ex, "An unexpected error occurred while updating employees' leave days.");
-                throw new ApplicationException("An error occurred in the AnniversaryScheduler.", ex);
+                throw new InvalidOperationException("An error occurred in the AnniversaryScheduler.", ex);
             }
         }
 
@@ -62,9 +74,8 @@ namespace LeavePlanner.Domain.Services.Schedulers
         {
             Debug.Assert(employee != null, "The employee parameter cannot be null.");
             
-            const int defaultLeaveDays = 30;
             int extraLeaveDays = DateTime.Today.Year - employee.EmploymentDate.Year;
-            int expectedLeaveDays = defaultLeaveDays + Math.Max(0, extraLeaveDays);
+            int expectedLeaveDays = DefaultLeaveDays + Math.Max(0, extraLeaveDays);
 
             return employee.AnnualLeaveDays >= expectedLeaveDays;
         }
@@ -78,8 +89,24 @@ namespace LeavePlanner.Domain.Services.Schedulers
 
         public void Dispose()
         {
-            _timer.Dispose();
-            _logger.LogInformation("AnniversaryScheduler resources have been disposed.");
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed)
+            {
+                return;
+            }
+
+            if (disposing)
+            {
+                _timer.Dispose();
+                _logger.LogInformation("AnniversaryScheduler resources have been disposed.");
+            }
+
+            _disposed = true;
         }
     }
 }

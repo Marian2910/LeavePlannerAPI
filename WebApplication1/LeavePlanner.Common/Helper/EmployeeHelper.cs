@@ -2,12 +2,15 @@
 {
     public static class EmployeeHelper
     {
+        private const int BaseLeaveDays = 30;
+
         public static int CalculateLeaveDays(DateTime employeeDate)
         {
-            var yearsWorked = DateTime.Now.Year - employeeDate.Year;
+            var currentDate = DateTime.UtcNow;
+            var yearsWorked = currentDate.Year - employeeDate.Year;
             int leaveDays;
             
-            if(DateTime.Now.Month >= employeeDate.Month && DateTime.Now.Day >= employeeDate.Day)
+            if (currentDate.Month >= employeeDate.Month && currentDate.Day >= employeeDate.Day)
             {
                 leaveDays = yearsWorked;
             }
@@ -16,9 +19,7 @@
                 leaveDays = yearsWorked - 1;
             }
 
-            var baseLeaveDays = 30;
-
-            return baseLeaveDays + leaveDays;
+            return BaseLeaveDays + leaveDays;
         }
     }
 }

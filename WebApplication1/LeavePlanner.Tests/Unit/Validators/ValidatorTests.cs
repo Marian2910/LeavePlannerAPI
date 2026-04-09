@@ -25,7 +25,7 @@ public class ValidatorTests
 
         var act = () => Validator.ValidEntities(entities, NullLogger.Instance);
 
-        await act.Should().ThrowAsync<NullEntity>()
+        await act.Should().ThrowAsync<NullEntityException>()
             .WithMessage("*String*");
     }
 
@@ -34,7 +34,7 @@ public class ValidatorTests
     {
         var act = () => Validator.ValidEntities(Array.Empty<int>(), NullLogger.Instance);
 
-        await act.Should().ThrowAsync<NullEntity>()
+        await act.Should().ThrowAsync<NullEntityException>()
             .WithMessage("*Int32*");
     }
 
@@ -53,7 +53,7 @@ public class ValidatorTests
 
         var act = () => Validator.ValidEntity(entity, NullLogger.Instance);
 
-        await act.Should().ThrowAsync<NullEntity>()
+        await act.Should().ThrowAsync<NullEntityException>()
             .WithMessage("*Object*");
     }
 }

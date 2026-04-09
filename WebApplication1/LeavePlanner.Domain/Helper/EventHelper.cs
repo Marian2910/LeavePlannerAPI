@@ -7,7 +7,7 @@ namespace LeavePlanner.Domain.Helper
         {
             if (startDate > endDate)
             {
-                throw new Exception("Start date cannot be after the end date.");
+                throw new InvalidOperationException("Start date cannot be after the end date.");
             }
 
             int totalDays = 0;

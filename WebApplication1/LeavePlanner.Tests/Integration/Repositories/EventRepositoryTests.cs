@@ -94,7 +94,7 @@ public class EventRepositoryTests
 
         var repo = new EventRepository(context, _loggerMock.Object);
 
-        await Assert.ThrowsAsync<NullEntity>(() =>
+        await Assert.ThrowsAsync<NullEntityException>(() =>
             repo.GetAllAsync());
     }
 }

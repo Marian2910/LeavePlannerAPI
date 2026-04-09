@@ -13,7 +13,7 @@ public class CustomExceptionHandlerTests
     [Fact]
     public async Task InvokeAsync_ShouldReturnNotFound_ForNullEntity()
     {
-        var middleware = CreateMiddleware(_ => throw new NullEntity("missing"));
+        var middleware = CreateMiddleware(_ => throw new NullEntityException("missing"));
         var context = CreateContext();
 
         await middleware.InvokeAsync(context);
@@ -25,7 +25,7 @@ public class CustomExceptionHandlerTests
     [Fact]
     public async Task InvokeAsync_ShouldReturnForbidden_ForForbiddenMessage()
     {
-        var middleware = CreateMiddleware(_ => throw new Exception("forbidden area"));
+        var middleware = CreateMiddleware(_ => throw new InvalidOperationException("forbidden area"));
         var context = CreateContext();
 
         await middleware.InvokeAsync(context);
@@ -37,7 +37,7 @@ public class CustomExceptionHandlerTests
     [Fact]
     public async Task InvokeAsync_ShouldReturnInternalServerError_ForUnknownException()
     {
-        var middleware = CreateMiddleware(_ => throw new Exception("boom"));
+        var middleware = CreateMiddleware(_ => throw new InvalidOperationException("boom"));
         var context = CreateContext();
 
         await middleware.InvokeAsync(context);
@@ -81,9 +81,9 @@ public class CustomExceptionHandlerTests
         return reader.ReadToEnd();
     }
 
-    private sealed class TestNotNullEntity : NotNullEntity
+    private sealed class TestNotNullEntity : NotNullEntityException
     {
-        public TestNotNullEntity(string message) : base(message, new Exception("inner"))
+        public TestNotNullEntity(string message) : base(message, new InvalidOperationException("inner"))
         {
         }
     }

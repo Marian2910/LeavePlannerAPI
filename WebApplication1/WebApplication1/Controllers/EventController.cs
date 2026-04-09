@@ -9,6 +9,8 @@ namespace LeavePlanner.Api.Controllers;
 public class EventController(EventService eventService, ILogger<EventController> logger) : ControllerBase
 {
     [HttpGet]
+    [ProducesResponseType(typeof(IEnumerable<EventDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<IEnumerable<EventDto>>> GetAllEvents()
     {
         logger.LogInformation("Fetching all events.");

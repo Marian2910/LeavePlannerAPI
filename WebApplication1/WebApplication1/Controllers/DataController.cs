@@ -6,10 +6,17 @@ namespace LeavePlanner.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class DataController(ApplicationDbContext dbContext) : Controller
+    public class DataController(ApplicationDbContext dbContext) : ControllerBase
     {
+        private const string FinanceDepartment = "Finance";
+        private const string ItTechDepartment = "IT/Tech";
+        private const string NotApplicable = "N/A";
+
+        private static DateTime CreateUtcDate(int year, int month, int day) =>
+            DateTime.SpecifyKind(new DateTime(year, month, day), DateTimeKind.Utc);
         
         [HttpPost("createData")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult CreateData()
         {
             if (!dbContext.Jobs.Any())
@@ -29,8 +36,8 @@ namespace LeavePlanner.Api.Controllers
             {
                 var departments = new[]
                 {
-                    new Department { Name = "Finance" },
-                    new Department { Name = "IT/Tech" }
+                    new Department { Name = FinanceDepartment },
+                    new Department { Name = ItTechDepartment }
                 };
                 dbContext.Departments.AddRange(departments);
                 dbContext.SaveChanges();
@@ -40,28 +47,28 @@ namespace LeavePlanner.Api.Controllers
             var jobsByTitle = dbContext.Jobs.ToDictionary(j => j.Title);
             var departmentsByName = dbContext.Departments.ToDictionary(d => d.Name);
 
-            if (!dbContext.Employees.Any())
+            if (!dbContext.Set<Employee>().Any())
             {
                 var employees = new[]
                 {
                     new Employee {
-                        Job = jobsByTitle["Finance Manager"], Department = departmentsByName["Finance"],
-                        Birthdate = new DateTime(1995, 10, 22), RemainingLeaveDays = 30, EmploymentDate = new DateTime(2019, 05, 01), AnnualLeaveDays = 31
+                        Job = jobsByTitle["Finance Manager"], Department = departmentsByName[FinanceDepartment],
+                        Birthdate = CreateUtcDate(1995, 10, 22), RemainingLeaveDays = 30, EmploymentDate = CreateUtcDate(2019, 5, 1), AnnualLeaveDays = 31
                     },
                     new Employee {
-                        Job = jobsByTitle["Front-End Developer"], Department = departmentsByName["IT/Tech"],
-                        Birthdate = new DateTime(1995, 10, 22), RemainingLeaveDays = 28, EmploymentDate = new DateTime(2021, 10, 15), AnnualLeaveDays = 29
+                        Job = jobsByTitle["Front-End Developer"], Department = departmentsByName[ItTechDepartment],
+                        Birthdate = CreateUtcDate(1995, 10, 22), RemainingLeaveDays = 28, EmploymentDate = CreateUtcDate(2021, 10, 15), AnnualLeaveDays = 29
                     },
                     new Employee {
-                        Job = jobsByTitle["Back-End Developer"], Department = departmentsByName["IT/Tech"],
-                        Birthdate = new DateTime(1995, 10, 22), RemainingLeaveDays = 25, EmploymentDate = new DateTime(2023, 10, 01), AnnualLeaveDays = 27
+                        Job = jobsByTitle["Back-End Developer"], Department = departmentsByName[ItTechDepartment],
+                        Birthdate = CreateUtcDate(1995, 10, 22), RemainingLeaveDays = 25, EmploymentDate = CreateUtcDate(2023, 10, 1), AnnualLeaveDays = 27
                     },
                     new Employee {
-                        Job = jobsByTitle["Full-Stack Developer"], Department = departmentsByName["IT/Tech"],
-                        Birthdate = new DateTime(1998, 03, 13), RemainingLeaveDays = 22, EmploymentDate = new DateTime(2020, 02, 10), AnnualLeaveDays = 30
+                        Job = jobsByTitle["Full-Stack Developer"], Department = departmentsByName[ItTechDepartment],
+                        Birthdate = CreateUtcDate(1998, 3, 13), RemainingLeaveDays = 22, EmploymentDate = CreateUtcDate(2020, 2, 10), AnnualLeaveDays = 30
                     }
                 };
-                dbContext.Employees.AddRange(employees);
+                dbContext.Set<Employee>().AddRange(employees);
                 dbContext.SaveChanges();
             }
 
@@ -72,27 +79,27 @@ namespace LeavePlanner.Api.Controllers
                     new Customer {
                         Name = "John Doe", Email = "johndoe@example.com", PhoneNumber = "+1234567890", Country = "USA",
                         City = "New York", PostalCode = "100031", Street = "5th Avenue", Number = "101", Status = true,
-                        BillingType = "Monthly", Tva = 10, Addition = "N/A", Date = new DateTime(2019, 07, 10)
+                        BillingType = "Monthly", Tva = 10, Addition = NotApplicable, Date = CreateUtcDate(2019, 7, 10)
                     },
                     new Customer {
                         Name = "Jane Smith", Email = "janesmith@example.com", PhoneNumber = "+1987654321", Country = "Canada",
                         City = "Toronto", PostalCode = "105617", Street = "Bloor Street", Number = "45", Status = false,
-                        BillingType = "Yearly", Tva = 7, Addition = "N/A", Date = new DateTime(2023, 07, 11)
+                        BillingType = "Yearly", Tva = 7, Addition = NotApplicable, Date = CreateUtcDate(2023, 7, 11)
                     },
                     new Customer {
                         Name = "Michael Johnson", Email = "michaelj@example.com", PhoneNumber = "+1212345678", Country = "UK",
                         City = "London", PostalCode = "200543", Street = "Strans", Number = "3", Status = true,
-                        BillingType = "Weekly", Tva = 5, Addition = "N/A", Date = new DateTime(2012, 02, 10)
+                        BillingType = "Weekly", Tva = 5, Addition = NotApplicable, Date = CreateUtcDate(2012, 2, 10)
                     },
                     new Customer {
                         Name = "Emily Davis", Email = "emilyd@example.com", PhoneNumber = "+1345789123", Country = "Australia",
                         City = "Sydney", PostalCode = "231145", Street = "George Street", Number = "84", Status = true,
-                        BillingType = "Monthly", Tva = 7, Addition = "N/A", Date = new DateTime(2007, 02, 20)
+                        BillingType = "Monthly", Tva = 7, Addition = NotApplicable, Date = CreateUtcDate(2007, 2, 20)
                     },
                     new Customer {
                         Name = "Robert Brown", Email = "robertb@example.com", PhoneNumber = "+1478523690", Country = "Germany",
                         City = "Berlin", PostalCode = "632498", Street = "Unter den Linden", Number = "90", Status = false,
-                        BillingType = "Weekly", Tva = 5, Addition = "N/A", Date = new DateTime(2005, 07, 10)
+                        BillingType = "Weekly", Tva = 5, Addition = NotApplicable, Date = CreateUtcDate(2005, 7, 10)
                     }
                 };
                 dbContext.Customers.AddRange(customers);

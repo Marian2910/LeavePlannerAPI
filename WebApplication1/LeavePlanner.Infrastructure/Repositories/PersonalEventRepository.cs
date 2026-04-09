@@ -44,8 +44,7 @@ namespace LeavePlanner.Infrastructure.Repositories
         {
             logger.LogInformation("Fetching personal event with Id {EventId}.", id);
 
-            if (id <= 0)
-                throw new ArgumentOutOfRangeException(nameof(id));
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(id);
 
             var personalEvent = await dbContext.PersonalEvents
                 .Include(e => e.Employee)
@@ -67,8 +66,7 @@ namespace LeavePlanner.Infrastructure.Repositories
                 "Fetching personal events for employee {EmployeeId}.",
                 employeeId);
 
-            if (employeeId <= 0)
-                throw new ArgumentOutOfRangeException(nameof(employeeId));
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(employeeId);
 
             var personalEvents = await dbContext.PersonalEvents
                 .AsNoTracking()

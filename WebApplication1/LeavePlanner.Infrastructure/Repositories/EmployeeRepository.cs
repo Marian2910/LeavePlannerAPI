@@ -14,8 +14,7 @@ namespace LeavePlanner.Infrastructure.Repositories
         {
             logger.LogInformation("Fetching employee with Id {EmployeeId}.", id);
 
-            if (id <= 0)
-                throw new ArgumentOutOfRangeException(nameof(id));
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(id);
 
             var employee = await dbContext.Employees
                 .Include(e => e.Job)
@@ -50,8 +49,7 @@ namespace LeavePlanner.Infrastructure.Repositories
         {
             logger.LogInformation("Updating employee with Id {EmployeeId}.", employee?.Id);
 
-            if (employee == null)
-                throw new ArgumentNullException(nameof(employee));
+            ArgumentNullException.ThrowIfNull(employee);
 
             await Validator.ValidEntity(employee, logger);
 

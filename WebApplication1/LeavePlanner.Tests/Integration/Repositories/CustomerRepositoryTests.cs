@@ -28,7 +28,7 @@ public class CustomerRepositoryTests
             BillingType = "SRL",
             Tva = 19,
             Addition = "",
-            Date = DateTime.Now
+            Date = DateTime.UtcNow
         };
     }
 
@@ -46,7 +46,7 @@ public class CustomerRepositoryTests
 
         await repo.AddCustomerAsync(customer);
 
-        Assert.Equal(1, context.Customers.Count());
+        Assert.Single(context.Customers);
     }
 
     // ========================
@@ -144,7 +144,7 @@ public class CustomerRepositoryTests
         await using var context = DbContextFactory.CreateContext();
         var repo = new CustomerRepository(context, _loggerMock.Object);
 
-        await Assert.ThrowsAsync<NullEntity>(() =>
+        await Assert.ThrowsAsync<NullEntityException>(() =>
             repo.GetByIdAsync(999));
     }
 
@@ -196,7 +196,7 @@ public class CustomerRepositoryTests
                 Id = 2,
                 Name = "Another",
                 Email = "a@test.com",
-                Date = DateTime.Now
+                Date = DateTime.UtcNow
             });
         await context.SaveChangesAsync();
 
@@ -254,7 +254,7 @@ public class CustomerRepositoryTests
                 Name = "Inactive",
                 Email = "inactive@test.com",
                 Status = false,
-                Date = DateTime.Now
+                Date = DateTime.UtcNow
             });
         await context.SaveChangesAsync();
 

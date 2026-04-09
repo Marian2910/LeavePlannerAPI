@@ -14,8 +14,7 @@ namespace LeavePlanner.Infrastructure.Repositories
         {
             logger.LogInformation("Adding customer.");
 
-            if (customer == null)
-                throw new ArgumentNullException(nameof(customer));
+            ArgumentNullException.ThrowIfNull(customer);
 
             await Validator.ValidEntity(customer, logger);
 
@@ -27,8 +26,7 @@ namespace LeavePlanner.Infrastructure.Repositories
         {
             logger.LogInformation("Deleting (soft) customer with Id {CustomerId}.", id);
 
-            if (id <= 0)
-                throw new ArgumentOutOfRangeException(nameof(id));
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(id);
 
             var customer = await dbContext.Customers.FindAsync(id);
 
@@ -120,8 +118,8 @@ namespace LeavePlanner.Infrastructure.Repositories
                 "Filtering customers by status {Status}, page {PageNumber}, size {PageSize}.",
                 status, pageNumber, pageSize);
 
-            if (pageNumber <= 0 || pageSize <= 0)
-                throw new ArgumentOutOfRangeException("status");
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(pageNumber);
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(pageSize);
 
             var customers = await dbContext.Customers
                 .AsNoTracking()

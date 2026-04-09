@@ -38,7 +38,7 @@ namespace LeavePlanner.Tests.Unit.Services
             Password = "password",
             Job = new Job { Id = 1, Title = "Dev", Role = "Backend" },
             Department = new Department { Id = 1, Name = "IT" },
-            Birthdate = DateTime.Now.AddYears(-25)
+            Birthdate = DateTime.UtcNow.AddYears(-25)
         };
 
         // ----------------------------
@@ -139,7 +139,7 @@ namespace LeavePlanner.Tests.Unit.Services
             var employee = new Infrastructure.Entities.Employee
             {
                 Id = 1,
-                EmploymentDate = DateTime.Now.AddYears(-2),
+                EmploymentDate = DateTime.UtcNow.AddYears(-2),
                 AnnualLeaveDays = 5
             };
 
@@ -167,7 +167,7 @@ namespace LeavePlanner.Tests.Unit.Services
             var employee = new Infrastructure.Entities.Employee
             {
                 Id = 1,
-                EmploymentDate = DateTime.Now.AddYears(-2),
+                EmploymentDate = DateTime.UtcNow.AddYears(-2),
                 AnnualLeaveDays = 100
             };
 

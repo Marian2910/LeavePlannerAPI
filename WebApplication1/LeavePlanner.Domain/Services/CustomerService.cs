@@ -15,6 +15,13 @@ namespace LeavePlanner.Domain.Services
         IMapper mapper,
         ILogger<CustomerService> logger)
     {
+        private const string PdfContentType = "application/pdf";
+        private const string DocxContentType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+        private const string DocContentType = "application/msword";
+        private const string NameSortCriteria = "name";
+        private const string DateSortCriteria = "date";
+        private const string AscendingSortDirection = "asc";
+
         public async Task AddCustomer(Customer customer)
         {
             logger.LogInformation("Executing {MethodName}", nameof(AddCustomer));
@@ -48,7 +55,7 @@ namespace LeavePlanner.Domain.Services
                 await file.CopyToAsync(memoryStream);
 
                 if (memoryStream.Length == 0 || 
-                    (file.ContentType != "application/pdf" && file.ContentType != "application/vnd.openxmlformats-officedocument.wordprocessingml.document" && file.ContentType != "application/msword"))
+                    (file.ContentType != PdfContentType && file.ContentType != DocxContentType && file.ContentType != DocContentType))
                 {
                     throw new ArgumentException("Only PDF or DOCX files are supported.");
                 }
@@ -57,7 +64,7 @@ namespace LeavePlanner.Domain.Services
                 {
                     Name = file.FileName,
                     Type = file.ContentType,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = DateTime.UtcNow,
                     File = memoryStream.ToArray(),
                     Customer = customerEntity,
                 };
@@ -162,16 +169,21 @@ namespace LeavePlanner.Domain.Services
 
         private static IEnumerable<Customer> SortCustomers(IEnumerable<Customer> customers, string sortCriteria, string sortDirection)
         {
-            return sortCriteria.ToLower() switch
+            if (string.Equals(sortCriteria, NameSortCriteria, StringComparison.OrdinalIgnoreCase))
             {
-                "name" => sortDirection.ToLower() == "asc"
-                        ? customers.OrderBy(c => c.Name)
-                        : customers.OrderByDescending(c => c.Name),
-                "date" => sortDirection.ToLower() == "asc"
-                        ? customers.OrderBy(c => c.Date)
-                        : customers.OrderByDescending(c => c.Date),
-                _ => throw new ArgumentException($"Invalid sorting criteria: {sortCriteria}.")
-            };
+                return string.Equals(sortDirection, AscendingSortDirection, StringComparison.OrdinalIgnoreCase)
+                    ? customers.OrderBy(c => c.Name)
+                    : customers.OrderByDescending(c => c.Name);
+            }
+
+            if (string.Equals(sortCriteria, DateSortCriteria, StringComparison.OrdinalIgnoreCase))
+            {
+                return string.Equals(sortDirection, AscendingSortDirection, StringComparison.OrdinalIgnoreCase)
+                    ? customers.OrderBy(c => c.Date)
+                    : customers.OrderByDescending(c => c.Date);
+            }
+
+            throw new ArgumentException($"Invalid sorting criteria: {sortCriteria}.", nameof(sortCriteria));
         }
     }
 }

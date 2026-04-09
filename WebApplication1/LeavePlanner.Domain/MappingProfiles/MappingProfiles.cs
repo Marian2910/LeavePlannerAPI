@@ -8,7 +8,7 @@ namespace LeavePlanner.Domain.MappingProfiles
         public MappingProfiles()
         {
             CreateMap<Customer, LeavePlanner.Infrastructure.Entities.Customer>().ForMember(dest => dest.Date, opt => opt
-                                                                   .MapFrom(src => DateTime.Now));
+                                                                   .MapFrom(src => DateTime.UtcNow));
             CreateMap<LeavePlanner.Infrastructure.Entities.Customer, Customer>();
             CreateMap<Employee, LeavePlanner.Infrastructure.Entities.Employee>().ReverseMap();
             CreateMap<Job, LeavePlanner.Infrastructure.Entities.Job>().ReverseMap();

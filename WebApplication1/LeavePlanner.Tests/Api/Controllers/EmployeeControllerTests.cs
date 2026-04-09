@@ -41,7 +41,7 @@ public class EmployeeControllerTests
             Password = "HisPassword123",
             Job = new Job { Id = 1, Title = "Dev", Role = "Backend" },
             Department = new Department { Id = 1, Name = "IT" },
-            Birthdate = DateTime.Now.AddYears(-35)
+            Birthdate = DateTime.UtcNow.AddYears(-35)
         };
         var entity = new EmployeeEntity
         {
@@ -86,7 +86,7 @@ public class EmployeeControllerTests
                 Password = "0720001002",
                 Job = new Job { Id = 1, Title = "Dev", Role = "Backend" },
                 Department = new Department { Id = 1, Name = "IT" },
-                Birthdate = DateTime.Now.AddYears(-35)
+                Birthdate = DateTime.UtcNow.AddYears(-35)
             }
         };
         var entities = new List<EmployeeEntity> { new()
@@ -98,7 +98,7 @@ public class EmployeeControllerTests
                 Password = "0720001002",
                 Job = new JobEntity { Id = 1, Title = "Dev" },
                 Department = new DepartmentEntity { Id = 1, Name = "IT" },
-                Birthdate = DateTime.Now.AddYears(-35)
+                Birthdate = DateTime.UtcNow.AddYears(-35)
             }
         };
 

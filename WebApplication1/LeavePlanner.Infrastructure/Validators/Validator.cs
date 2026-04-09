@@ -12,18 +12,18 @@ namespace LeavePlanner.Infrastructure.Validators
                 "No entities of type {EntityType} were found.",
                 typeof(T).Name);
 
-            throw new NullEntity($"No entities of type {typeof(T).Name} were found.");
+            throw new NullEntityException($"No entities of type {typeof(T).Name} were found.");
 
         }
 
         public static Task ValidEntity<T>(T? entity, ILogger logger)
         {
-            if (entity != null) return Task.CompletedTask;
+            if (!EqualityComparer<T>.Default.Equals(entity, default)) return Task.CompletedTask;
             logger.LogError(
                 "No entity of type {EntityType} was found.",
                 typeof(T).Name);
 
-            throw new NullEntity($"No entity of type {typeof(T).Name} was found.");
+            throw new NullEntityException($"No entity of type {typeof(T).Name} was found.");
 
         }
     }

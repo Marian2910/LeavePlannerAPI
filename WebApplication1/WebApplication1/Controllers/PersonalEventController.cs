@@ -14,6 +14,8 @@ public class PersonalEventController(
     ILogger<PersonalEventController> logger) : ControllerBase
 {
     [HttpPost]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> AddEvent([FromForm] PersonalEventDto eventDto)
     {
         logger.LogInformation("Adding a new personal event.");
@@ -32,6 +34,8 @@ public class PersonalEventController(
     }
 
     [HttpGet]
+    [ProducesResponseType(typeof(IEnumerable<PersonalEventDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<IEnumerable<PersonalEventDto>>> GetAllPersonalEvents()
     {
         logger.LogInformation("Fetching all personal events.");
@@ -51,6 +55,7 @@ public class PersonalEventController(
     }
 
     [HttpGet("{id}")]
+    [ProducesResponseType(typeof(PersonalEventDto), StatusCodes.Status200OK)]
     public async Task<ActionResult<PersonalEventDto>> GetPersonalEventById(int id)
     {
         logger.LogInformation("Fetching personal event with ID: {Id}", id);
@@ -64,6 +69,8 @@ public class PersonalEventController(
     }
 
     [HttpGet("getByEmployee/{employeeId}")]
+    [ProducesResponseType(typeof(IEnumerable<PersonalEventDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<IEnumerable<PersonalEventDto>>> GetPersonalEventsByEmployeeId(int employeeId)
     {
         logger.LogInformation("Fetching personal events for Employee ID: {EmployeeId}", employeeId);

@@ -62,10 +62,7 @@ namespace LeavePlanner.Domain.Services
         {
             logger.LogInformation("Fetching personal event with Id {EventId}.", id);
 
-            if (id <= 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(id), "Event ID must be greater than zero.");
-            }
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(id);
 
             var personalEventEntity = await personalEventRepository.GetPersonalEventByIdAsync(id);
 
@@ -83,10 +80,7 @@ namespace LeavePlanner.Domain.Services
                 "Fetching personal events for employee {EmployeeId}.",
                 employeeId);
 
-            if (employeeId <= 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(employeeId), "Employee ID must be greater than zero.");
-            }
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(employeeId);
 
             var personalEventEntities = await personalEventRepository.GetPersonalEventsByEmployeeIdAsync(employeeId);
 

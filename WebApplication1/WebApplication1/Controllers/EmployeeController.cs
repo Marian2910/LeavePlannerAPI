@@ -9,6 +9,7 @@ namespace LeavePlanner.Api.Controllers;
 public class EmployeeController(EmployeeService employeeService, ILogger<EmployeeController> logger) : ControllerBase
 {
     [HttpGet("{id}")]
+    [ProducesResponseType(typeof(Employee), StatusCodes.Status200OK)]
     public async Task<ActionResult<Employee>> GetEmployeeById(int id)
     {
         logger.LogInformation("Fetching employee details for Employee ID: {Id}", id);
@@ -20,6 +21,8 @@ public class EmployeeController(EmployeeService employeeService, ILogger<Employe
     }
 
     [HttpGet]
+    [ProducesResponseType(typeof(IEnumerable<Employee>), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<IEnumerable<Employee>>> GetAllEmployees()
     {
         logger.LogInformation("Fetching all employees.");

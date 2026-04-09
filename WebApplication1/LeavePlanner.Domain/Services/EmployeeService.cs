@@ -24,10 +24,7 @@ namespace LeavePlanner.Domain.Services
         {
             logger.LogInformation("Fetching employee with Id {EmployeeId}.", id);
 
-            if (id <= 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(id), "Employee ID must be greater than zero.");
-            }
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(id);
 
             var employeeEntity = await employeeRepository.GetByIdAsync(id);
 
@@ -43,10 +40,7 @@ namespace LeavePlanner.Domain.Services
         {
             logger.LogInformation("Updating leave days for employee with Id {EmployeeId}.", employeeId);
 
-            if (employeeId <= 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(employeeId), "Employee ID must be greater than zero.");
-            }
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(employeeId);
 
             var employee = await employeeRepository.GetByIdAsync(employeeId);
 

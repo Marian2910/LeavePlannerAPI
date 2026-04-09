@@ -67,7 +67,7 @@ public class PersonalEventRepositoryTests
         await using var context = DbContextFactory.CreateContext();
         var repo = new PersonalEventRepository(context, _loggerMock.Object);
 
-        await Assert.ThrowsAsync<NullReferenceException>(() =>
+        await Assert.ThrowsAsync<ArgumentNullException>(() =>
             repo.AddPersonalEventAsync(null!));
     }
 
@@ -138,7 +138,7 @@ public class PersonalEventRepositoryTests
         await using var context = DbContextFactory.CreateContext();
         var repo = new PersonalEventRepository(context, _loggerMock.Object);
 
-        await Assert.ThrowsAsync<NullEntity>(() =>
+        await Assert.ThrowsAsync<NullEntityException>(() =>
             repo.GetPersonalEventByIdAsync(999));
     }
 

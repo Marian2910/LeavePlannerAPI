@@ -23,7 +23,7 @@ public class ValidationHelperTests
             repositoryMock.Object,
             NullLogger<CustomerService>.Instance);
 
-        await act.Should().ThrowAsync<LessThanZeroNumbers>();
+        await act.Should().ThrowAsync<LessThanZeroNumbersException>();
     }
 
     [Fact]
@@ -56,7 +56,7 @@ public class ValidationHelperTests
             repositoryMock.Object,
             NullLogger<EmployeeService>.Instance);
 
-        await act.Should().ThrowAsync<LessThanZeroNumbers>();
+        await act.Should().ThrowAsync<LessThanZeroNumbersException>();
     }
 
     [Fact]
@@ -86,7 +86,7 @@ public class ValidationHelperTests
     {
         var act = () => ValidationHelper.ValidPagination(0, 10, NullLogger<object>.Instance);
 
-        await act.Should().ThrowAsync<LessThanZeroNumbers>();
+        await act.Should().ThrowAsync<LessThanZeroNumbersException>();
     }
 
     [Fact]
@@ -94,7 +94,7 @@ public class ValidationHelperTests
     {
         var act = () => ValidationHelper.ValidPagination(1, 0, NullLogger<object>.Instance);
 
-        await act.Should().ThrowAsync<LessThanZeroNumbers>();
+        await act.Should().ThrowAsync<LessThanZeroNumbersException>();
     }
 
     [Fact]

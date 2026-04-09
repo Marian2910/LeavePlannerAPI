@@ -11,14 +11,14 @@ namespace LeavePlanner.Tests.Integration.Repositories
 {
     public class DocumentRepositoryTests
     {
-        private DbContextOptions<ApplicationDbContext> CreateOptions()
+        private static DbContextOptions<ApplicationDbContext> CreateOptions()
         {
             return new DbContextOptionsBuilder<ApplicationDbContext>()
                 .UseInMemoryDatabase(Guid.NewGuid().ToString())
                 .Options;
         }
 
-        private async Task SeedData(ApplicationDbContext context)
+        private static async Task SeedData(ApplicationDbContext context)
         {
             context.Documents.AddRange(new List<Document>
             {
@@ -71,7 +71,7 @@ namespace LeavePlanner.Tests.Integration.Repositories
             var logger = new Mock<ILogger<DocumentRepository>>();
             var repo = new DocumentRepository(context, logger.Object);
 
-            await Assert.ThrowsAsync<NullEntity>(() =>
+            await Assert.ThrowsAsync<NullEntityException>(() =>
                 repo.DeleteDocumentAsync(999, 999));
         }
 
@@ -123,7 +123,7 @@ namespace LeavePlanner.Tests.Integration.Repositories
             var logger = new Mock<ILogger<DocumentRepository>>();
             var repo = new DocumentRepository(context, logger.Object);
 
-            await Assert.ThrowsAsync<NullEntity>(() =>
+            await Assert.ThrowsAsync<NullEntityException>(() =>
                 repo.GetDocumentByCustomerIdAsync(1, 999));
         }
 

@@ -13,7 +13,7 @@ namespace LeavePlanner.Domain.Helper
             if (customerId <= 0)
             {
                 logger.LogError("Customer id must be greater than zero");
-                throw new LessThanZeroNumbers("Customer id must be greater than zero");
+                throw new LessThanZeroNumbersException("Customer id must be greater than zero");
             }
 
             await customerRepository.GetByIdAsync(customerId);
@@ -24,7 +24,7 @@ namespace LeavePlanner.Domain.Helper
             if (employeeId <= 0)
             {
                 logger.LogError("Employee id must be greater than zero.");
-                throw new LessThanZeroNumbers("Employee id must be greater than zero.");
+                throw new LessThanZeroNumbersException("Employee id must be greater than zero.");
             }
 
             await employeeRepository.GetByIdAsync(employeeId);
@@ -35,13 +35,13 @@ namespace LeavePlanner.Domain.Helper
             if (pageNumber <= 0)
             {
                 logger.LogError("Page number must be greater than zero");
-                throw new LessThanZeroNumbers("Page number must be greater than zero");
+                throw new LessThanZeroNumbersException("Page number must be greater than zero");
             }
 
             if (pageSize <= 0)
             {
                 logger.LogError("Page size must be greater than zero");
-                throw new LessThanZeroNumbers("Page size must be greater than zero");
+                throw new LessThanZeroNumbersException("Page size must be greater than zero");
             }
 
             return Task.CompletedTask;
@@ -69,8 +69,8 @@ namespace LeavePlanner.Domain.Helper
             IDocumentRepository documentRepository, 
             ILogger logger)
         {
-            if (documentRepository == null) throw new ArgumentNullException(nameof(documentRepository));
-            if (logger == null) throw new ArgumentNullException(nameof(logger));
+            ArgumentNullException.ThrowIfNull(documentRepository);
+            ArgumentNullException.ThrowIfNull(logger);
 
             await documentRepository.GetDocumentByCustomerIdAsync(customerId, documentId);
 

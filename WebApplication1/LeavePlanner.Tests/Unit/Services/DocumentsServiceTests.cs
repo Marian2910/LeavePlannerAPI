@@ -12,6 +12,8 @@ namespace LeavePlanner.Tests.Unit.Services
 {
     public class DocumentsServiceTests
     {
+        private static DateTime CurrentUtc => DateTime.UtcNow;
+
         private DocumentService _documentService;
         private Mock<ICustomerRepository> _customerRepository;
         private Mock<IDocumentRepository> _documentRepository;
@@ -48,7 +50,7 @@ namespace LeavePlanner.Tests.Unit.Services
                 BillingType = "Prepaid",
                 Tva = 10,
                 Addition = "Customer Note 1",
-                Date = DateTime.Now
+                Date = CurrentUtc
             };
 
             var customer1Entity = new Customer
@@ -66,7 +68,7 @@ namespace LeavePlanner.Tests.Unit.Services
                 BillingType = "Prepaid",
                 Tva = 10,
                 Addition = "Customer Note 1",
-                Date = DateTime.Now
+                Date = CurrentUtc
             };
 
             var documents = new List<DocumentEntity>
@@ -76,7 +78,7 @@ namespace LeavePlanner.Tests.Unit.Services
                     Id = 1,
                     Name = "Document1",
                     Type = "PDF",
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = CurrentUtc,
                     File = [],
                     Customer = customer1
                 },
@@ -85,7 +87,7 @@ namespace LeavePlanner.Tests.Unit.Services
                     Id = 2,
                     Name = "Document2",
                     Type = "Word",
-                    CreatedAt = DateTime.Now.AddDays(-1),
+                    CreatedAt = CurrentUtc.AddDays(-1),
                     File = [],
                     Customer = customer1
                 },
@@ -94,7 +96,7 @@ namespace LeavePlanner.Tests.Unit.Services
                     Id = 3,
                     Name = "Document3",
                     Type = "Excel",
-                    CreatedAt = DateTime.Now.AddDays(-2),
+                    CreatedAt = CurrentUtc.AddDays(-2),
                     File = [],
                     Customer = customer1
                 },
@@ -107,7 +109,7 @@ namespace LeavePlanner.Tests.Unit.Services
                     Id = 1,
                     Name = "Document1",
                     Type = "PDF",
-                    Date = DateTime.Now,
+                    Date = CurrentUtc,
                     File = [],
                     Customer = customer1Entity
                 },
@@ -116,7 +118,7 @@ namespace LeavePlanner.Tests.Unit.Services
                     Id = 2,
                     Name = "Document2",
                     Type = "Word",
-                    Date = DateTime.Now.AddDays(-1),
+                    Date = CurrentUtc.AddDays(-1),
                     File = [],
                     Customer = customer1Entity
                 },
@@ -125,7 +127,7 @@ namespace LeavePlanner.Tests.Unit.Services
                     Id = 3,
                     Name = "Document3",
                     Type = "Excel",
-                    Date = DateTime.Now.AddDays(-2),
+                    Date = CurrentUtc.AddDays(-2),
                     File = [],
                     Customer = customer1Entity
                 },
@@ -142,7 +144,7 @@ namespace LeavePlanner.Tests.Unit.Services
             //assert
             var enumerable = result as Document[] ?? result.ToArray();
             Assert.That(enumerable, Is.Not.Null);
-            Assert.That(enumerable.Length, Is.EqualTo(3));
+            Assert.That(enumerable, Has.Length.EqualTo(3));
         }
 
         [Test]
@@ -164,7 +166,7 @@ namespace LeavePlanner.Tests.Unit.Services
                 BillingType = "Prepaid",
                 Tva = 10,
                 Addition = "Customer Note 1",
-                Date = DateTime.Now
+                Date = CurrentUtc
             };
 
             var document = new DocumentEntity
@@ -172,7 +174,7 @@ namespace LeavePlanner.Tests.Unit.Services
                 Id = 1,
                 Name = "Document1",
                 Type = "PDF",
-                CreatedAt = DateTime.Now,
+                CreatedAt = CurrentUtc,
                 File = [],
                 Customer = customer
             };

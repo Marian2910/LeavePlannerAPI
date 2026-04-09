@@ -36,19 +36,19 @@ public class PersonalEventServiceTests
     // 🔧 Helpers
     // ========================
 
-    private EmployeeEntity CreateValidEmployee(int remainingDays = 10)
+    private static EmployeeEntity CreateValidEmployee(int remainingDays = 10)
     {
         return new EmployeeEntity
         {
             Id = 1,
             Job = new JobEntity { Id = 1, Title = "Dev" },
             Department = new DepartmentEntity { Id = 1, Name = "IT" },
-            Birthdate = DateTime.Now.AddYears(-25),
+            Birthdate = DateTime.UtcNow.AddYears(-25),
             RemainingLeaveDays = remainingDays
         };
     }
 
-    private PersonalEvent CreateValidPersonalEvent(int employeeId = 1, int days = 1)
+    private static PersonalEvent CreateValidPersonalEvent(int employeeId = 1, int days = 1)
     {
         return new PersonalEvent
         {

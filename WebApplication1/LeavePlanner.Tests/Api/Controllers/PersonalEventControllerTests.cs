@@ -38,8 +38,8 @@ public class PersonalEventControllerTests
         var dto = new PersonalEventDto
         {
             Title = "Some event",
-            StartDate = DateTime.Now.AddDays(1),
-            EndDate = DateTime.Now.AddDays(1),
+            StartDate = DateTime.UtcNow.AddDays(1),
+            EndDate = DateTime.UtcNow.AddDays(1),
             EmployeeId = 1
         };
         var entity = new PersonalEvent
