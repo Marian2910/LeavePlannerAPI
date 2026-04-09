@@ -11,6 +11,10 @@ namespace LeavePlanner.Infrastructure.Validators
             logger.LogError(
                 "No entities of type {EntityType} were found.",
                 typeof(T).Name);
+            if (entities != null && entities.Any()) return Task.CompletedTask;
+            logger.LogError(
+                "No entities of type {EntityType} were found.",
+                typeof(T).Name);
 
             throw new NullEntityException($"No entities of type {typeof(T).Name} were found.");
 
