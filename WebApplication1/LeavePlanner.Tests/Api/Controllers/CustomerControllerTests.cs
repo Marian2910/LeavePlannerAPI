@@ -3,25 +3,30 @@ using Common.DTOs;
 using LeavePlanner.Api.Controllers;
 using LeavePlanner.Domain.Models;
 using LeavePlanner.Domain.Services;
+using LeavePlanner.Infrastructure.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using Moq;
 using Xunit;
+using CustomerEntity = LeavePlanner.Infrastructure.Entities.Customer;
 
 namespace LeavePlanner.Tests.Api.Controllers;
 
 public class CustomerControllerTests
 {
-    private readonly Mock<CustomerService> _serviceMock;
+    private readonly Mock<ICustomerRepository> _repositoryMock = new();
     private readonly Mock<IMapper> _mapperMock = new();
-    private readonly Mock<ILogger<CustomerController>> _loggerMock = new();
 
     private readonly CustomerController _controller;
 
     public CustomerControllerTests()
     {
-        _serviceMock = new Mock<CustomerService>(null!, null!, null!);
-        _controller = new CustomerController(_serviceMock.Object, _loggerMock.Object, _mapperMock.Object);
+        var service = new CustomerService(
+            _repositoryMock.Object,
+            _mapperMock.Object,
+            NullLogger<CustomerService>.Instance);
+
+        _controller = new CustomerController(service, NullLogger<CustomerController>.Instance, _mapperMock.Object);
     }
 
     private static Customer CreateCustomer()
@@ -45,9 +50,11 @@ public class CustomerControllerTests
     public async Task GetAllCustomers_ShouldReturnOk()
     {
         var dto = new PagedResultDto<Customer> { Items = new List<Customer>(), TotalCount = 0 };
+        var entities = new List<CustomerEntity>();
 
-        _serviceMock.Setup(s => s.GetCustomersAsync(1, 10, null, null, null, null))
-            .ReturnsAsync(dto);
+        _repositoryMock.Setup(r => r.GetAllAsync()).ReturnsAsync(entities);
+        _repositoryMock.Setup(r => r.GetTotalCustomerCountAsync()).ReturnsAsync(0);
+        _mapperMock.Setup(m => m.Map<IEnumerable<Customer>>(entities)).Returns(dto.Items);
 
         var result = await _controller.GetAllCustomers(1, 10);
 
@@ -58,9 +65,22 @@ public class CustomerControllerTests
     public async Task GetCustomerById_ShouldReturnOk()
     {
         var customer = CreateCustomer();
+        var entity = new CustomerEntity
+        {
+            Id = 1,
+            Name = customer.Name,
+            Email = customer.Email,
+            PhoneNumber = customer.PhoneNumber,
+            Country = customer.Country,
+            City = customer.City,
+            PostalCode = customer.PostalCode,
+            Street = customer.Street,
+            BillingType = customer.BillingType,
+            Date = customer.Date
+        };
 
-        _serviceMock.Setup(s => s.GetCustomerByIdAsync(1))
-            .ReturnsAsync(customer);
+        _repositoryMock.Setup(r => r.GetByIdAsync(1)).ReturnsAsync(entity);
+        _mapperMock.Setup(m => m.Map<Customer>(entity)).Returns(customer);
 
         var result = await _controller.GetCustomerById(1);
 
@@ -84,6 +104,22 @@ public class CustomerControllerTests
         var customer = CreateCustomer();
 
         _mapperMock.Setup(m => m.Map<Customer>(dto)).Returns(customer);
+        _mapperMock.Setup(m => m.Map<LeavePlanner.Infrastructure.Entities.Customer>(customer))
+            .Returns(new CustomerEntity
+            {
+                Id = customer.Id,
+                Name = customer.Name,
+                Email = customer.Email,
+                PhoneNumber = customer.PhoneNumber,
+                Country = customer.Country,
+                City = customer.City,
+                PostalCode = customer.PostalCode,
+                Street = customer.Street,
+                BillingType = customer.BillingType,
+                Date = customer.Date
+            });
+        _repositoryMock.Setup(r => r.AddCustomerAsync(It.IsAny<CustomerEntity>()))
+            .Returns(Task.CompletedTask);
 
         var result = await _controller.AddCustomer(dto);
 
@@ -113,6 +149,15 @@ public class CustomerControllerTests
     [Fact]
     public async Task DeleteCustomer_ShouldReturnOk()
     {
+        _repositoryMock.Setup(r => r.GetByIdAsync(1))
+            .ReturnsAsync(new CustomerEntity
+            {
+                Id = 1,
+                Name = "Test",
+                Email = "test@test.com"
+            });
+        _repositoryMock.Setup(r => r.DeleteCustomerAsync(1)).Returns(Task.CompletedTask);
+
         var result = await _controller.DeleteCustomer(1);
 
         Assert.IsType<OkObjectResult>(result);
@@ -121,7 +166,10 @@ public class CustomerControllerTests
     [Fact]
     public async Task DeleteMultipleCustomers_ShouldReturnOk()
     {
-        var result = await _controller.DeleteMultipleCustomers(new[] { 1, 2 });
+        _repositoryMock.Setup(r => r.DeleteMultipleCustomers(It.IsAny<int[]>()))
+            .Returns(Task.CompletedTask);
+
+        var result = await _controller.DeleteMultipleCustomers([1, 2]);
 
         Assert.IsType<OkObjectResult>(result);
     }

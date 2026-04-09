@@ -1,4 +1,5 @@
-﻿using LeavePlanner.Infrastructure.Interfaces;
+﻿
+using LeavePlanner.Infrastructure.Interfaces;
 
 namespace LeavePlanner.Domain.Helper
 {

@@ -50,6 +50,11 @@ namespace LeavePlanner.Domain.Services
 
             var employee = await employeeRepository.GetByIdAsync(employeeId);
 
+            if (employee == null)
+            {
+                throw new KeyNotFoundException($"Employee with ID {employeeId} was not found.");
+            }
+
             var expectedLeaveDays = EmployeeHelper.CalculateLeaveDays(
                 employee.EmploymentDate);
 
