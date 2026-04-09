@@ -53,10 +53,12 @@ namespace LeavePlanner.Domain.Services.Schedulers
             try
             {
                 var employees = await employeeService.GetAllEmployeesAsync();
-                foreach (var employee in employees.Where(employee => !HasLeaveBeenUpdatedThisYear(employee)))
+                foreach (var employeeId in employees
+                             .Where(e => !HasLeaveBeenUpdatedThisYear(e))
+                             .Select(e => e.Id))
                 {
-                    _logger.LogInformation("Updating leave days for Employee ID: {EmployeeId}", employee.Id);
-                    await employeeService.UpdateLeaveDaysForEmployeeAsync(employee.Id);
+                    _logger.LogInformation("Updating leave days for Employee ID: {EmployeeId}", employeeId);
+                    await employeeService.UpdateLeaveDaysForEmployeeAsync(employeeId);
                 }
             }
             catch (Exception ex)
