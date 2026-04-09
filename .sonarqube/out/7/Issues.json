@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Microsoft (R) Visual C# Compiler",
+        "version": "4.11.0.0",
+        "fileVersion": "4.11.0-3.24365.8 (9e9c7c1d)",
+        "semanticVersion": "4.11.0",
+        "language": "en-RO"
+      },
+      "results": [
+        {
+          "ruleId": "CS0006",
+          "level": "error",
+          "message": "Metadata file '/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/WebApplication1/obj/Debug/net8.0/ref/LeavePlanner.Api.dll' could not be found"
+        },
+        {
+          "ruleId": "CS0006",
+          "level": "error",
+          "message": "Metadata file '/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/obj/Debug/net8.0/ref/LeavePlanner.Common.dll' could not be found"
+        },
+        {
+          "ruleId": "CS0006",
+          "level": "error",
+          "message": "Metadata file '/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Domain/obj/Debug/net8.0/ref/LeavePlanner.Domain.dll' could not be found"
+        },
+        {
+          "ruleId": "CS0006",
+          "level": "error",
+          "message": "Metadata file '/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Infrastructure/obj/Debug/net8.0/ref/LeavePlanner.Infrastructure.dll' could not be found"
+        }
+      ],
+      "rules": {
+        "CS0006": {
+          "id": "CS0006",
+          "defaultLevel": "error",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS0006)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry",
+              "NotConfigurable"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/obj/Debug/net8.0/LeavePlanner.Common.csproj.AssemblyReference.cache
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/obj/Debug/net8.0/LeavePlanner.Common.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/obj/Debug/net8.0/LeavePlanner.Common.AssemblyInfoInputs.cache
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/obj/Debug/net8.0/LeavePlanner.Common.AssemblyInfo.cs
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/obj/Debug/net8.0/LeavePlanner.Common.csproj.CoreCompileInputs.cache
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/obj/Debug/net8.0/LeavePlanner.Common.sourcelink.json
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/bin/Debug/net8.0/LeavePlanner.Common.deps.json
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/bin/Debug/net8.0/LeavePlanner.Common.runtimeconfig.json
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/bin/Debug/net8.0/LeavePlanner.Common.dll
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/bin/Debug/net8.0/LeavePlanner.Common.pdb
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/obj/Debug/net8.0/LeavePlanner.Common.dll
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/obj/Debug/net8.0/refint/LeavePlanner.Common.dll
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/obj/Debug/net8.0/LeavePlanner.Common.pdb
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/obj/Debug/net8.0/LeavePlanner.Common.genruntimeconfig.cache
+/Users/mariancatalin/Documents/Personal/Red to blue/RTB_APP/LeavePlannerAPI/WebApplication1/LeavePlanner.Common/obj/Debug/net8.0/ref/LeavePlanner.Common.dll
