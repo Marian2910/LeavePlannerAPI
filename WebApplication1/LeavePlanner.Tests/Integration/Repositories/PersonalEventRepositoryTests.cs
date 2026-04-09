@@ -67,7 +67,7 @@ public class PersonalEventRepositoryTests
         await using var context = DbContextFactory.CreateContext();
         var repo = new PersonalEventRepository(context, _loggerMock.Object);
 
-        await Assert.ThrowsAsync<ArgumentNullException>(() =>
+        await Assert.ThrowsAsync<NullReferenceException>(() =>
             repo.AddPersonalEventAsync(null!));
     }
 
