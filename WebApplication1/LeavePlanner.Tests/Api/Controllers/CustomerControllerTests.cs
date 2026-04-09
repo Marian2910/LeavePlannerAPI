@@ -173,4 +173,90 @@ public class CustomerControllerTests
 
         Assert.IsType<OkObjectResult>(result);
     }
+
+    [Fact]
+    public async Task SearchCustomersByName_ShouldReturnOk()
+    {
+        var entities = new List<LeavePlanner.Infrastructure.Entities.Customer>
+        {
+            new() { Id = 1, Name = "Test", Email = "test@test.com" }
+        };
+        var models = new List<Customer> { CreateCustomer() };
+
+        _repositoryMock.Setup(r => r.SearchCustomersAsync("Test")).ReturnsAsync(entities);
+        _mapperMock.Setup(m => m.Map<IEnumerable<Customer>>(entities)).Returns(models);
+
+        var result = await _controller.SearchCustomersByName("Test", 1, 10);
+
+        Assert.IsType<OkObjectResult>(result.Result);
+    }
+
+    [Fact]
+    public async Task UpdateCustomer_ShouldReturnOk_WhenValid()
+    {
+        var dto = new UpdateCustomerDto(1)
+        {
+            Name = "Updated",
+            Email = "updated@test.com",
+            PhoneNumber = "123-456-7890",
+            Country = "RO",
+            City = "Cluj",
+            PostalCode = "400000",
+            Street = "Main",
+            BillingType = "SRL"
+        };
+        var customer = CreateCustomer();
+        var entity = new LeavePlanner.Infrastructure.Entities.Customer
+        {
+            Id = 1,
+            Name = customer.Name,
+            Email = customer.Email,
+            PhoneNumber = customer.PhoneNumber,
+            Country = customer.Country,
+            City = customer.City,
+            PostalCode = customer.PostalCode,
+            Street = customer.Street,
+            BillingType = customer.BillingType,
+            Date = customer.Date
+        };
+
+        _mapperMock.Setup(m => m.Map<Customer>(dto)).Returns(customer);
+        _repositoryMock.Setup(r => r.GetByIdAsync(1)).ReturnsAsync(entity);
+        _mapperMock.Setup(m => m.Map<LeavePlanner.Infrastructure.Entities.Customer>(customer)).Returns(entity);
+        _repositoryMock.Setup(r => r.UpdateCustomerAsync(entity)).Returns(Task.CompletedTask);
+
+        var result = await _controller.UpdateCustomer(dto);
+
+        Assert.IsType<OkObjectResult>(result);
+    }
+
+    [Fact]
+    public async Task AddDocumentToCustomer_ShouldReturnOk_WhenValid()
+    {
+        var customerEntity = new LeavePlanner.Infrastructure.Entities.Customer
+        {
+            Id = 1,
+            Name = "Test",
+            Email = "test@test.com"
+        };
+        var fileMock = new Mock<Microsoft.AspNetCore.Http.IFormFile>();
+        fileMock.Setup(f => f.FileName).Returns("test.pdf");
+        fileMock.Setup(f => f.ContentType).Returns("application/pdf");
+        fileMock.Setup(f => f.CopyToAsync(It.IsAny<Stream>(), It.IsAny<CancellationToken>()))
+            .Returns<Stream, CancellationToken>((stream, _) =>
+            {
+                var bytes = new byte[] { 1, 2, 3 };
+                stream.Write(bytes, 0, bytes.Length);
+                return Task.CompletedTask;
+            });
+
+        _repositoryMock.SetupSequence(r => r.GetByIdAsync(1))
+            .ReturnsAsync(customerEntity)
+            .ReturnsAsync(customerEntity);
+        _repositoryMock.Setup(r => r.UpdateCustomerAsync(customerEntity)).Returns(Task.CompletedTask);
+
+        var result = await _controller.AddDocumentToCustomer(1, new[] { fileMock.Object });
+
+        Assert.IsType<OkObjectResult>(result);
+    }
 }
