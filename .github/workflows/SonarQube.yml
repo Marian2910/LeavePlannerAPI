@@ -47,20 +47,23 @@ jobs:
         shell: powershell
         run: |
           $scanner = "${{ runner.temp }}\scanner\dotnet-sonarscanner"
-
+      
           & $scanner begin `
             /k:"Marian2910_LeavePlannerAPI" `
             /o:"marian2910" `
             /d:sonar.token="${{ secrets.SONAR_TOKEN }}" `
             /d:sonar.host.url="https://sonarcloud.io" `
-            /d:sonar.cs.opencover.reportsPaths="TestResults/**/coverage.opencover.xml"
-
+            /d:sonar.cs.opencover.reportsPaths="TestResults/**/coverage.opencover.xml" `
+            /d:sonar.coverage.exclusions="**/Migrations/**,**/*.Designer.cs,**/Program.cs"
+      
           dotnet build WebApplication1/ProjectBackend.sln --no-incremental
-
+      
           dotnet test WebApplication1/LeavePlanner.Tests/LeavePlanner.Tests.csproj `
             --collect:"XPlat Code Coverage;Format=opencover" `
+            --settings WebApplication1/LeavePlanner.Tests/coverlet.runsettings `
             --results-directory TestResults
-
+      
           Get-ChildItem -Recurse TestResults
-
+      
           & $scanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+
