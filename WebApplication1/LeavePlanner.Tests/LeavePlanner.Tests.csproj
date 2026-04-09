@@ -10,20 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- Testing -->
     <PackageReference Include="FluentAssertions" Version="8.9.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.3.0" />
     <PackageReference Include="NUnit" Version="3.14.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
     <PackageReference Include="NUnit.Analyzers" Version="3.9.0" />
-
-    <!-- Mocking -->
     <PackageReference Include="Moq" Version="4.20.72" />
-
-    <!-- Coverage -->
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
-
-    <!-- EF Core (for in-memory testing) -->
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.8" />
     <PackageReference Include="xunit" Version="2.9.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
@@ -35,6 +28,7 @@
   <ItemGroup>
     <ProjectReference Include="..\LeavePlanner.Common\LeavePlanner.Common.csproj" />
     <ProjectReference Include="..\LeavePlanner.Domain\LeavePlanner.Domain.csproj" />
+    <ProjectReference Include="..\LeavePlanner.Infrastructure\LeavePlanner.Infrastructure.csproj" />
     <ProjectReference Include="..\WebApplication1\LeavePlanner.Api.csproj" />
   </ItemGroup>
 

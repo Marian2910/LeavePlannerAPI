@@ -193,5 +193,17 @@ namespace LeavePlanner.Tests.Unit.Services
             // Assert
             await act.Should().ThrowAsync<ArgumentOutOfRangeException>();
         }
+
+        [Fact]
+        public async Task UpdateLeaveDaysForEmployeeAsync_ShouldThrow_WhenEmployeeNotFound()
+        {
+            _employeeRepositoryMock
+                .Setup(r => r.GetByIdAsync(1))
+                .ReturnsAsync((Infrastructure.Entities.Employee)null!);
+
+            var act = async () => await _employeeService.UpdateLeaveDaysForEmployeeAsync(1);
+
+            await act.Should().ThrowAsync<KeyNotFoundException>();
+        }
     }
 }
