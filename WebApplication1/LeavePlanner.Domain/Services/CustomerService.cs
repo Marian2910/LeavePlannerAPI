@@ -21,6 +21,7 @@ namespace LeavePlanner.Domain.Services
         private const string NameSortCriteria = "name";
         private const string DateSortCriteria = "date";
         private const string AscendingSortDirection = "asc";
+        private const string ExecuteForCustomerLogMessage = "Executing {MethodName} for Customer ID: {CustomerId}";
 
         public async Task AddCustomer(Customer customer)
         {
@@ -32,7 +33,7 @@ namespace LeavePlanner.Domain.Services
 
         public async Task UpdateCustomer(Customer customer)
         {
-            logger.LogInformation("Executing {MethodName} for Customer ID: {CustomerId}", nameof(UpdateCustomer), customer.Id);
+            logger.LogInformation(ExecuteForCustomerLogMessage, nameof(UpdateCustomer), customer.Id);
 
             await ValidationHelper.ValidCustomerExists(customer.Id, customerRepository, logger);
             var updatedCustomerEntity = mapper.Map<CustomerEntity>(customer);
@@ -42,7 +43,7 @@ namespace LeavePlanner.Domain.Services
 
         public async Task AddDocumentsToCustomer(int id, IEnumerable<IFormFile> formFiles)
         {
-            logger.LogInformation("Executing {MethodName} for Customer ID: {CustomerId}", nameof(AddDocumentsToCustomer), id);
+            logger.LogInformation(ExecuteForCustomerLogMessage, nameof(AddDocumentsToCustomer), id);
 
             await ValidationHelper.ValidCustomerExists(id, customerRepository, logger);
 
@@ -77,7 +78,7 @@ namespace LeavePlanner.Domain.Services
 
         public async Task DeleteCustomer(int customerId)
         {
-            logger.LogInformation("Executing {MethodName} for Customer ID: {CustomerId}", nameof(DeleteCustomer), customerId);
+            logger.LogInformation(ExecuteForCustomerLogMessage, nameof(DeleteCustomer), customerId);
 
             await ValidationHelper.ValidCustomerExists(customerId, customerRepository, logger);
 
@@ -118,7 +119,7 @@ namespace LeavePlanner.Domain.Services
 
         public async Task<Customer> GetCustomerByIdAsync(int id)
         {
-            logger.LogInformation("Executing {MethodName} for Customer ID: {CustomerId}", nameof(GetCustomerByIdAsync), id);
+            logger.LogInformation(ExecuteForCustomerLogMessage, nameof(GetCustomerByIdAsync), id);
 
             var customerEntity = await customerRepository.GetByIdAsync(id)
                                 ?? throw new InvalidOperationException($"Customer with ID {id} not found.");

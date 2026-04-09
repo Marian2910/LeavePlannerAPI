@@ -8,6 +8,11 @@ namespace LeavePlanner.Infrastructure.Migrations
     /// <inheritdoc />
     public partial class intialMigration : Migration
     {
+        private const string SqlServerIdentityAnnotation = "SqlServer:Identity";
+        private const string NVarCharMaxColumnType = "nvarchar(max)";
+        private const string DateTime2ColumnType = "datetime2";
+        private const string EmployeesTableName = "Employees";
+
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,20 +21,20 @@ namespace LeavePlanner.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Country = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PostalCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Street = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Number = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                        .Annotation(SqlServerIdentityAnnotation, "1, 1"),
+                    Name = table.Column<string>(type: NVarCharMaxColumnType, nullable: false),
+                    Email = table.Column<string>(type: NVarCharMaxColumnType, nullable: false),
+                    PhoneNumber = table.Column<string>(type: NVarCharMaxColumnType, nullable: false),
+                    Country = table.Column<string>(type: NVarCharMaxColumnType, nullable: false),
+                    City = table.Column<string>(type: NVarCharMaxColumnType, nullable: false),
+                    PostalCode = table.Column<string>(type: NVarCharMaxColumnType, nullable: false),
+                    Street = table.Column<string>(type: NVarCharMaxColumnType, nullable: false),
+                    Number = table.Column<string>(type: NVarCharMaxColumnType, nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: false),
-                    BillingType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BillingType = table.Column<string>(type: NVarCharMaxColumnType, nullable: false),
                     Tva = table.Column<int>(type: "int", nullable: false),
-                    Addition = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Addition = table.Column<string>(type: NVarCharMaxColumnType, nullable: false),
+                    Date = table.Column<DateTime>(type: DateTime2ColumnType, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -41,8 +46,8 @@ namespace LeavePlanner.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                        .Annotation(SqlServerIdentityAnnotation, "1, 1"),
+                    Name = table.Column<string>(type: NVarCharMaxColumnType, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -54,9 +59,9 @@ namespace LeavePlanner.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Role = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                        .Annotation(SqlServerIdentityAnnotation, "1, 1"),
+                    Title = table.Column<string>(type: NVarCharMaxColumnType, nullable: false),
+                    Role = table.Column<string>(type: NVarCharMaxColumnType, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -68,10 +73,10 @@ namespace LeavePlanner.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                        .Annotation(SqlServerIdentityAnnotation, "1, 1"),
+                    Name = table.Column<string>(type: NVarCharMaxColumnType, nullable: false),
+                    Type = table.Column<string>(type: NVarCharMaxColumnType, nullable: false),
+                    Date = table.Column<DateTime>(type: DateTime2ColumnType, nullable: false),
                     File = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
                     CustomerId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -87,19 +92,19 @@ namespace LeavePlanner.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Employees",
+                name: EmployeesTableName,
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                        .Annotation(SqlServerIdentityAnnotation, "1, 1"),
+                    FirstName = table.Column<string>(type: NVarCharMaxColumnType, nullable: false),
+                    LastName = table.Column<string>(type: NVarCharMaxColumnType, nullable: false),
+                    Email = table.Column<string>(type: NVarCharMaxColumnType, nullable: false),
+                    Password = table.Column<string>(type: NVarCharMaxColumnType, nullable: false),
                     JobId = table.Column<int>(type: "int", nullable: false),
                     DepartmentId = table.Column<int>(type: "int", nullable: false),
-                    Birthdate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EmploymentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Birthdate = table.Column<DateTime>(type: DateTime2ColumnType, nullable: false),
+                    EmploymentDate = table.Column<DateTime>(type: DateTime2ColumnType, nullable: false),
                     RemainingLeaveDays = table.Column<int>(type: "int", nullable: false),
                     AnnualLeaveDays = table.Column<int>(type: "int", nullable: false)
                 },
@@ -125,12 +130,12 @@ namespace LeavePlanner.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                        .Annotation(SqlServerIdentityAnnotation, "1, 1"),
+                    Title = table.Column<string>(type: NVarCharMaxColumnType, nullable: false),
+                    Description = table.Column<string>(type: NVarCharMaxColumnType, nullable: true),
+                    StartDate = table.Column<DateTime>(type: DateTime2ColumnType, nullable: false),
+                    EndDate = table.Column<DateTime>(type: DateTime2ColumnType, nullable: true),
+                    Location = table.Column<string>(type: NVarCharMaxColumnType, nullable: true),
                     Discriminator = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
                     EmployeeId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -140,7 +145,7 @@ namespace LeavePlanner.Infrastructure.Migrations
                     table.ForeignKey(
                         name: "FK_Events_Employees_EmployeeId",
                         column: x => x.EmployeeId,
-                        principalTable: "Employees",
+                        principalTable: EmployeesTableName,
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -152,12 +157,12 @@ namespace LeavePlanner.Infrastructure.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Employees_DepartmentId",
-                table: "Employees",
+                table: EmployeesTableName,
                 column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Employees_JobId",
-                table: "Employees",
+                table: EmployeesTableName,
                 column: "JobId");
 
             migrationBuilder.CreateIndex(
@@ -179,7 +184,7 @@ namespace LeavePlanner.Infrastructure.Migrations
                 name: "Customers");
 
             migrationBuilder.DropTable(
-                name: "Employees");
+                name: EmployeesTableName);
 
             migrationBuilder.DropTable(
                 name: "Departments");

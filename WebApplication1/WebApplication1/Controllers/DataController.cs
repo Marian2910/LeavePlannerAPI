@@ -13,10 +13,10 @@ namespace LeavePlanner.Api.Controllers
         private const string NotApplicable = "N/A";
 
         private static DateTime CreateUtcDate(int year, int month, int day) =>
-            DateTime.SpecifyKind(new DateTime(year, month, day), DateTimeKind.Utc);
+            new(year, month, day, 0, 0, 0, DateTimeKind.Utc);
         
         [HttpPost("createData")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         public IActionResult CreateData()
         {
             if (!dbContext.Jobs.Any())

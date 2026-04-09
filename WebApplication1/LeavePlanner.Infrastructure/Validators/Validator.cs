@@ -5,27 +5,25 @@ namespace LeavePlanner.Infrastructure.Validators
 {
     public static class Validator
     {
+        private static void LogMissingEntity<T>(ILogger logger, string messageTemplate)
+        {
+            logger.LogError(messageTemplate, typeof(T).Name);
+        }
+
         public static Task ValidEntities<T>(IEnumerable<T>? entities, ILogger logger)
         {
             if (entities != null && entities.Any()) return Task.CompletedTask;
-            logger.LogError(
-                "No entities of type {EntityType} were found.",
-                typeof(T).Name);
-            if (entities != null && entities.Any()) return Task.CompletedTask;
-            logger.LogError(
-                "No entities of type {EntityType} were found.",
-                typeof(T).Name);
+            LogMissingEntity<T>(logger, "No entities of type {EntityType} were found.");
 
             throw new NullEntityException($"No entities of type {typeof(T).Name} were found.");
 
         }
 
         public static Task ValidEntity<T>(T? entity, ILogger logger)
+            where T : class
         {
-            if (!EqualityComparer<T>.Default.Equals(entity, default)) return Task.CompletedTask;
-            logger.LogError(
-                "No entity of type {EntityType} was found.",
-                typeof(T).Name);
+            if (entity is not null) return Task.CompletedTask;
+            LogMissingEntity<T>(logger, "No entity of type {EntityType} was found.");
 
             throw new NullEntityException($"No entity of type {typeof(T).Name} was found.");
 

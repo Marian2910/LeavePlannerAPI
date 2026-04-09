@@ -37,7 +37,7 @@ public class EventServiceTests
         };
     }
 
-    private static EventDto CreateEventDto(int id = 1)
+    private static TestEventDto CreateEventDto(int id = 1)
     {
         return new TestEventDto
         {

@@ -30,14 +30,11 @@ namespace LeavePlanner.Infrastructure.Middleware
             string message;
             switch (ex)
             {
-                case NullEntityException:
-                    context.Response.StatusCode = (int)HttpStatusCode.NotFound;
-                    message = ex.Message;
-                    break;
                 case NotNullEntityException:
                     context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
                     message = ex.Message;
                     break;
+                case NullEntityException:
                 case LessThanZeroNumbersException:
                     context.Response.StatusCode = (int)HttpStatusCode.NotFound;
                     message = ex.Message;

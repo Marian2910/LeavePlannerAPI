@@ -7,6 +7,7 @@
     <AssemblyName>LeavePlanner.Tests</AssemblyName>
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
+    <ExcludeByFile>**/Migrations/*.cs;**/*.Designer.cs;**/Program.cs</ExcludeByFile>
   </PropertyGroup>
 
   <ItemGroup>
