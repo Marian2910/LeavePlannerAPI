@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Microsoft (R) Visual C# Compiler",
+        "version": "4.11.0.0",
+        "fileVersion": "4.11.0-3.24365.8 (9e9c7c1d)",
+        "semanticVersion": "4.11.0",
+        "language": "en-RO"
+      },
+      "results": [
+        {
+          "ruleId": "CS0006",
+          "level": "error",
+          "message": "Metadata file '/var/folders/w2/lp9l8k657sq3y5m9p_vpcynr0000gq/T/.sonarqube/resources/0/Google.Protobuf.dll' could not be found"
+        },
+        {
+          "ruleId": "CS0006",
+          "level": "error",
+          "message": "Metadata file '/var/folders/w2/lp9l8k657sq3y5m9p_vpcynr0000gq/T/.sonarqube/resources/0/SonarAnalyzer.CFG.dll' could not be found"
+        },
+        {
+          "ruleId": "CS0006",
+          "level": "error",
+          "message": "Metadata file '/var/folders/w2/lp9l8k657sq3y5m9p_vpcynr0000gq/T/.sonarqube/resources/0/SonarAnalyzer.dll' could not be found"
+        },
+        {
+          "ruleId": "CS0006",
+          "level": "error",
+          "message": "Metadata file '/var/folders/w2/lp9l8k657sq3y5m9p_vpcynr0000gq/T/.sonarqube/resources/0/SonarAnalyzer.CSharp.dll' could not be found"
+        }
+      ],
+      "rules": {
+        "CS0006": {
+          "id": "CS0006",
+          "defaultLevel": "error",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS0006)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry",
+              "NotConfigurable"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
